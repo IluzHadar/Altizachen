@@ -7,7 +7,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/*set colore green to the font`s header of the website*/
+header {
+  background-color: #469761;
+  padding: 1rem;
+}
+
+/*set colore dark-black to the header of the website*/
+header a {
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: none;
 }
