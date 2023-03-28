@@ -19,9 +19,15 @@ function App() {
                   <p>{add.name}</p>
                 </a>
                 <p>
-                  <strong>${add.category}</strong>
+                  <strong>category: {add.category}</strong>
                 </p>
-                <button>Add to cart</button>
+                <p>
+                  <strong>description: {add.description}</strong>
+                </p>
+                <p>
+                  <strong>number of reviews: {add.numReviews}</strong>
+                </p>
+                <button>review add</button>
               </div>
             </div>
           ))}
