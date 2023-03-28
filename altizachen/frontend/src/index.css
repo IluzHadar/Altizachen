@@ -19,3 +19,24 @@ header a {
   font-weight: bold;
   text-decoration: none;
 }
+
+main {
+  padding: 1rem;
+}
+.adds {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.add {
+  border: 1px #404040 solid;
+  margin: 1rem;
+}
+.add img {
+  width: 100%;
+  max-width: 400px;
+}
+.add-info {
+  padding: 1rem;
+}
