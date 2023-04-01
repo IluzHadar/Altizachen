@@ -1,8 +1,8 @@
 const data = {
-  adds: [
+  ads: [
     /*----decoration(pic)----*/
     {
-      name: '2 abstract pictures', // add name
+      name: '2 abstract pictures', // ad name
       slug: '2-abstract-pictures', // what we see in the URL
       category: 'decoration',
       image: '/images/pic/2picGolf.jpg', // 679px × 829px

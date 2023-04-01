@@ -1,39 +1,22 @@
-import data from './data';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import HomeScreen from './screens/HomeScreen';
+import AdScreen from './screens/AdScreen';
 
 function App() {
   return (
-    <div>
-      <header>
-        <a href="/">Altizachen</a>
-      </header>
-      <main>
-        <h1>Featured adds</h1>
-        <div className="adds">
-          {data.adds.map((add) => (
-            <div className="add" key={add.slug}>
-              <a href={`/add/${add.slug}`}>
-                <img src={add.image} alt={add.name} />
-              </a>
-              <div className="add-info">
-                <a href={`/add/${add.slug}`}>
-                  <p>{add.name}</p>
-                </a>
-                <p>
-                  <strong>category: {add.category}</strong>
-                </p>
-                <p>
-                  <strong>description: {add.description}</strong>
-                </p>
-                <p>
-                  <strong>number of reviews: {add.numReviews}</strong>
-                </p>
-                <button>review add</button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </main>
-    </div>
+    <BrowserRouter>
+      <div>
+        <header>
+          <Link to="/">Altizachen</Link>
+        </header>
+        <main>
+          <Routes>
+            <Route path="/ad/:slug" element={<AdScreen />} />
+            <Route path="/" element={<HomeScreen />} />
+          </Routes>
+        </main>
+      </div>
+    </BrowserRouter>
   );
 }
 
