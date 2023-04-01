@@ -1,12 +1,25 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import data from '../data';
+import axios from 'axios';
+//import data from '../data';
 
 function HomeScreen() {
+  //setAds is a function to update the variable 'ads'
+  const [ads, setAds] = useState([]);
+  useEffect(() => {
+    //call API and get data from backend
+    const fetchData = async () => {
+      const result = await axios.get('/api/ads');
+      setAds(result.data); //result.data is all the adds in the backend
+    };
+    fetchData();
+  }, []);
+
   return (
     <div>
       <h1>Featured ads</h1>
       <div className="ads">
-        {data.ads.map((ad) => (
+        {ads.map((ad) => (
           <div className="ad" key={ad.slug}>
             <Link to={`/ad/${ad.slug}`}>
               <img src={ad.image} alt={ad.name} />
