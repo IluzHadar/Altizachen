@@ -22,7 +22,6 @@ const reducer = (state, action) => {
 };
 
 function HomeScreen() {
-  
   const [{ products }, dispatch] = useReducer(logger(reducer), {
     products: [],
     loading: true,
@@ -61,85 +60,84 @@ function HomeScreen() {
   };
 
   return (
-
-
     <div class="card text-center">
-          <div class="card-header">
-            <ul class="nav nav-tabs card-header-tabs">
-              <li class="nav-item">
-                  <a class="nav-link active" href="#">Active</a>
-              </li>
+      <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" href="/">
+              Active
+            </a>
+          </li>
 
-              <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
-              </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              Link
+            </a>
+          </li>
 
-              <li class="nav-item">
-                  <a class="nav-link disabled" href="#">Disabled</a>
-              </li>
-            </ul>
-        </div>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="/">
+              Disabled
+            </a>
+          </li>
+        </ul>
+      </div>
 
-        <div class="card-body">
-              
-                <div>
-                   <div className='products'>
-                {products.map((product) => (
-                  <Col
-                    className='align-items-stretch d-flex'
-                    key={product._id}
-                    sm={12}
-                    md={6}
-                    lg={4}
-                    xl={3}
+      <div class="card-body">
+        <div>
+          <div className="products">
+            {products.map((product) => (
+              <Col
+                className="align-items-stretch d-flex"
+                key={product._id}
+                sm={12}
+                md={6}
+                lg={4}
+                xl={3}
+              >
+                <Card className="w-100 h-80 my-3 p-3 rounded text-center">
+                  <Link
+                    style={{
+                      height: '100%',
+                    }}
+                    to={`/product/${product._id}`}
                   >
-                
-                    <Card className='w-100 h-80 my-3 p-3 rounded text-center'>
-                      <Link
-                        style={{
-                          height: '100%',
-                        }}
-                        to={`/product/${product._id}`}
-                      >
-                        <Card.Img
-                          style={{
-                            height: '100%',
-                          }}
-                          src={product.image}
-                          alt={product.name}
-                          variant='top'
-                        />
-                      </Link>
-                      <Card.Body>
-                        <Link to={`/product/${product._id}`}>
-                          <Card.Title as='div'>
-                            <strong>{product.name}</strong>
-                          </Card.Title>
-                        </Link>
-                        <Card.Text>
-                          <strong>${product.price}</strong>
-                        </Card.Text>
-                        {product.countInStock === 0 ? (
-                          <Button variant='light' disabled>
-                            {' '}
-                            Out of stock
-                          </Button>
-                        ) : (
-                          <Button onClick={() => addToCartHandler(product)}>
-                            Add to cart
-                          </Button>
-                        )}
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                ))}
-              </div>
-            </div>
-
+                    <Card.Img
+                      style={{
+                        height: '100%',
+                      }}
+                      src={product.image}
+                      alt={product.name}
+                      variant="top"
+                    />
+                  </Link>
+                  <Card.Body>
+                    <Link to={`/product/${product._id}`}>
+                      <Card.Title as="div">
+                        <strong>{product.name}</strong>
+                      </Card.Title>
+                    </Link>
+                    <Card.Text>
+                      <strong>${product.price}</strong>
+                    </Card.Text>
+                    {product.countInStock === 0 ? (
+                      <Button variant="light" disabled>
+                        {' '}
+                        Out of stock
+                      </Button>
+                    ) : (
+                      <Button onClick={() => addToCartHandler(product)}>
+                        Add to cart
+                      </Button>
+                    )}
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
           </div>
+        </div>
+      </div>
     </div>
-
-    
   );
 }
 

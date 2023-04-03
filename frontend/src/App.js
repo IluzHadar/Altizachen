@@ -89,42 +89,42 @@ function App() {
                       <span>Main page</span>{' '}
                     </a>
                     <a
-                      href="#"
+                      href="/"
                       class="list-group-item list-group-item-action py-2 ripple active"
                     >
                       <i class="fas fa-chart-area fa-fw me-3"></i>
                       <span>Forniture</span>{' '}
                     </a>
                     <a
-                      href="#"
+                      href="$"
                       class="list-group-item list-group-item-action py-2 ripple"
                     >
                       <i class="fas fa-lock fa-fw me-3"></i>
                       <span>Electrical pwoer</span>
                     </a>
                     <a
-                      href="#"
+                      href="/"
                       class="list-group-item list-group-item-action py-2 ripple"
                     >
                       <i class="fas fa-chart-line fa-fw me-3"></i>
                       <span>Home producats</span>
                     </a>
                     <a
-                      href="#"
+                      href="/"
                       class="list-group-item list-group-item-action py-2 ripple"
                     >
                       <i class="fas fa-chart-pie fa-fw me-3"></i>
                       <span>Gargen products</span>{' '}
                     </a>
                     <a
-                      href="#"
+                      href="/"
                       class="list-group-item list-group-item-action py-2 ripple"
                     >
                       <i class="fas fa-chart-bar fa-fw me-3"></i>
                       <span>Car products</span>
                     </a>
                     <a
-                      href="#"
+                      href="/"
                       class="list-group-item list-group-item-action py-2 ripple"
                     >
                       <i class="fas fa-globe fa-fw me-3"></i>
