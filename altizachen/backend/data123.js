@@ -18,7 +18,6 @@ const data123 = {
       price: 120,
       countInStock: 60,
       description: 'hig quality shirt',
-      category: 2,
     },
     {
       //_id: '2',
@@ -27,7 +26,6 @@ const data123 = {
       price: 120,
       countInStock: 70,
       description: 'hig quality',
-      category: 2,
     },
   ],
 };

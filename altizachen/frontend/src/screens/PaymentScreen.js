@@ -5,10 +5,7 @@
   import logger from 'use-reducer-logger';
   import Col from 'react-bootstrap/Col';
   import Card from 'react-bootstrap/Card';
-  import Button from 'react-bootstrap/Button';
-  import { useContext } from 'react';
-  import { Store } from '../Store';
-  
+
   const reducer = (state, action) => {
     switch (action.type) {
       case 'FETCH_REQUEST':

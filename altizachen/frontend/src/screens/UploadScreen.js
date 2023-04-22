@@ -126,7 +126,7 @@ const UploadScreen = () => {
         </Form.Group>
 
         <Button className='mt-3' type='submit' variant='success'>
-          Upload Photo
+          Upload Product
         </Button>
       </Form>
     </React.Fragment>

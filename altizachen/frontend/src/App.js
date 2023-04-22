@@ -18,7 +18,7 @@ import UploadScreen from './screens/UploadScreen';
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
-  const { cart, user } = state;
+  const { user } = state;
 
   const logoutHandler = () => {
     ctxDispatch({ type: 'LOGOUT' });
@@ -41,33 +41,13 @@ function App() {
                       </Link>
                     )}
                   
-                    {user? (
-                    <Link to='/cart' className='nav-link' style={{padding: '155px 1px 10px 50px', fontWeight: 'bold', fontSize: '1.2rem' , fontfamily:'Ariel'}}>
-                      Cart
-                      {cart.cartItems.length > 0 && (
-                        <Badge style={{ marginLeft: '5px' }} pill bg='danger'>
-                          {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
-                        </Badge>
-                      )}
-                    </Link>
-                    ):
-                    ( //Matan: case if is not user, locate the 'cart' bottun 
-                      <Link to='/cart' className='nav-link' style={{padding: '155px 100px 10px 400px', fontWeight: 'bold', fontSize: '1.2rem', fontfamily:'Ariel'}}>
-                        Cart
-                        {cart.cartItems.length > 0 && (
-                          <Badge style={{ marginLeft: '5px' }} pill bg='danger'>
-                            {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
-                          </Badge>
-                        )}
-                      </Link>
-                      )}
                   </Nav>
     
                   </Container>
               </div>
 
               <div class="col-md-auto" >
-                  <Nav className='ml-auto' style={{padding: '150px 1px 10px 600px', fontfamily:'Ariel',  fontWeight: 'bold', fontSize: '1.2rem'}}>
+                  <Nav className='ml-auto' style={{padding: '150px 1px 10px 750px', fontfamily:'Ariel',  fontWeight: 'bold', fontSize: '1.2rem'}}>
                     {user ? (
                       <NavDropdown title={user.name} id='username'>
                         <NavDropdown.Item onClick={logoutHandler}>
@@ -75,7 +55,7 @@ function App() {
                         </NavDropdown.Item>
                       </NavDropdown>
                     ) : (
-                      <LinkContainer to='/login' style={{padding: '5px 1px 10px 100px ', fontfamily:'Ariel',  fontWeight: 'bold', fontSize: '1.2rem'}}>
+                      <LinkContainer to='/login' style={{padding: '5px 1px 10px 600px ', fontfamily:'Ariel',  fontWeight: 'bold', fontSize: '1.2rem'}}>
                         <Nav.Link>
                           <i className='fas fa-user' ></i> Sign In
                         </Nav.Link>
@@ -88,8 +68,8 @@ function App() {
           </Navbar>          
         </header>
         <main>
-          <div class="row" style={{padding: '0px 0px 0px 50px'}}>
-            <div class="col col-lg-2" >
+          <div class="row" >
+            <div class="col col-lg-2" style={{padding: '50px 0px 0px 50px'}} >
 
               <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white" >
                 <div class="position-sticky" >
@@ -103,7 +83,7 @@ function App() {
                   <a href="/checkout" class="list-group-item list-group-item-action py-2 ripple" >
                     <i class="fas fa-lock fa-fw me-3"></i><span>Electrical product</span></a>
 
-                  <a href="#" class="list-group-item list-group-item-action py-2 ripple"
+                  <a href="/cart" class="list-group-item list-group-item-action py-2 ripple"
                     ><i class="fas fa-chart-line fa-fw me-3"></i><span>Home producats</span></a>
 
                   <a href="#" class="list-group-item list-group-item-action py-2 ripple">

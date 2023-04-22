@@ -8,8 +8,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { Helmet } from 'react-helmet-async';
 import Badge from 'react-bootstrap/Badge';
-import { Store } from '../Store';
-import { Image, ListGroupItem } from 'react-bootstrap';
+import { Image} from 'react-bootstrap';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -47,21 +46,9 @@ function ProductScreen() {
     fetchData();
   }, [id]);
 
-  const { state, dispatch: ctxDispatch } = useContext(Store);
-  const { cart } = state;
-  const addToCatrHandler = async () => {
-    const existItem = cart.cartItems.find((x) => x._id === product._id);
-    const quantity = existItem ? existItem.quantity + 1 : 1;
-    const { data } = await axios.get(`/api/products/${product._id}`);
-    if (data.countInStock < quantity) {
-      window.alert(`Sorry. Product is out of stock`);
-      return;
-    }
 
-    ctxDispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } });
 
-    navigate('/cart');
-  };
+
   return loading ? (
     <div>Loding...</div>
   ) : error ? (
