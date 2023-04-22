@@ -8,12 +8,18 @@ const data123 = {
       password: bcrypt.hashSync('123456'),
       isAdmin: true,
     },
+    {
+      name: 'Hadar',
+      email: 'Hadar@example.com',
+      password: bcrypt.hashSync('Ss123456'),
+      isAdmin: true,
+    },
   ],
 
   products: [
     {
       //_id: '1',
-      name: 'name1',
+      name: 'name12310101010404',
       image: '/images/w.jpg',
       price: 120,
       category: 2,
