@@ -99,7 +99,7 @@ function App() {
                   <a href="#" class="list-group-item list-group-item-action py-2 ripple active"> 
                     <i class="fas fa-chart-area fa-fw me-3"></i><span>Forniture</span>   </a>
                   <a href="#" class="list-group-item list-group-item-action py-2 ripple" >
-                    <i class="fas fa-lock fa-fw me-3"></i><span>Electrical pwoer</span></a>
+                    <i class="fas fa-lock fa-fw me-3"></i><span>Electrical product</span></a>
                   <a href="#" class="list-group-item list-group-item-action py-2 ripple"
                     ><i class="fas fa-chart-line fa-fw me-3"></i><span>Home producats</span></a>
                   <a href="#" class="list-group-item list-group-item-action py-2 ripple">

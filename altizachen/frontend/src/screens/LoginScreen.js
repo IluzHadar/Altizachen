@@ -39,29 +39,33 @@ const LoginScreen = () => {
       <Container>
         {errorMsg && <MessageBox variant='danger'>{errorMsg}</MessageBox>}
         <Row className='justify-content-md-center'>
-          <Col xs={12} md={6}>
+          <Col>
             <br></br>
             <h1>Sign In</h1>
             <br></br>
 
             <Form onSubmit={submitHandler}>
-              <Form.Group className='mt-2' controlId='email'>
-                <Form.Label>Email Address</Form.Label>
+              <Form.Group className='input-group' controlId='email'>
+                <Form.Label style={{padding:'10px',width: '150px' }}>Email Address: </Form.Label>
+                <Col>
                 <Form.Control
                   type='email'
                   placeholder='Enter email'
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 ></Form.Control>
+                </Col>
               </Form.Group>
-              <Form.Group className='mt-2' controlId='password'>
-                <Form.Label>Password</Form.Label>
+              <Form.Group className='input-group' controlId='password' style={{padding:'10px 0px 0px 0px '}}>
+                <Form.Label style={{padding:'10px',width: '150px' }}>Password: </Form.Label>
+                <Col>
                 <Form.Control
                   type='password'
                   placeholder='Enter Password'
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 ></Form.Control>
+                </Col>
               </Form.Group>
               <Button className='mt-3' type='submit' variant='success'>
                 Sign In
