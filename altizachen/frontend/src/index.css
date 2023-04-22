@@ -7,36 +7,88 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/*set colore green to the font`s header of the website*/
-header {
-  background-color: #469761;
-  padding: 1rem;
+main {
+  min-height: 80vh;
 }
 
-/*set colore dark-black to the header of the website*/
-header a {
-  color: #ffffff;
-  font-weight: bold;
-  text-decoration: none;
+.site-container {
+  min-height: 100vh;
 }
 
 main {
-  padding: 1rem;
+  flex: 1;
 }
-.adds {
+
+.products {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.add {
+.product {
   border: 1px #404040 solid;
   margin: 1rem;
 }
-.add img {
+
+.product img {
   width: 100%;
+  height: auto;
   max-width: 400px;
 }
-.add-info {
+
+.product-info {
   padding: 1rem;
 }
+
+.img-large {
+  max-width: 100%;
+}
+
+.img-thumbnail {
+  height: 80px;
+}
+
+.small-container {
+  max-width: 600px;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .product-img {
+    height: auto;
+    width: 100%;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .product-img {
+    height: 60vh;
+    width: auto;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .product-img {
+    height: 70vh;
+    width: auto;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .product-img {
+    height: 80vh;
+    width: auto;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .product-img {
+    height: 90vh;
+    width: auto;
+  }
+}
+
