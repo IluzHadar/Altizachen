@@ -5,6 +5,17 @@ import axios from 'axios';
 import MessageBox from '../components/MessageBox';
 import { Store } from '../Store';
 
+function SelectCategory(){
+  return (
+    <Form.Select aria-label="Default select example">
+      <option>Open this select menu</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </Form.Select>
+  );
+}
+
 const UploadScreen = () => {
   const { state } = useContext(Store);
   const { user } = state;
@@ -15,7 +26,9 @@ const UploadScreen = () => {
   const [uploading, setUploading] = useState(false);
 
   const [price, setPrice] = useState(0);
-  const [countInStock, setCountInStock] = useState(0);
+
+  const [category, setcategory] = useState(null) ;
+  
   const [description, setDescription] = useState('');
 
   const [errorMsg, setErrorMsg] = useState(null);
@@ -52,8 +65,8 @@ const UploadScreen = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const product = { name, image, price, description };
-      if (!name || !image || !price || !description) {
+      const product = { name, image, price, category, description };
+      if (!name || !image || !price  || !description || !category) {
         setErrorMsg('Enter All Fields');
       }
       const { data } = await axios.post(`/api/products`, { product });
@@ -98,13 +111,31 @@ const UploadScreen = () => {
         <Form.Group className='mt-2' controlId='price'>
           <Form.Label>Price</Form.Label>
           <Form.Control
-            type='number'
+            type='text'
             placeholder='Enter price'
             value={price}
             onChange={(e) => setPrice(e.target.value)}
           ></Form.Control>
         </Form.Group>
 
+
+        <Form.Group className='mt-2' controlId='description'>
+          <Form.Label>Select Category:</Form.Label>
+          <Form.Control
+            as="select"
+            defaultValue="0"
+            value={category}
+            onChange={(e) => setcategory(e.target.value)}
+          >
+            <option value='0'>Plase select option</option>
+            <option value='1'>Forniture</option>
+            <option value='2'>Electrical products</option>
+            <option value='3'>Home producats</option>
+            <option value='4'>Garden producats</option>
+            <option value='5'>Car products</option>
+            <option value='6'>Animel products</option>
+          </Form.Control>
+        </Form.Group>
 
 
         <Form.Group className='mt-2' controlId='description'>
@@ -116,6 +147,7 @@ const UploadScreen = () => {
             onChange={(e) => setDescription(e.target.value)}
           ></Form.Control>
         </Form.Group>
+
 
         <Button className='mt-3' type='submit' variant='success'>
           Upload Product

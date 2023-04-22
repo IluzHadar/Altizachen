@@ -16,7 +16,7 @@ const data123 = {
       name: 'name1',
       image: '/images/w.jpg',
       price: 120,
-      countInStock: 60,
+      category: 2,
       description: 'hig quality shirt',
     },
     {
@@ -24,7 +24,7 @@ const data123 = {
       name: 'Name2',
       image: '/images/p1.jpg',
       price: 120,
-      countInStock: 70,
+      category: 2,
       description: 'hig quality',
     },
   ],

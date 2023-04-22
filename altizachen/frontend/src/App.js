@@ -1,5 +1,5 @@
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
-import HomeScreen from './screens/HomeScreen';
+import MainScreen from './screens/MainScreen';
 import ProductScreen from './screens/ProductScreen';
 import { Navbar } from 'react-bootstrap';
 import Badge from 'react-bootstrap/Badge';
@@ -10,9 +10,12 @@ import Container from 'react-bootstrap/Container';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useContext } from 'react';
 import { Store } from './Store';
-import CartScreen from './screens/CartScreen';
-import CheckoutScreen from './screens/CheckoutScreen';
-import PaymentScreen from './screens/PaymentScreen';
+import HomeProdScreen from './screens/HomeProdScreen';
+import ElectricalScreen from './screens/ElectricalScreen';
+import FornitureScreen from './screens/FornitureScreen';
+import GardenScreen from './screens/GardenScreen';
+import CarsScreen from './screens/CarsScreen';
+import AnimelsScreen from './screens/AnimelsScreen'
 import LoginScreen from './screens/LoginScreen';
 import UploadScreen from './screens/UploadScreen';
 
@@ -69,7 +72,7 @@ function App() {
         </header>
         <main>
           <div class="row" >
-            <div class="col col-lg-2" style={{padding: '50px 0px 0px 50px'}} >
+            <div class="col col-lg-3" style={{padding: '50px 0px 0px 50px'}} >
 
               <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white" >
                 <div class="position-sticky" >
@@ -77,22 +80,22 @@ function App() {
                   <a  href='/'  class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
                     <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Main page</span>  </a>
 
-                  <a href="/PaymentScreen" class="list-group-item list-group-item-action py-2 ripple"> 
+                  <a href="/FornitureScreen" class="list-group-item list-group-item-action py-2 ripple"> 
                     <i class="fas fa-chart-area fa-fw me-3"></i><span>Forniture</span>   </a>
 
-                  <a href="/checkout" class="list-group-item list-group-item-action py-2 ripple" >
-                    <i class="fas fa-lock fa-fw me-3"></i><span>Electrical product</span></a>
+                  <a href="/ElectricalScreen" class="list-group-item list-group-item-action py-2 ripple" >
+                    <i class="fas fa-chart-line fa-fw me-3"></i><span  styly={{display:'inline'}}>Electrical products</span></a>
 
-                  <a href="/cart" class="list-group-item list-group-item-action py-2 ripple"
+                  <a href="/HomeProdScreen" class="list-group-item list-group-item-action py-2 ripple"
                     ><i class="fas fa-chart-line fa-fw me-3"></i><span>Home producats</span></a>
 
-                  <a href="#" class="list-group-item list-group-item-action py-2 ripple">
-                    <i class="fas fa-chart-pie fa-fw me-3"></i><span>Gargen products</span> </a>
+                  <a href='/GardenScreen' class="list-group-item list-group-item-action py-2 ripple">
+                    <i class="fas fa-chart-pie fa-fw me-3"></i><span>Garden products</span> </a>
 
-                  <a href="#" class="list-group-item list-group-item-action py-2 ripple" >
+                  <a href='/CarsScreen' class="list-group-item list-group-item-action py-2 ripple" >
                     <i class="fas fa-chart-bar fa-fw me-3"></i><span>Car products</span></a>
 
-                  <a href="#" class="list-group-item list-group-item-action py-2 ripple"
+                  <a href='/AnimelsScreen' class="list-group-item list-group-item-action py-2 ripple"
                     ><i class="fas fa-globe fa-fw me-3"></i><span>Animel products</span></a>
                   </div>
                 </div>
@@ -100,15 +103,18 @@ function App() {
               
             </div>
             <div class="col-lg-8">
-              <Container className='mt-3' style={{padding: '0px 0px 0px 100px'}}>
+              <Container className='mt-3' style={{padding: '0px 0px 0px 20px'}}>
                 <Routes>
                   <Route path='/product/:id' element={<ProductScreen />} />
-                  <Route path='/cart' element={<CartScreen />} />
+                  <Route path='/HomeProdScreen' element={<HomeProdScreen />} />
                   <Route path='/upload' element={<UploadScreen />} />
                   <Route path='/login' element={<LoginScreen />} />
-                  <Route path='/checkout' element={<CheckoutScreen />} />
-                  <Route path='/PaymentScreen' element={<PaymentScreen />} />
-                  <Route path='/' element={<HomeScreen />} />
+                  <Route path='/FornitureScreen' element={<FornitureScreen />} />
+                  <Route path='/ElectricalScreen' element={<ElectricalScreen />} />
+                  <Route path='/GardenScreen' element={<GardenScreen />} />
+                  <Route path='/CarsScreen' element={<CarsScreen />} />
+                  <Route path='/AnimelsScreen' element={<AnimelsScreen />} />
+                  <Route path='/' element={<MainScreen />} />
                 </Routes>
               </Container>
             </div>
