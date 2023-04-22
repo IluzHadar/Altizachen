@@ -96,16 +96,22 @@ function App() {
                 <div class="list-group list-group-flush mx-3 mt-4">
                   <a  href='/'  class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
                     <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Main page</span>  </a>
-                  <a href="#" class="list-group-item list-group-item-action py-2 ripple active"> 
+
+                  <a href="/PaymentScreen" class="list-group-item list-group-item-action py-2 ripple"> 
                     <i class="fas fa-chart-area fa-fw me-3"></i><span>Forniture</span>   </a>
-                  <a href="#" class="list-group-item list-group-item-action py-2 ripple" >
+
+                  <a href="/checkout" class="list-group-item list-group-item-action py-2 ripple" >
                     <i class="fas fa-lock fa-fw me-3"></i><span>Electrical product</span></a>
+
                   <a href="#" class="list-group-item list-group-item-action py-2 ripple"
                     ><i class="fas fa-chart-line fa-fw me-3"></i><span>Home producats</span></a>
+
                   <a href="#" class="list-group-item list-group-item-action py-2 ripple">
                     <i class="fas fa-chart-pie fa-fw me-3"></i><span>Gargen products</span> </a>
+
                   <a href="#" class="list-group-item list-group-item-action py-2 ripple" >
                     <i class="fas fa-chart-bar fa-fw me-3"></i><span>Car products</span></a>
+
                   <a href="#" class="list-group-item list-group-item-action py-2 ripple"
                     ><i class="fas fa-globe fa-fw me-3"></i><span>Animel products</span></a>
                   </div>
@@ -113,7 +119,7 @@ function App() {
               </nav>
               
             </div>
-            <div class="col-md-auto">
+            <div class="col-lg-8">
               <Container className='mt-3' style={{padding: '0px 0px 0px 100px'}}>
                 <Routes>
                   <Route path='/product/:id' element={<ProductScreen />} />

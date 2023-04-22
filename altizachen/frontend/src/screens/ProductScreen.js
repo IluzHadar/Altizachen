@@ -68,13 +68,12 @@ function ProductScreen() {
     <div> {error} </div>
   ) : (
     <Row>
-      <Col sm={12} md={12} lg={6} xl={6} className='rounded text-center'>
-        <Card>
+      <Col>
           <Card.Body>
             <ListGroup variant='flush'>
               <ListGroup.Item>
                 <Image
-                  className='product-img'
+                  className='rounded'
                   src={product.image}
                   alt={product.name}
                   fluid
@@ -82,11 +81,8 @@ function ProductScreen() {
               </ListGroup.Item>
             </ListGroup>
           </Card.Body>
-        </Card>
       </Col>
-      <Col sm={12} md={12} lg={3} xl={3}>
-        <Card>
-          <Card.Body>
+      <Col>
             <ListGroup variant='flush'>
               <ListGroup.Item>
                 <Helmet>
@@ -97,7 +93,7 @@ function ProductScreen() {
               <ListGroup.Item>
                 <Row>
                   <Col>Price:</Col>
-                  <Col>${product.price}</Col>
+                  <Col>{product.price}₪</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
@@ -107,51 +103,20 @@ function ProductScreen() {
                 </Row>
               </ListGroup.Item>
             </ListGroup>
-          </Card.Body>
-        </Card>
-      </Col>
-      <Col sm={12} md={12} lg={3} xl={3}>
-        <Card>
+
           <Card.Body>
             <ListGroup variant='flush'>
               <ListGroup.Item>
-                <Row className='mt-2'>
-                  <Col>Price:</Col>
-                  <Col>${product.price}</Col>
-                </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row className='mt-2'>
-                  <Col>Status:</Col>
-                  <Col>
-                    {product.countInStock > 0 ? (
-                      <Badge bg='success'>In Stock</Badge>
-                    ) : (
-                      <Badge bg='danger'>Unavailable</Badge>
-                    )}
-                  </Col>
                 </Row>
               </ListGroup.Item>
-              <ListGroupItem>
-                <Row className='mt-2'>
-                  <div className='d-grid'>
-                    {product.countInStock === 0 ? (
-                      <Button variant='light' disabled>
-                        {' '}
-                        Out of stock
-                      </Button>
-                    ) : (
-                      <Button onClick={() => addToCatrHandler(product)}>
-                        Add to cart
-                      </Button>
-                    )}
-                  </div>
-                </Row>
-              </ListGroupItem>
             </ListGroup>
           </Card.Body>
-        </Card>
-      </Col>
+          </Col>
+        
+      
     </Row>
   );
 }

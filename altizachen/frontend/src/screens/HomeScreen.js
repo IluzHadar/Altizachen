@@ -92,6 +92,7 @@ function HomeScreen() {
                     md={6}
                     lg={4}
                     xl={3}
+                    style={{padding:"20px"}}
                   >
                 
                     <Card className='w-100 h-80 my-3 p-3 rounded text-center'>
@@ -101,7 +102,7 @@ function HomeScreen() {
                         }}
                         to={`/product/${product._id}`}
                       >
-                        <Card.Img
+                        <Card.Img 
                           style={{
                             height: '100%',
                           }}
@@ -111,24 +112,13 @@ function HomeScreen() {
                         />
                       </Link>
                       <Card.Body>
-                        <Link to={`/product/${product._id}`}>
-                          <Card.Title as='div'>
-                            <strong>{product.name}</strong>
-                          </Card.Title>
-                        </Link>
-                        <Card.Text>
-                          <strong>${product.price}</strong>
+                      <Card.Title style={{fontWeight: 'bold'}}>{product.name}</Card.Title>
+                      <Card.Text style={{textAlign: "center"}}>
+                          <strong>Price: {product.price}₪</strong>
                         </Card.Text>
-                        {product.countInStock === 0 ? (
-                          <Button variant='light' disabled>
-                            {' '}
-                            Out of stock
-                          </Button>
-                        ) : (
-                          <Button onClick={() => addToCartHandler(product)}>
-                            Add to cart
-                          </Button>
-                        )}
+                        <Link to={`/product/${product._id}`} type="button" class="btn btn-info" style={{color:'white', width: '120px'}}>
+                            <strong>Enter the ad</strong>
+                        </Link>
                       </Card.Body>
                     </Card>
                   </Col>
