@@ -15,8 +15,6 @@ const UploadScreen = () => {
   const [image, setImage] = useState('');
   const [uploading, setUploading] = useState(false);
 
-  const [price, setPrice] = useState(0);
-
   const [category, setcategory] = useState(null) ;
   
   const [description, setDescription] = useState('');
@@ -55,8 +53,8 @@ const UploadScreen = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const product = { name, image, price, category, description };
-      if (!name || !image || !price  || !description || !category) {
+      const product = { name, image, category, description };
+      if (!name || !image || !description || !category) {
         setErrorMsg('Enter All Fields');
       }
       const { data } = await axios.post(`/api/products`, { product });
@@ -99,16 +97,6 @@ const UploadScreen = () => {
             onChange={uploadFileHandler}
           />
           {uploading && <MessageBox variant='info'>{'Loading...'}</MessageBox>}
-        </Form.Group>
-
-        <Form.Group className='mt-2' controlId='price'>
-          <Form.Label>Price:</Form.Label>
-          <Form.Control
-            type='text'
-            placeholder='Enter price'
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-          ></Form.Control>
         </Form.Group>
 
 

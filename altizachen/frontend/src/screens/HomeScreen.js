@@ -98,9 +98,6 @@ function HomeScreen() {
                       </Link>
                       <Card.Body>
                       <Card.Title style={{fontWeight: 'bold'}}>{product.name}</Card.Title>
-                      <Card.Text style={{textAlign: "center"}}>
-                          <strong>Price: {product.price}₪</strong>
-                        </Card.Text>
                         <Link to={`/product/${product._id}`} type="button" class="btn btn-info" style={{color:'white', width: '120px'}}>
                             <strong>Enter the ad</strong>
                         </Link>

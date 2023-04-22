@@ -87,9 +87,6 @@ function AnimelsScreen() {
                             <strong>{product.name}</strong>
                           </Card.Title>
                         </Link>
-                        <Card.Text>
-                          <strong>${product.price}</strong>
-                        </Card.Text>
                         <Link to={`/product/${product._id}`} type="button" class="btn btn-info" style={{color:'white', width: '120px'}}>
                           <strong>Enter the ad</strong>
                       </Link>

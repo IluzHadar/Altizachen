@@ -85,10 +85,6 @@ function ElectricalScreen() {
                             <strong>{product.name}</strong>
                           </Card.Title>
                         </Link>
-                        <Card.Text>
-                          <strong>${product.price}</strong>
-                        </Card.Text>
-
                       </Card.Body>
                     </Card>
                   </Col>

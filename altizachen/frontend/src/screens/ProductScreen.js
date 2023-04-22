@@ -78,9 +78,9 @@ function ProductScreen() {
                 <h1>{product.name}</h1>
               </ListGroup.Item>
               <ListGroup.Item>
-                <Row>
-                  <Col>Price:</Col>
-                  <Col>{product.price}₪</Col>
+              <Row>
+                  <Col>date:</Col>
+                  <Col>{product.date}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
