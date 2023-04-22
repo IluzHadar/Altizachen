@@ -38,27 +38,25 @@ function App() {
               <div class="col-md-auto" >
                   <Container > 
                   <Nav className='me-auto'>
-                    {user && (
-                      <Link to='/upload' className='nav-link'style={{padding: '155px 1px 10px 400px', fontWeight: 'bold', fontSize: '1.2rem', fontfamily:'Ariel'}}>
+                      <Link to='/upload' className='nav-link'style={{position: "absolute", top: "150px" , left: "400px", fontWeight: 'bold', fontSize: '1.2rem', fontfamily:'Ariel'}}>
                         Upload Product
                       </Link>
-                    )}
-                  
+ 
                   </Nav>
     
                   </Container>
-              </div>
 
-              <div class="col-md-auto" >
-                  <Nav className='ml-auto' style={{padding: '150px 1px 10px 750px', fontfamily:'Ariel',  fontWeight: 'bold', fontSize: '1.2rem'}}>
-                    {user ? (
+                  <Nav className='ml-auto' style={{position: "absolute", top: "150px" , right: "150px", fontfamily:'Ariel',  fontWeight: 'bold', fontSize: '1.2rem'}}>
+                    {user && (
                       <NavDropdown title={user.name} id='username'>
                         <NavDropdown.Item onClick={logoutHandler}>
                           Logout
                         </NavDropdown.Item>
                       </NavDropdown>
-                    ) : (
-                      <LinkContainer to='/login' style={{padding: '5px 1px 10px 600px ', fontfamily:'Ariel',  fontWeight: 'bold', fontSize: '1.2rem'}}>
+                    ) }
+                    
+                    {!user && (
+                      <LinkContainer to='/login' style={{fontfamily:'Ariel',  fontWeight: 'bold', fontSize: '1.2rem'}}>
                         <Nav.Link>
                           <i className='fas fa-user' ></i> Sign In
                         </Nav.Link>

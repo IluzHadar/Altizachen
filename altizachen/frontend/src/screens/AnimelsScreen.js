@@ -5,6 +5,8 @@ import axios from 'axios';
 import logger from 'use-reducer-logger';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
+import * as React from 'react';
+
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -20,7 +22,7 @@ const reducer = (state, action) => {
 };
 
 function AnimelsScreen() {
-  
+
   const [{ products }, dispatch] = useReducer(logger(reducer), {
     products: [],
     loading: true,
@@ -51,7 +53,7 @@ function AnimelsScreen() {
         <div class="card-body" >
         <h1 style={{fontWeight: 'bold', textAlign: "center"}}>Animel Products </h1>   
                 
-                   <div className='products'>
+            <div className='products'>
                 {products.filter(products => products.category === 6).map((product) => (
                   <Col
                     className='align-items-stretch d-flex'
@@ -97,10 +99,6 @@ function AnimelsScreen() {
                 ))}
               </div>
             </div>
-
-  
-
-
     
   );
 }

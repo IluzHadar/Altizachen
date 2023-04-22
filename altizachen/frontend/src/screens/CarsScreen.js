@@ -51,7 +51,7 @@ function CarsScreen() {
         <div class="card-body" >
         <h1 style={{fontWeight: 'bold', textAlign: "center"}}>Car Products </h1>   
                 
-                   <div className='products'>
+            <div className='products'>
                 {products.filter(products => products.category === 5).map((product) => (
                   <Col
                     className='align-items-stretch d-flex'
