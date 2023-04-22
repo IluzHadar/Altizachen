@@ -30,18 +30,19 @@ function App() {
       <div className='a-flex flex-column site-container'>
         
         <header>
-        <img src="/images/logo.png" alt="" width="1300" height="300" ></img>
           <Navbar>
-            <div class="row">
-              <div class="col-md-auto">
-                  <Container> 
+            <div class="row" style={{ backgroundImage: "url('/images/logo.png')", width:"1500px ",height: "350px" }}>
+              <div class="col-md-auto" >
+                  <Container > 
                   <Nav className='me-auto'>
                     {user && (
-                      <Link to='/upload' className='nav-link'>
+                      <Link to='/upload' className='nav-link'style={{padding: '155px 1px 10px 400px', fontWeight: 'bold', fontSize: '1.2rem', fontfamily:'Ariel'}}>
                         Upload Product
                       </Link>
                     )}
-                    <Link to='/cart' className='nav-link'>
+                  
+                    {user? (
+                    <Link to='/cart' className='nav-link' style={{padding: '155px 1px 10px 50px', fontWeight: 'bold', fontSize: '1.2rem' , fontfamily:'Ariel'}}>
                       Cart
                       {cart.cartItems.length > 0 && (
                         <Badge style={{ marginLeft: '5px' }} pill bg='danger'>
@@ -49,13 +50,24 @@ function App() {
                         </Badge>
                       )}
                     </Link>
+                    ):
+                    ( //Matan: case if is not user, locate the 'cart' bottun 
+                      <Link to='/cart' className='nav-link' style={{padding: '155px 100px 10px 400px', fontWeight: 'bold', fontSize: '1.2rem', fontfamily:'Ariel'}}>
+                        Cart
+                        {cart.cartItems.length > 0 && (
+                          <Badge style={{ marginLeft: '5px' }} pill bg='danger'>
+                            {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
+                          </Badge>
+                        )}
+                      </Link>
+                      )}
                   </Nav>
     
                   </Container>
               </div>
 
-              <div class="col-md-auto">
-                  <Nav className='ml-auto'>
+              <div class="col-md-auto" >
+                  <Nav className='ml-auto' style={{padding: '150px 1px 10px 600px', fontfamily:'Ariel',  fontWeight: 'bold', fontSize: '1.2rem'}}>
                     {user ? (
                       <NavDropdown title={user.name} id='username'>
                         <NavDropdown.Item onClick={logoutHandler}>
@@ -63,9 +75,9 @@ function App() {
                         </NavDropdown.Item>
                       </NavDropdown>
                     ) : (
-                      <LinkContainer to='/login'>
+                      <LinkContainer to='/login' style={{padding: '5px 1px 10px 100px ', fontfamily:'Ariel',  fontWeight: 'bold', fontSize: '1.2rem'}}>
                         <Nav.Link>
-                          <i className='fas fa-user'></i> Sign In
+                          <i className='fas fa-user' ></i> Sign In
                         </Nav.Link>
                       </LinkContainer>
                     )}
@@ -76,8 +88,8 @@ function App() {
           </Navbar>          
         </header>
         <main>
-          <div class="row">
-            <div class="col col-lg-2">
+          <div class="row" style={{padding: '0px 0px 0px 50px'}}>
+            <div class="col col-lg-2" >
 
               <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white" >
                 <div class="position-sticky" >
@@ -101,8 +113,8 @@ function App() {
               </nav>
               
             </div>
-            <div class="col-6">
-              <Container className='mt-3'>
+            <div class="col-md-auto">
+              <Container className='mt-3' style={{padding: '0px 0px 0px 100px'}}>
                 <Routes>
                   <Route path='/product/:id' element={<ProductScreen />} />
                   <Route path='/cart' element={<CartScreen />} />
@@ -114,11 +126,6 @@ function App() {
                 </Routes>
               </Container>
             </div>
-            <div class="col-lg-2">
-
-            </div>
-
-
           </div>
         </main>
         <footeer>
