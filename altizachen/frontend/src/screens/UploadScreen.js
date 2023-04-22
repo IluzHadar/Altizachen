@@ -52,8 +52,8 @@ const UploadScreen = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const product = { name, image, price, countInStock, description };
-      if (!name || !image || !price || !countInStock || !description) {
+      const product = { name, image, price, description };
+      if (!name || !image || !price || !description) {
         setErrorMsg('Enter All Fields');
       }
       const { data } = await axios.post(`/api/products`, { product });
@@ -105,15 +105,7 @@ const UploadScreen = () => {
           ></Form.Control>
         </Form.Group>
 
-        <Form.Group className='mt-2' controlId='countInStock'>
-          <Form.Label>Count In Stock</Form.Label>
-          <Form.Control
-            type='number'
-            placeholder='Enter countInStock'
-            value={countInStock}
-            onChange={(e) => setCountInStock(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
+
 
         <Form.Group className='mt-2' controlId='description'>
           <Form.Label>Description</Form.Label>

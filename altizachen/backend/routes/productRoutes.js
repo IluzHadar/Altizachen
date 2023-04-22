@@ -29,12 +29,12 @@ productRouter.put('/updatecart', async (req, res) => {
 
 productRouter.post('/', async (req, res) => {
   const { product } = req.body;
-  /*try {*/
+  try {
     const createdProduct = await Product.create(product);
     res.status(201).json(createdProduct);
-/* } catch (err) {
+ } catch (err) {
     res.status(404).send({ message: 'Error - Try Again' });
-  }*/
+  }
 });
 
 export default productRouter;
