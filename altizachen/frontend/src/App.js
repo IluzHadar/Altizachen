@@ -18,6 +18,7 @@ import CarsScreen from './screens/CarsScreen';
 import AnimelsScreen from './screens/AnimelsScreen'
 import LoginScreen from './screens/LoginScreen';
 import UploadScreen from './screens/UploadScreen';
+import CreateUserScreen from './screens/CreateUserScreen';
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -36,6 +37,7 @@ function App() {
           <Navbar>
             <div class="row" style={{ backgroundImage: "url('/images/logo.png')", width:"1500px ",height: "350px" }}>
               <div class="col-md-auto" >
+                  {user && (
                   <Container > 
                   <Nav className='me-auto'>
                       <Link to='/upload' className='nav-link'style={{position: "absolute", top: "150px" , left: "400px", fontWeight: 'bold', fontSize: '1.2rem', fontfamily:'Ariel'}}>
@@ -43,12 +45,12 @@ function App() {
                       </Link>
  
                   </Nav>
-    
                   </Container>
+                  )}
 
-                  <Nav className='ml-auto' style={{position: "absolute", top: "150px" , right: "150px", fontfamily:'Ariel',  fontWeight: 'bold', fontSize: '1.2rem'}}>
+                  <Nav className='ml-auto' style={{ fontfamily:'Ariel',  fontWeight: 'bold', fontSize: '1.2rem'}}>
                     {user && (
-                      <NavDropdown title={user.name} id='username'>
+                      <NavDropdown style= {{position: "absolute", top: "145px" , right: "150px",fontWeight: 'bold',  fontSize: '2.0rem'}} title={'≣'} id='username'>
                         <NavDropdown.Item onClick={logoutHandler}>
                           Logout
                         </NavDropdown.Item>
@@ -56,7 +58,7 @@ function App() {
                     ) }
                     
                     {!user && (
-                      <LinkContainer to='/login' style={{fontfamily:'Ariel',  fontWeight: 'bold', fontSize: '1.2rem'}}>
+                      <LinkContainer to='/login' style={{position: "absolute", top: "150px" , right: "150px",fontfamily:'Ariel',  fontWeight: 'bold', fontSize: '1.2rem'}}>
                         <Nav.Link>
                           <i className='fas fa-user' ></i> Sign In
                         </Nav.Link>
@@ -107,6 +109,7 @@ function App() {
                   <Route path='/HomeProdScreen' element={<HomeProdScreen />} />
                   <Route path='/upload' element={<UploadScreen />} />
                   <Route path='/login' element={<LoginScreen />} />
+                  <Route path='/login/CreateUserScreen' element={<CreateUserScreen />} />
                   <Route path='/FornitureScreen' element={<FornitureScreen />} />
                   <Route path='/ElectricalScreen' element={<ElectricalScreen />} />
                   <Route path='/GardenScreen' element={<GardenScreen />} />

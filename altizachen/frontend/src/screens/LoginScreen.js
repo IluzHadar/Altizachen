@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate, Link } from 'react-router-dom';
+import Nav from 'react-bootstrap/Nav';
 import { Store } from '../Store';
 import axios from 'axios';
 import MessageBox from '../components/MessageBox';
@@ -69,6 +69,13 @@ const LoginScreen = () => {
                 ></Form.Control>
                 </Col>
               </Form.Group>
+ 
+              <br></br>
+              <Link to='/login/CreateUserScreen' className='nav-link'style={{fontWeight: 'bold', fontSize: '1.2rem', fontfamily:'Ariel'}}>
+                Registration
+              </Link>
+              <br></br>
+
               <Button className='mt-3' type='submit' variant='success'>
                 Sign In
               </Button>
