@@ -67,7 +67,7 @@ function App() {
                   </Nav>
               </div>
             </div>
-            
+             
           </Navbar>          
         </header>
         <main>
