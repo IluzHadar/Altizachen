@@ -14,7 +14,7 @@ const UploadScreen = () => {
   const [name, setName] = useState('');
   const [image, setImage] = useState('');
   const [uploading, setUploading] = useState(false);
-
+  const [numberPhone, setnumberPhone] = useState('');
   const [category, setcategory] = useState(null) ;
   
   const [description, setDescription] = useState('');
@@ -53,7 +53,7 @@ const UploadScreen = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const product = { name, image, category, description };
+      const product = { name, image, category, description};
       if (!name || !image || !description || !category) {
         setErrorMsg('Enter All Fields');
       }
@@ -127,6 +127,7 @@ const UploadScreen = () => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           ></Form.Control>
+
         </Form.Group>
         <Button className='mt-3' type='submit' variant='success'>
           Upload Product

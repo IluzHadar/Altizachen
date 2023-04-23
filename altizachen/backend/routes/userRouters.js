@@ -6,7 +6,7 @@ import data123 from '../data123.js';
 const userRouter = express.Router();
 
 userRouter.get('/', async (req, res) => {
-  await User.deleteMany({});
+  //await User.deleteMany({});
   const createedUsers = await User.insertMany(data123.users);
   res.send({ createedUsers });
 });
@@ -31,12 +31,14 @@ userRouter.post('/login', async (req, res) => {
   }
 });
 console.log("456");
-userRouter.post('/login/CreateUserScreen', async (req, res) => {
+userRouter.post('/', async (req, res) => {
   const { user } = req.body;
+  console.log(user);
   try {
     const createdUser = await User.create(user);
     res.status(201).json(createdUser);
  } catch (err) {
+  console.log(err);
     res.status(404).send({ message: 'Error - Try Again to create new user' });
   }
 });

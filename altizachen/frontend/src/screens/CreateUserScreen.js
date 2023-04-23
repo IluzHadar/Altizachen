@@ -6,7 +6,7 @@ import MessageBox from '../components/MessageBox';
 import { Store } from '../Store';
 
 
-const UploadScreen = () => {
+const CreateUserScreen = () => {
   const { state } = useContext(Store);
   const { user } = state;
   const navigate = useNavigate();
@@ -14,6 +14,7 @@ const UploadScreen = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setpassword] = useState('');
+  const [numberPhone, setnumberPhone] = useState('');
   const [uploading, setUploading] = useState(false);  
   const [errorMsg, setErrorMsg] = useState(null);
 
@@ -23,11 +24,11 @@ const UploadScreen = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const product = { name, email, password};
-      if (!name || !email || !password) {
+      const user = { name, email, password, numberPhone};
+      if (!name || !email || !password || !numberPhone) {
         setErrorMsg('Enter All Fields');
       }
-      const { data } = await axios.post(`/api/User`, { product });
+      const { data } = await axios.post(`/api/users`, { user });
       navigate('/');
     } catch (error) {
       setErrorMsg(error.response.data.message);
@@ -62,6 +63,16 @@ const UploadScreen = () => {
         </Form.Group>
         <br></br>
         <Form.Group className='mt-2' controlId='Password'>
+          <Form.Label>Number phone:</Form.Label>
+          <Form.Control
+            type='text'
+            placeholder='Enter number phone:'
+            value={numberPhone}
+            onChange={(e) => setnumberPhone(e.target.value)}
+          ></Form.Control>
+        </Form.Group>
+        <br></br>
+        <Form.Group className='mt-2' controlId='Password'>
           <Form.Label>Password:</Form.Label>
           <Form.Control
             type='text'
@@ -79,4 +90,4 @@ const UploadScreen = () => {
   );
 };
 
-export default UploadScreen;
+export default CreateUserScreen;
