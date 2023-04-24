@@ -79,8 +79,14 @@ function ProductScreen() {
               </ListGroup.Item>
               <ListGroup.Item>
               <Row>
-                  <Col>date:</Col>
-                  <Col>{product.date}</Col>
+                  <Col>Uplaod time:</Col>
+                  <Col>{product.UploadTime}</Col>
+                </Row>
+              </ListGroup.Item>
+              <ListGroup.Item>
+              <Row>
+                  <Col>Number phone:</Col>
+                  <Col>{product.numberPhone}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>

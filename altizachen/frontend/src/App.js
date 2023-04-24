@@ -52,7 +52,7 @@ function App() {
                     {user && (
                       <NavDropdown style= {{position: "absolute", top: "145px" , right: "150px",fontWeight: 'bold',  fontSize: '2.0rem'}} title={'≣'} id='username'>
                         <NavDropdown.Item onClick={logoutHandler}>
-                          Logout
+                          Log out
                         </NavDropdown.Item>
                       </NavDropdown>
                     ) }

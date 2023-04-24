@@ -33,6 +33,8 @@ productRouter.post('/', async (req, res) => {
     const createdProduct = await Product.create(product);
     res.status(201).json(createdProduct);
  } catch (err) {
+    console.log(product);
+    console.log(err);
     res.status(404).send({ message: 'Error - Try Again' });
   }
 });

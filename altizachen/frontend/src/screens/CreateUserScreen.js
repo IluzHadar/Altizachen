@@ -4,6 +4,7 @@ import { Form, Button } from 'react-bootstrap';
 import axios from 'axios';
 import MessageBox from '../components/MessageBox';
 import { Store } from '../Store';
+import bcrypt from 'bcryptjs';
 
 
 const CreateUserScreen = () => {
@@ -28,12 +29,16 @@ const CreateUserScreen = () => {
       if (!name || !email || !password || !numberPhone) {
         setErrorMsg('Enter All Fields');
       }
+
+      user.password = bcrypt.hashSync(password);
       const { data } = await axios.post(`/api/users`, { user });
       navigate('/');
     } catch (error) {
       setErrorMsg(error.response.data.message);
     }
   };
+
+  
 
   return (
 
@@ -91,3 +96,5 @@ const CreateUserScreen = () => {
 };
 
 export default CreateUserScreen;
+
+//bcrypt.hashSync(password)

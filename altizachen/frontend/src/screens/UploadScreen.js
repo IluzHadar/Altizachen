@@ -10,11 +10,9 @@ const UploadScreen = () => {
   const { state } = useContext(Store);
   const { user } = state;
   const navigate = useNavigate();
-
   const [name, setName] = useState('');
   const [image, setImage] = useState('');
   const [uploading, setUploading] = useState(false);
-  const [numberPhone, setnumberPhone] = useState('');
   const [category, setcategory] = useState(null) ;
   
   const [description, setDescription] = useState('');
@@ -32,7 +30,7 @@ const UploadScreen = () => {
     const formData = new FormData();
     formData.append('image', file);
     setUploading(true);
-
+    
     try {
       const config = {
         headers: {
@@ -57,6 +55,8 @@ const UploadScreen = () => {
       if (!name || !image || !description || !category) {
         setErrorMsg('Enter All Fields');
       }
+      product.UploadTime = new Date().toLocaleDateString();
+      product.numberPhoneUser = user.numberPhone;
       const { data } = await axios.post(`/api/products`, { product });
       navigate('/');
     } catch (error) {
@@ -72,7 +72,7 @@ const UploadScreen = () => {
       <h1 style={{fontWeight: 'bold'}}>Upload Product Page</h1>
       <br></br>
         <Form.Group className='mt-2' controlId='name'>
-          <Form.Label>Name:</Form.Label>
+          <Form.Label>Name:{user.numberPhone}</Form.Label>
           <Form.Control
             type='text'
             placeholder='Enter Name'
