@@ -1,32 +1,11 @@
 import bcrypt from 'bcryptjs';
 
 const data123 = {
-  Comments: [
-    {
-      IdOfProduct: '',
-      CommentID: '',
-      body: '',
-      UploadDate: '',
-      EmailOwner:'',        // ?
-      PhoneOwner: '',        // ?
-      CommentOwner: '',
-    },
-  ],
-
-
   users: [
     {
       name: 'Admin',
       email: 'admin@example.com',
-      numberPhone: '0542222222',
       password: bcrypt.hashSync('123456'),
-      isAdmin: true,
-    },
-    {
-      name: 'Hadar',
-      numberPhone: '0512312132',
-      email: 'Hadar@example.com',
-      password: bcrypt.hashSync('Ss123456'),
       isAdmin: true,
     },
   ],
@@ -34,7 +13,7 @@ const data123 = {
   products: [
     {
       //_id: '1',
-      name: 'name12310101010404',
+      name: 'name1',
       image: '/images/w.jpg',
       category: 2,
       description: 'hig quality shirt',
