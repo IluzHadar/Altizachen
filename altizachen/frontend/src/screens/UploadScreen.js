@@ -57,6 +57,7 @@ const UploadScreen = () => {
       }
       product.UploadTime = new Date().toLocaleDateString();
       product.numberPhoneUser = user.numberPhone;
+      product.CountComments = 0;
       const { data } = await axios.post(`/api/products`, { product });
       navigate('/');
     } catch (error) {

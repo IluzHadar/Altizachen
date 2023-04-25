@@ -16,7 +16,7 @@ const CommentsSchema = new mongoose.Schema(
     UploadDate: { type: String, required: true},
     EmailOwner: { type: String, required: true},        // ?
     PhoneOwner: { type: String, required: true},        // ?
-    CommentOwner: { type: String, required: true},
+    CommentOwner: { type: Number, required: true},
 
   },
   {

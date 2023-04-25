@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import { useContext, useEffect, useReducer } from 'react';
+import  React,{ useContext, useEffect, useReducer, useState } from 'react';
+import MessageBox from '../components/MessageBox';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -30,8 +31,10 @@ function ProductScreen() {
   const navigate = useNavigate();
   const { state } = useContext(Store);
   const { user } = state;
+  const [body, setBody] = useState('');
   const params = useParams();
   const { id } = params;
+  const [errorMsg, setErrorMsg] = useState(null);
   const [{ loading, error, product }, dispatch] = useReducer(reducer, {
     product: [],
     loading: true,
@@ -50,6 +53,31 @@ function ProductScreen() {
     };
     fetchData();
   }, [id]);
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    try {
+      const comment = { body};
+      if (!body) {
+        setErrorMsg('Enter txet into comment body');
+      }
+      console.log('123');
+     comment.IdOfProduct = product._id;
+    //comment.commentID = product.CountComments;
+     //comment.UploadDate = new Date().toLocaleDateString();
+     //comment.EmailOwner = user.email;
+     //comment.PhoneOwner = user.numberPhone;
+     //comment.CommentOwner = user.name;
+     //product.CountComments = product.CountComments + 1;
+      const { data1 } = await axios.post(`/api/products/${product._id}`);
+      const { data2 } = await axios.post(`/api/commends`, { comment });
+      console.log(comment.IdOfProduct);
+      navigate('/');
+    } catch (error) {
+      console.log(error);
+      setErrorMsg(error.response.data.message);
+    }
+  };
 
 
 
@@ -119,13 +147,16 @@ function ProductScreen() {
       </Row>
       <div></div>
       <Row>
+        <React.Fragment>
+        {errorMsg && <MessageBox variant='danger'>{errorMsg}</MessageBox>}
+          <Form onSubmit={submitHandler}>
             <div class="container">
               <div class="row">
                 <div class="col">
                   {/* left side*/}
                 </div>
                 <div class="col"> 
-                <Card  style={{ width: '30rem' , padding: '15px'}}>
+                <Card  style={{ width: '30rem' , padding: '15px'}} >
                   <Form>
                     <Form.Group className="mt-2" >
                       <Col>
@@ -134,17 +165,24 @@ function ProductScreen() {
                     </Form.Group>
                     <Form.Group className="mt-2" controlId="exampleForm.ControlTextarea1">
                         <Form.Label  style={{fontWeight: 'bold'}}>Body: </Form.Label>
-                      <Form.Control as="textarea"  placeholder='Write a new comment...' rows={3} />
+                      <Form.Control  
+                      placeholder='Write a new comment...'
+                      type='text'
+                      value={body}
+                      onChange={(e) => setBody(e.target.value)} 
+                      rows={3} />
                     </Form.Group>
                   </Form>
-                  <Button className='mt-2' type='submit' variant='success' style={{width: '100px'}}>
+                  
+                  <Button className='mt-2' type='submit' variant='success' style={{width: '100px'}} >
                     Post
                   </Button>
                 </Card>
                 </div>
               </div>
             </div>
-
+            </Form>
+        </React.Fragment>
       </Row>
     </div>
   );
