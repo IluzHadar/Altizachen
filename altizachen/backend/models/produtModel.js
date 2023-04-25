@@ -1,5 +1,13 @@
 import mongoose from 'mongoose';
 
+//Author: Matan
+//Description:    numberPhoneUser: help us link ads to user that create same ads
+//Comments: 
+//
+//
+//
+
+
 const productSchema = new mongoose.Schema(
   {
     name: { type: String, required: true, unique: true },
@@ -7,7 +15,7 @@ const productSchema = new mongoose.Schema(
     description: { type: String, required: true },
     category: {type: Number, required: true },
     UploadTime: {type: String, required: true},
-    numberPhone: {type: String , required: true},
+    numberPhoneUser: {type: String , required: true},
    
   },
   {

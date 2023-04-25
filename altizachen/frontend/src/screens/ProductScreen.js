@@ -86,7 +86,7 @@ function ProductScreen() {
               <ListGroup.Item>
               <Row>
                   <Col>Number phone:</Col>
-                  <Col>{product.numberPhone}</Col>
+                  <Col>{product.numberPhoneUser}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>

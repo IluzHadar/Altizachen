@@ -34,6 +34,7 @@ const CreateUserScreen = () => {
       const { data } = await axios.post(`/api/users`, { user });
       navigate('/');
     } catch (error) {
+      console.log(error);
       setErrorMsg(error.response.data.message);
     }
   };
@@ -67,7 +68,7 @@ const CreateUserScreen = () => {
           ></Form.Control>
         </Form.Group>
         <br></br>
-        <Form.Group className='mt-2' controlId='Password'>
+        <Form.Group className='mt-2' controlId='numberPhone'>
           <Form.Label>Number phone:</Form.Label>
           <Form.Control
             type='text'

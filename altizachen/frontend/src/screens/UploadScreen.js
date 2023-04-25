@@ -60,6 +60,7 @@ const UploadScreen = () => {
       const { data } = await axios.post(`/api/products`, { product });
       navigate('/');
     } catch (error) {
+      console.log(error);
       setErrorMsg(error.response.data.message);
     }
   };
@@ -72,7 +73,7 @@ const UploadScreen = () => {
       <h1 style={{fontWeight: 'bold'}}>Upload Product Page</h1>
       <br></br>
         <Form.Group className='mt-2' controlId='name'>
-          <Form.Label>Name:{user.numberPhone}</Form.Label>
+          <Form.Label>Name:</Form.Label>
           <Form.Control
             type='text'
             placeholder='Enter Name'
@@ -100,7 +101,7 @@ const UploadScreen = () => {
         </Form.Group>
 
 
-        <Form.Group className='mt-2' controlId='description'>
+        <Form.Group className='mt-2' controlId='category'>
           <Form.Label>Select Category:</Form.Label>
           <Form.Control
             as="select"

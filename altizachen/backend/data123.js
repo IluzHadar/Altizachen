@@ -5,11 +5,13 @@ const data123 = {
     {
       name: 'Admin',
       email: 'admin@example.com',
+      numberPhone: '0542222222',
       password: bcrypt.hashSync('123456'),
       isAdmin: true,
     },
     {
       name: 'Hadar',
+      numberPhone: '0512312132',
       email: 'Hadar@example.com',
       password: bcrypt.hashSync('Ss123456'),
       isAdmin: true,
