@@ -3,12 +3,15 @@ import axios from 'axios';
 import { useContext, useEffect, useReducer } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { Helmet } from 'react-helmet-async';
 import Badge from 'react-bootstrap/Badge';
 import { Image} from 'react-bootstrap';
+import { Store } from '../Store';
+
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -25,6 +28,8 @@ const reducer = (state, action) => {
 
 function ProductScreen() {
   const navigate = useNavigate();
+  const { state } = useContext(Store);
+  const { user } = state;
   const params = useParams();
   const { id } = params;
   const [{ loading, error, product }, dispatch] = useReducer(reducer, {
@@ -54,63 +59,94 @@ function ProductScreen() {
   ) : error ? (
     <div> {error} </div>
   ) : (
-    <Row>
-      <Col>
-          <Card.Body>
-            <ListGroup variant='flush'>
-              <ListGroup.Item>
-                <Image
-                  className='rounded'
-                  src={product.image}
-                  alt={product.name}
-                  fluid
-                />
-              </ListGroup.Item>
-            </ListGroup>
-          </Card.Body>
-      </Col>
-      <Col>
-            <ListGroup variant='flush'>
-              <ListGroup.Item>
-                <Helmet>
-                  <title>{product.name}</title>
-                </Helmet>
-                <h1>{product.name}</h1>
-              </ListGroup.Item>
-              <ListGroup.Item>
-              <Row>
-                  <Col>Uplaod time:</Col>
-                  <Col>{product.UploadTime}</Col>
-                </Row>
-              </ListGroup.Item>
-              <ListGroup.Item>
-              <Row>
-                  <Col>Number phone:</Col>
-                  <Col>{product.numberPhoneUser}</Col>
-                </Row>
-              </ListGroup.Item>
-              <ListGroup.Item>
+    <div>
+      <Row>
+        <Col>
+            <Card.Body>
+              <ListGroup variant='flush'>
+                <ListGroup.Item>
+                  <Image
+                    className='rounded'
+                    src={product.image}
+                    alt={product.name}
+                    fluid
+                  />
+                </ListGroup.Item>
+              </ListGroup>
+            </Card.Body>
+        </Col>
+        <Col>
+              <ListGroup variant='flush'>
+                <ListGroup.Item>
+                  <Helmet>
+                    <title>{product.name}</title>
+                  </Helmet>
+                  <h1>{product.name}</h1>
+                </ListGroup.Item>
+                <ListGroup.Item>
                 <Row>
-                  <Col>Description:</Col>
-                  <Col>{product.description}</Col>
-                </Row>
-              </ListGroup.Item>
-            </ListGroup>
+                    <Col>Uplaod time:</Col>
+                    <Col>{product.UploadTime}</Col>
+                    <br></br>{product._id}
+                  </Row>
+                </ListGroup.Item>
+                <ListGroup.Item>
+                <Row>
+                    <Col>Number phone:</Col>
+                    <Col>{product.numberPhoneUser}</Col>
+                  </Row>
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  <Row>
+                    <Col>Description:</Col>
+                    <Col>{product.description}</Col>
+                  </Row>
+                </ListGroup.Item>
+              </ListGroup>
 
-          <Card.Body>
-            <ListGroup variant='flush'>
-              <ListGroup.Item>
-              </ListGroup.Item>
-              <ListGroup.Item>
-                <Row className='mt-2'>
-                </Row>
-              </ListGroup.Item>
-            </ListGroup>
-          </Card.Body>
-          </Col>
-        
-      
-    </Row>
+            <Card.Body>
+              <ListGroup variant='flush'>
+                <ListGroup.Item>
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  <Row className='mt-2'>
+                  </Row>
+                </ListGroup.Item>
+              </ListGroup>
+            </Card.Body>
+            </Col>
+
+      </Row>
+      <div></div>
+      <Row>
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                  {/* left side*/}
+                </div>
+                <div class="col"> 
+                <Card  style={{ width: '30rem' , padding: '15px'}}>
+                  <Form>
+                    <Form.Group className="mt-2" >
+                      <Col>
+                            <div style={{fontWeight: 'bold', textDecoration: 'underline', display: 'inline' }}>New comment from: </div>
+                            <div style={{fontWeight: 'bold', display: 'inline' }} > {user.name}</div></Col>
+                    </Form.Group>
+                    <Form.Group className="mt-2" controlId="exampleForm.ControlTextarea1">
+                        <Form.Label  style={{fontWeight: 'bold'}}>Body: </Form.Label>
+                      <Form.Control as="textarea"  placeholder='Write a new comment...' rows={3} />
+                    </Form.Group>
+                  </Form>
+                  <Button className='mt-2' type='submit' variant='success' style={{width: '100px'}}>
+                    Post
+                  </Button>
+                </Card>
+                </div>
+              </div>
+            </div>
+
+      </Row>
+    </div>
   );
 }
 

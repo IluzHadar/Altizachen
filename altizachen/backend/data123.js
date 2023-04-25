@@ -1,6 +1,19 @@
 import bcrypt from 'bcryptjs';
 
 const data123 = {
+  Comments: [
+    {
+      IdOfProduct: '',
+      CommentID: '',
+      body: '',
+      UploadDate: '',
+      EmailOwner:'',        // ?
+      PhoneOwner: '',        // ?
+      CommentOwner: '',
+    },
+  ],
+
+
   users: [
     {
       name: 'Admin',

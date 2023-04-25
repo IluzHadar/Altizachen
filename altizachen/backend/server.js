@@ -7,6 +7,7 @@ import seedRouter from './routes/seedRoutes.js';
 import productRouter from './routes/productRoutes.js';
 import userRouter from './routes/userRouters.js';
 import uploadRouter from './routes/uploadRoutes.js';
+import CommetRouter from './routes/CommetRoutes.js';
 
 dotenv.config();
 const cloudinary = pkg;
@@ -28,10 +29,12 @@ cloudinary.config({
   api_secret: process.env.CLOUD_API_SECRET,
 });
 
+//API in order to connect between data123 to mongoDB
 app.use('/api/seed', seedRouter);
 app.use('/api/products', productRouter);
 app.use('/api/users', userRouter);
 app.use('/api/upload', uploadRouter);
+app.use('/api/commends', CommetRouter);
 
 const __dirname = path.resolve();
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));

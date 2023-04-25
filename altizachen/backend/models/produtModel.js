@@ -16,6 +16,7 @@ const productSchema = new mongoose.Schema(
     category: {type: Number, required: true },
     UploadTime: {type: String, required: true},
     numberPhoneUser: {type: String , required: true},
+    CountComments: {type: Number , required: true},
    
   },
   {
