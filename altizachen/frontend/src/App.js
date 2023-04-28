@@ -1,6 +1,7 @@
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import MainScreen from './screens/MainScreen';
 import ProductScreen from './screens/ProductScreen';
+import EditProductScreen from './screens/EditProductScreen';
 import { Navbar } from 'react-bootstrap';
 import Badge from 'react-bootstrap/Badge';
 import { NavDropdown } from 'react-bootstrap';
@@ -205,6 +206,10 @@ function App() {
               >
                 <Routes>
                   <Route path="/product/:id" element={<ProductScreen />} />
+                  <Route
+                    path="/EditProduct/:id"
+                    element={<EditProductScreen />}
+                  />
                   <Route path="/HomeProdScreen" element={<HomeProdScreen />} />
                   <Route path="/upload" element={<UploadScreen />} />
                   <Route path="/info" element={<PersonalInfoScreen />} />

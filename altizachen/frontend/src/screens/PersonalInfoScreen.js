@@ -7,6 +7,7 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import React, { useState, useContext } from 'react';
 import { Row } from 'react-bootstrap';
+import { right } from '@popperjs/core';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -51,68 +52,90 @@ function PersonalInfoScreen() {
         {products
           .filter((products) => products.numberPhoneUser === user.numberPhone)
           .map((product) => (
-            <Col
-              className="align-items-stretch d-flex"
-              key={product._id}
-              sm={12}
-              md={6}
-              lg={4}
-              xl={3}
-              style={{ padding: '5px' }}
-            >
-              <Card className="w-100 h-80 my-3 p-3 rounded text-center">
-                <Link
-                  style={{
-                    height: '100%',
-                  }}
-                  to={`/product/${product._id}`}
-                >
-                  <Card.Img
-                    style={{
-                      height: '100%',
-                    }}
-                    src={product.image}
-                    alt={product.name}
-                    variant="top"
-                  />
-                </Link>
-                <Card.Body>
-                  <Link to={`/product/${product._id}`}>
-                    <Card.Title as="div">
-                      <strong>{product.name}</strong>
-                    </Card.Title>
-                  </Link>
-                  <Row>
+            <div>
+              <Col
+                className="align-items-stretch d-flex"
+                key={product._id}
+                sm={12}
+                md={6}
+                lg={4}
+                xl={3}
+                style={{ padding: '5px' }}
+              >
+                <Card className="w-100 h-80 my-3 p-3 rounded text-center">
+                  <div class="card w-350">
                     <Link
+                      style={{
+                        height: '100%',
+                      }}
                       to={`/product/${product._id}`}
-                      type="button"
-                      class="btn btn-info"
-                      style={{ color: 'white', width: '64px', padding: '0px' }}
                     >
-                      <normal>Edite</normal>
+                      <Card.Img
+                        style={{
+                          height: '100%',
+                        }}
+                        src={product.image}
+                        alt={product.name}
+                        variant="top"
+                      />
                     </Link>
-
-                    <Link
-                      to={`/product/${product._id}`}
-                      type="button"
-                      class="btn btn-info"
-                      style={{ color: 'white', width: '64px', padding: '0px' }}
-                    >
-                      <normal>Delete</normal>
-                    </Link>
-
-                    <Link
-                      to={`/product/${product._id}`}
-                      type="button"
-                      class="btn btn-info"
-                      style={{ color: 'white', width: '64px', padding: '0px' }}
-                    >
-                      <normal>Pause</normal>
-                    </Link>
-                  </Row>
-                </Card.Body>
-              </Card>
-            </Col>
+                    <Col>
+                      <Card.Body>
+                        <Link to={`/product/${product._id}`}>
+                          <Card.Title as="div">
+                            <strong>{product.name}</strong>
+                          </Card.Title>
+                        </Link>
+                      </Card.Body>
+                    </Col>
+                    <Card.Body>
+                      <Col>
+                        <Link
+                          to={`/EditProduct/${product._id}`}
+                          type="button"
+                          class="btn btn-info"
+                          style={{
+                            color: 'white',
+                            width: '64px',
+                            padding: '0px',
+                          }}
+                        >
+                          <normal>Edite</normal>
+                        </Link>
+                      </Col>
+                      <Col>
+                        <Link
+                          to={`/product/${product._id}`}
+                          type="button"
+                          class="btn btn-info"
+                          style={{
+                            color: 'white',
+                            width: '64px',
+                            padding: '0px',
+                          }}
+                        >
+                          <normal>Delete</normal>
+                        </Link>
+                      </Col>
+                      <Col>
+                        <Link
+                          to={`/product/${product._id}`}
+                          type="button"
+                          class="btn btn-info"
+                          style={{
+                            color: 'white',
+                            width: '64px',
+                            padding: '0px',
+                          }}
+                        >
+                          <normal>Pause</normal>
+                        </Link>
+                      </Col>
+                    </Card.Body>
+                  </div>
+                </Card>
+              </Col>
+            </div>
           ))}
       </div>
     </div>
