@@ -44,6 +44,12 @@ function PersonalInfoScreen() {
     fetchData();
   }, []);
 
+  const deleteHandler = (id) => {
+    if (window.confirm('Are you sure')) {
+      // DELETE PRODUCTS
+    }
+  };
+
   return (
     <div class="card-body">
       <h1 style={{ fontWeight: 'bold', textAlign: 'center' }}>Personal Info</h1>
@@ -105,7 +111,8 @@ function PersonalInfoScreen() {
                       </Col>
                       <Col>
                         <Link
-                          to={`/product/${product._id}`}
+                          to={`/info`}
+                          variant="danger"
                           type="button"
                           class="btn btn-info"
                           style={{
@@ -113,7 +120,9 @@ function PersonalInfoScreen() {
                             width: '64px',
                             padding: '0px',
                           }}
+                          onClick={() => deleteHandler(product._id)}
                         >
+                          <i className="fas fa-trash"></i>
                           <normal>Delete</normal>
                         </Link>
                       </Col>
