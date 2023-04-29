@@ -7,7 +7,7 @@ productRouter.get('/', async (req, res) => {
   const products = await Product.find();
   res.send(products);
 });
-
+ 
 productRouter.get('/:id', async (req, res) => {
   const product = await Product.findById(req.params.id);
   if (product) {
@@ -17,15 +17,20 @@ productRouter.get('/:id', async (req, res) => {
   }
 });
 
-productRouter.put('/updatecart', async (req, res) => {
-  const { cartItems } = req.body;
-  for (let i = 0; i < cartItems.length; i++) {
-    const product = await Product.findById(cartItems[i]._id);
-    product.countInStock = product.countInStock - cartItems[i].quantity;
-    await product.save();
-  }
-  res.send('sucess');
+productRouter.put('/:id', async (req, res) => {
+  console.log(req);
+  const product = await Product.findById(req.params.id);
+
+  product.CountComments = req.body.CountComments || product.CountComments;
+  const updateProduct = await product.save();
+  res.send({ message: 'Product Updated', product: updateProduct });
 });
+
+
+  
+
+
+
 
 productRouter.post('/', async (req, res) => {
   const { product } = req.body;

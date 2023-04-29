@@ -29,7 +29,7 @@ userRouter.post('/login', async (req, res) => {
     }
   }
 });
-console.log('456');
+
 userRouter.post('/', async (req, res) => {
   const { user } = req.body;
   console.log(user);

@@ -68,9 +68,9 @@ function ProductScreen() {
      //comment.EmailOwner = user.email;
      //comment.PhoneOwner = user.numberPhone;
      //comment.CommentOwner = user.name;
-     //product.CountComments = product.CountComments + 1;
-      const { data1 } = await axios.post(`/api/products/${product._id}`);
-      const { data2 } = await axios.post(`/api/commends`, { comment });
+      product.CountComments = product.CountComments + 1;
+      const { data1 } = await axios.put(`/api/products/${product._id}`, product);
+      //const { data2 } = await axios.put(`/api/commends`, { comment });
       console.log(comment.IdOfProduct);
       navigate('/');
     } catch (error) {
