@@ -8,6 +8,7 @@ import Card from 'react-bootstrap/Card';
 import React, { useState, useContext } from 'react';
 import { Row } from 'react-bootstrap';
 import { right } from '@popperjs/core';
+import Button from 'react-bootstrap/Button';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -57,6 +58,12 @@ function PersonalInfoScreen() {
     };
     fetchData();
   }, []);
+
+  //??TODO
+  const PauseHandler = async () => {
+    //id.pauseAd = 0;
+    console.log('PauseHandler !!');
+  };
 
   const deleteHandler = async (id) => {
     if (window.confirm('Are you sure to delete?')) {
@@ -116,48 +123,42 @@ function PersonalInfoScreen() {
                     </Card.Title>
                   </Link>
                   <Row>
-                    <Link
+                    <Button
+                      variant="outline-success"
                       to={`/editProduct/${product._id}`}
-                      type="button"
                       class="btn btn-info"
                       style={{
-                        backgroundColor: 'green',
-                        color: 'black',
                         width: '64px',
                         padding: '0px',
                       }}
                     >
-                      <normal>Edite</normal>
-                    </Link>
-
-                    <Link
+                      Edit
+                    </Button>{' '}
+                    <Button
+                      variant="outline-danger"
                       to={`/info/${product._id}`}
-                      type="button"
                       class="btn btn-info"
                       style={{
-                        backgroundColor: 'orange',
-                        color: 'black',
                         width: '64px',
                         padding: '0px',
                       }}
                       onClick={() => deleteHandler(product._id)}
                     >
-                      <normal>Delete</normal>
-                    </Link>
-
-                    <Link
-                      to={`/product/${product._id}`}
-                      type="button"
+                      Delete
+                    </Button>{' '}
+                    <Button
+                      variant="outline-warning"
+                      o={`/info/${product._id}`}
                       class="btn btn-info"
                       style={{
-                        backgroundColor: 'yellow',
                         color: 'black',
                         width: '64px',
                         padding: '0px',
                       }}
+                      onClick={() => PauseHandler()}
                     >
-                      <normal>Pause</normal>
-                    </Link>
+                      Pause
+                    </Button>{' '}
                   </Row>
                 </Card.Body>
               </Card>

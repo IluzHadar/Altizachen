@@ -40,6 +40,8 @@ function EditProductScreen() {
   const [uploading, setUploading] = useState(false);
   const [category, setcategory] = useState(null);
 
+  const [pauseAd, setPauseAd] = useState(null);
+
   const [description, setDescription] = useState('');
   const [{ loading, error, product }, dispatch] = useReducer(reducer, {
     product: [],
@@ -69,7 +71,7 @@ function EditProductScreen() {
       }
       product.UploadTime = new Date().toLocaleDateString();
       product.numberPhoneUser = user.numberPhone;
-      product.CountComments = 0;
+      //product.CountComments = 0; //??
       const { data } = await axios.post(`/api/products`, { product });
       navigate('/');
     } catch (error) {
@@ -109,7 +111,7 @@ function EditProductScreen() {
               <Form.Label>Name:</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter Name"
+                placeholder="Enter new Name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               ></Form.Control>
@@ -120,16 +122,30 @@ function EditProductScreen() {
                 <Row>
                   <Col>Last date:</Col>
                   <Col>{product.UploadTime}</Col>
-                  <br></br>
-                  {product._id}
                 </Row>
               </ListGroup.Item>
+
+              <ListGroup.Item>
+                <Row>
+                  <Col>Active Ad:</Col>
+                  <Col>{product.pauseAd}</Col>
+                </Row>
+              </ListGroup.Item>
+
+              <ListGroup.Item>
+                <Row>
+                  <Col>Count Comments:</Col>
+                  <Col>{product.CountComments}</Col>
+                </Row>
+              </ListGroup.Item>
+
               <ListGroup.Item>
                 <Row>
                   <Col>Number phone:</Col>
                   <Col>{product.numberPhoneUser}</Col>
                 </Row>
               </ListGroup.Item>
+
               <ListGroup.Item>
                 <Row>
                   <Form.Group className="mt-2" controlId="category">

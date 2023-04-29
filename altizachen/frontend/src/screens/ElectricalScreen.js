@@ -1,4 +1,3 @@
-
 import { useEffect, useReducer } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -20,7 +19,6 @@ const reducer = (state, action) => {
 };
 
 function ElectricalScreen() {
-  
   const [{ products }, dispatch] = useReducer(logger(reducer), {
     products: [],
     loading: true,
@@ -43,61 +41,59 @@ function ElectricalScreen() {
   }, []);
 
   return (
+    <div class="card-body">
+      <h1 style={{ fontWeight: 'bold', textAlign: 'center' }}>
+        Electrical products
+      </h1>
 
-
-
-
-
-        <div class="card-body" >
-        <h1 style={{fontWeight: 'bold', textAlign: "center"}}>Electrical products</h1>   
-                
-                   <div className='products'>
-                {products.filter(products => products.category === 2).map((product) => (
-                  <Col
-                    className='align-items-stretch d-flex'
-                    key={product._id}
-                    sm={12}
-                    md={6}
-                    lg={4}
-                    xl={3}
-                    style={{padding:"20px"}}
+      <div className="products">
+        {products
+          .filter(
+            (products) => products.category === 2 && products.pauseAd === 1
+          )
+          .map((product) => (
+            <Col
+              className="align-items-stretch d-flex"
+              key={product._id}
+              sm={12}
+              md={6}
+              lg={4}
+              xl={3}
+              style={{ padding: '20px' }}
+            >
+              <Card className="w-100 h-80 my-3 p-3 rounded text-center">
+                <Col>
+                  <Link
+                    style={{
+                      height: '100%',
+                    }}
+                    to={`/product/${product._id}`}
                   >
-                
-                    <Card className='w-100 h-80 my-3 p-3 rounded text-center'>
-                      <Link
+                    <Col>
+                      <Card.Img
                         style={{
                           height: '100%',
                         }}
-                        to={`/product/${product._id}`}
-                      >
-                        <Card.Img
-                          style={{
-                            height: '100%',
-                          }}
-                          src={product.image}
-                          alt={product.name}
-                          variant='top'
-                        />
-                      </Link>
-                      <Card.Body>
-                        <Link to={`/product/${product._id}`}>
-                          <Card.Title as='div'>
-                            <strong>{product.name}</strong>
-                          </Card.Title>
-                        </Link>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                ))}
-              </div>
-            </div>
-
-  
-
-
-    
+                        src={product.image}
+                        alt={product.name}
+                        variant="top"
+                      />
+                    </Col>
+                  </Link>
+                </Col>
+                <Card.Body>
+                  <Link to={`/product/${product._id}`}>
+                    <Card.Title as="div">
+                      <strong>{product.name}</strong>
+                    </Card.Title>
+                  </Link>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
+      </div>
+    </div>
   );
 }
 
 export default ElectricalScreen;
-
