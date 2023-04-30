@@ -206,10 +206,7 @@ function App() {
               >
                 <Routes>
                   <Route path="/product/:id" element={<ProductScreen />} />
-                  <Route
-                    path="/EditProduct/:id"
-                    element={<EditProductScreen />}
-                  />
+                  <Route path="/EditProduct/:id" element={<EditProductScreen />} />
                   <Route path="/HomeProdScreen" element={<HomeProdScreen />} />
                   <Route path="/upload" element={<UploadScreen />} />
                   <Route path="/info" element={<PersonalInfoScreen />} />

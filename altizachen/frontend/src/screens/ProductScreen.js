@@ -61,19 +61,21 @@ function ProductScreen() {
       if (!body) {
         setErrorMsg('Enter txet into comment body');
       }
-      console.log('123');
-     comment.IdOfProduct = product._id;
-    //comment.commentID = product.CountComments;
-     //comment.UploadDate = new Date().toLocaleDateString();
-     //comment.EmailOwner = user.email;
-     //comment.PhoneOwner = user.numberPhone;
-     //comment.CommentOwner = user.name;
-      product.CountComments = product.CountComments + 1;
-      const { data1 } = await axios.put(`/api/products/${product._id}`, product);
-      //const { data2 } = await axios.put(`/api/commends`, { comment });
-      console.log(comment.IdOfProduct);
+     
+       product.CountComments = product.CountComments + 1;
+      // const { data1 } = await axios.put(`/api/products/${product._id}`, product);
+
+      console.log('123!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+      comment.IdOfProduct = product._id;
+      comment.commentID = 13;
+     comment.UploadDate = new Date().toLocaleDateString();
+     comment.EmailOwner = user.email;
+     comment.PhoneOwner = user.numberPhone;
+     comment.CommentOwner = user.name;
+      const { data } = await axios.post(`/api/commends`, {comment});
       navigate('/');
     } catch (error) {
+      console.log('The error: ......................................');
       console.log(error);
       setErrorMsg(error.response.data.message);
     }
