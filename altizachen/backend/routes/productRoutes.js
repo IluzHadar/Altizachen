@@ -18,10 +18,11 @@ productRouter.get('/:id', async (req, res) => {
 });
 
 productRouter.put('/:id', async (req, res) => {
-  console.log(req);
+ 
   const product = await Product.findById(req.params.id);
 
   product.CountComments = req.body.CountComments || product.CountComments;
+  product.reviews.push(req.body);
   const updateProduct = await product.save();
   res.send({ message: 'Product Updated', product: updateProduct });
 });

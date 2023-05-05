@@ -59,6 +59,7 @@ const UploadScreen = () => {
       product.numberPhoneUser = user.numberPhone;
       product.CountComments = 0;
       product.pauseAd = 1;
+      product.reviews = [];
       const { data } = await axios.post(`/api/products`, { product });
       navigate('/');
     } catch (error) {

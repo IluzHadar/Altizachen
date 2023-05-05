@@ -7,7 +7,7 @@ import seedRouter from './routes/seedRoutes.js';
 import productRouter from './routes/productRoutes.js';
 import userRouter from './routes/userRouters.js';
 import uploadRouter from './routes/uploadRoutes.js';
-import commetRouter from './routes/commetRoutes.js';
+//import commetRouter from './routes/commetRoutes.js';
 
 dotenv.config();
 const cloudinary = pkg;
@@ -34,7 +34,7 @@ app.use('/api/seed', seedRouter);
 app.use('/api/products', productRouter);
 app.use('/api/users', userRouter);
 app.use('/api/upload', uploadRouter);
-app.use('/api/commends', commetRouter);
+//app.use('/api/commends', commetRouter);
 
 const __dirname = path.resolve();
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));

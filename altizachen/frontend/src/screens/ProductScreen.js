@@ -9,9 +9,10 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { Helmet } from 'react-helmet-async';
-import Badge from 'react-bootstrap/Badge';
+import logger from 'use-reducer-logger';
 import { Image} from 'react-bootstrap';
 import { Store } from '../Store';
+
 
 
 const reducer = (state, action) => {
@@ -35,6 +36,8 @@ function ProductScreen() {
   const params = useParams();
   const { id } = params;
   const [errorMsg, setErrorMsg] = useState(null);
+
+    //------------------------------------------------------------------- Get of the products
   const [{ loading, error, product }, dispatch] = useReducer(reducer, {
     product: [],
     loading: true,
@@ -53,6 +56,12 @@ function ProductScreen() {
     };
     fetchData();
   }, [id]);
+ //-------------------------------------------------------------------End
+
+ //-------------------------------------------------------------------Get of the comments
+
+ //-------------------------------------------------------------------End
+
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -62,17 +71,19 @@ function ProductScreen() {
         setErrorMsg('Enter txet into comment body');
       }
      
-       product.CountComments = product.CountComments + 1;
-      // const { data1 } = await axios.put(`/api/products/${product._id}`, product);
+       //product.CountComments = product.CountComments + 1;
+       //const { data1 } = await axios.put(`/api/products/${product._id}`, product);
 
+      
+      //comment.IdOfProduct = product._id;
+      comment.commentID = product.CountComments;
+      comment.UploadDate = new Date().toLocaleDateString();
+      comment.EmailOwner = user.email;
+      comment.PhoneOwner = user.numberPhone;
+      comment.CommentOwner = user.name;
+      const { data1 } = await axios.put(`/api/products/${product._id}`, comment);
       console.log('123!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-      comment.IdOfProduct = product._id;
-      comment.commentID = 13;
-     comment.UploadDate = new Date().toLocaleDateString();
-     comment.EmailOwner = user.email;
-     comment.PhoneOwner = user.numberPhone;
-     comment.CommentOwner = user.name;
-      const { data } = await axios.post(`/api/commends`, {comment});
+      console.log(comment);
       navigate('/');
     } catch (error) {
       console.log('The error: ......................................');
