@@ -89,7 +89,11 @@ function PersonalInfoScreen() {
 
       <Card className="w-100 h-80 my-3 p-3 rounded text-center">
         <Card.Body>
-          <h7>Hello, {user.name}</h7>
+          <h7>
+            Hello, {user.name}
+            <div>Phone number: {user.numberPhone}</div>
+            <div>Email : {user.email}</div>
+          </h7>
         </Card.Body>
       </Card>
 
