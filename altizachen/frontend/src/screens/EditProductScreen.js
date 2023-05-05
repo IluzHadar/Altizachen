@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import React, { useContext, useEffect, useReducer, useState } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 import MessageBox from '../components/MessageBox';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -8,10 +8,8 @@ import Form from 'react-bootstrap/Form';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import { Helmet } from 'react-helmet-async';
-import Badge from 'react-bootstrap/Badge';
 import { Image } from 'react-bootstrap';
-import { Store } from '../Store';
+//import { Store } from '../Store';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -28,19 +26,14 @@ const reducer = (state, action) => {
 
 function EditProductScreen() {
   const navigate = useNavigate();
-  const { state } = useContext(Store);
-  const { user } = state;
-  const [body, setBody] = useState('');
+  //const { state } = useContext(Store);
   const params = useParams();
   const { id } = params;
   const [errorMsg, setErrorMsg] = useState(null);
 
   const [name, setName] = useState('');
-  const [image, setImage] = useState('');
-  const [uploading, setUploading] = useState(false);
   const [category, setcategory] = useState(null);
-
-  const [pauseAd, setPauseAd] = useState(null);
+  //const [pauseAd, setPauseAd] = useState(null);
 
   const [description, setDescription] = useState('');
   const [{ loading, error, product }, dispatch] = useReducer(reducer, {
@@ -65,16 +58,18 @@ function EditProductScreen() {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const product = { name, image, category, description };
-      if (!name || !image || !description || !category) {
+      if (!name || !description || !category) {
         setErrorMsg('Enter All Fields');
       }
+      console.log('123!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
       product.UploadTime = new Date().toLocaleDateString();
-      product.numberPhoneUser = user.numberPhone;
-      //product.CountComments = 0; //??
-      const { data } = await axios.post(`/api/products`, { product });
+      //product.name = name;
+      //product.category = category;
+      //product.description = description;
+      const { data } = await axios.put(`/api/products/${product._id}`, product);
       navigate('/');
     } catch (error) {
+      console.log('The error: ......................................');
       console.log(error);
       setErrorMsg(error.response.data.message);
     }

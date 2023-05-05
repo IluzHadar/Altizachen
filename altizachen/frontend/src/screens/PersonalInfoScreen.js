@@ -123,9 +123,10 @@ function PersonalInfoScreen() {
                     </Card.Title>
                   </Link>
                   <Row>
-                    <Button
+                    <Link
+                      type="button"
                       variant="outline-success"
-                      to={`/editProduct/${product._id}`}
+                      to={`/EditProduct/${product._id}`}
                       class="btn btn-info"
                       style={{
                         width: '64px',
@@ -133,7 +134,7 @@ function PersonalInfoScreen() {
                       }}
                     >
                       Edit
-                    </Button>{' '}
+                    </Link>
                     <Button
                       variant="outline-danger"
                       to={`/info/${product._id}`}
