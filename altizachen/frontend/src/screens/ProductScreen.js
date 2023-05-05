@@ -138,6 +138,13 @@ function ProductScreen() {
                 <Col>{product.description}</Col>
               </Row>
             </ListGroup.Item>
+
+            <ListGroup.Item>
+              <Row>
+                <Col>Active Ad:</Col>
+                <Col>{product.pauseAd === false ? 'Yes' : 'No'}</Col>
+              </Row>
+            </ListGroup.Item>
           </ListGroup>
 
           <Card.Body>

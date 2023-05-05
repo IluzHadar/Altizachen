@@ -128,7 +128,11 @@ function EditProductScreen() {
               <ListGroup.Item>
                 <Row>
                   <Col>Active Ad:</Col>
-                  <Col>{product.pauseAd}</Col>
+                  <Col>
+                    <normal style={{ color: 'orange' }}>
+                      {product.pauseAd === false ? 'Yes' : 'No'}
+                    </normal>
+                  </Col>
                 </Row>
               </ListGroup.Item>
 

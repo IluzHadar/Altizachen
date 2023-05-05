@@ -50,7 +50,7 @@ function AnimelsScreen() {
       <div className="products">
         {products
           .filter(
-            (products) => products.category === 6 && products.pauseAd === true
+            (products) => products.category === 6 && products.pauseAd === false
           )
           .map((product) => (
             <Col

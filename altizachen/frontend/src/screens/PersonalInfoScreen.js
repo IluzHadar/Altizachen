@@ -59,9 +59,8 @@ function PersonalInfoScreen() {
     fetchData();
   }, []);
 
-  //??TODO
-  const PauseHandler = async () => {
-    //id.pauseAd = 0;
+  const PauseHandler = async (product) => {
+    product.pauseAd = true;
     console.log('PauseHandler !!');
   };
 
@@ -133,17 +132,19 @@ function PersonalInfoScreen() {
                     </Card.Title>
                   </Link>
                   <Row>
-                    <Button
+                    <Link
+                      type="button"
                       variant="outline-success"
-                      to={`/editProduct/${product._id}`}
+                      to={`/EditProduct/${product._id}`}
                       class="btn btn-info"
                       style={{
                         width: '64px',
                         padding: '0px',
+                        color: 'green',
                       }}
                     >
                       Edit
-                    </Button>{' '}
+                    </Link>
                     <Button
                       variant="outline-danger"
                       to={`/info/${product._id}`}
@@ -165,7 +166,7 @@ function PersonalInfoScreen() {
                         width: '64px',
                         padding: '0px',
                       }}
-                      onClick={() => PauseHandler()}
+                      onClick={() => PauseHandler(product)}
                     >
                       Pause
                     </Button>{' '}

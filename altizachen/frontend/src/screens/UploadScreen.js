@@ -13,7 +13,6 @@ const UploadScreen = () => {
   const [image, setImage] = useState('');
   const [uploading, setUploading] = useState(false);
   const [category, setcategory] = useState(null);
-  const [pauseAd, setPauseAd] = useState(''); //??TODO
 
   const [description, setDescription] = useState('');
 
@@ -58,7 +57,7 @@ const UploadScreen = () => {
       product.UploadTime = new Date().toLocaleDateString();
       product.numberPhoneUser = user.numberPhone;
       product.CountComments = 0;
-      product.pauseAd = true;
+      product.pauseAd = false;
       product.reviews = [];
       const { data } = await axios.post(`/api/products`, { product });
       navigate('/');
