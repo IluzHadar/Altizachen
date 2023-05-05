@@ -49,7 +49,7 @@ function ElectricalScreen() {
       <div className="products">
         {products
           .filter(
-            (products) => products.category === 2 && products.pauseAd === 1
+            (products) => products.category === 2 && products.pauseAd === true
           )
           .map((product) => (
             <Col

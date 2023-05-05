@@ -1,4 +1,3 @@
-
 import { useEffect, useReducer } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -6,7 +5,6 @@ import logger from 'use-reducer-logger';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import * as React from 'react';
-
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -22,7 +20,6 @@ const reducer = (state, action) => {
 };
 
 function AnimelsScreen() {
-
   const [{ products }, dispatch] = useReducer(logger(reducer), {
     products: [],
     loading: true,
@@ -45,64 +42,63 @@ function AnimelsScreen() {
   }, []);
 
   return (
+    <div class="card-body">
+      <h1 style={{ fontWeight: 'bold', textAlign: 'center' }}>
+        Animel Products{' '}
+      </h1>
 
-
-
-
-
-        <div class="card-body" >
-        <h1 style={{fontWeight: 'bold', textAlign: "center"}}>Animel Products </h1>   
-                
-            <div className='products'>
-                {products.filter(products => products.category === 6).map((product) => (
-                  <Col
-                    className='align-items-stretch d-flex'
-                    key={product._id}
-                    sm={12}
-                    md={6}
-                    lg={4}
-                    xl={3}
-                    style={{padding:"20px"}}
+      <div className="products">
+        {products
+          .filter(
+            (products) => products.category === 6 && products.pauseAd === true
+          )
+          .map((product) => (
+            <Col
+              className="align-items-stretch d-flex"
+              key={product._id}
+              sm={12}
+              md={6}
+              lg={4}
+              xl={3}
+              style={{ padding: '20px' }}
+            >
+              <Card className="w-100 h-80 my-3 p-3 rounded text-center">
+                <Link
+                  style={{
+                    height: '100%',
+                  }}
+                  to={`/product/${product._id}`}
+                >
+                  <Card.Img
+                    style={{
+                      height: '100%',
+                    }}
+                    src={product.image}
+                    alt={product.name}
+                    variant="top"
+                  />
+                </Link>
+                <Card.Body>
+                  <Link to={`/product/${product._id}`}>
+                    <Card.Title as="div">
+                      <strong>{product.name}</strong>
+                    </Card.Title>
+                  </Link>
+                  <Link
+                    to={`/product/${product._id}`}
+                    type="button"
+                    class="btn btn-info"
+                    style={{ color: 'white', width: '120px' }}
                   >
-                
-                    <Card className='w-100 h-80 my-3 p-3 rounded text-center'>
-                      <Link
-                        style={{
-                          height: '100%',
-                        }}
-                        to={`/product/${product._id}`}
-                      >
-                        <Card.Img
-                          style={{
-                            height: '100%',
-                          }}
-                          src={product.image}
-                          alt={product.name}
-                          variant='top'
-                        />
-                      </Link>
-                      <Card.Body>
-                        <Link to={`/product/${product._id}`}>
-                          <Card.Title as='div'>
-                            <strong>{product.name}</strong>
-                          </Card.Title>
-                        </Link>
-                        <Link to={`/product/${product._id}`} type="button" class="btn btn-info" style={{color:'white', width: '120px'}}>
-                          <strong>Enter the ad</strong>
-                      </Link>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                ))}
-              </div>
-            </div>
-    
+                    <strong>Enter the ad</strong>
+                  </Link>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
+      </div>
+    </div>
   );
 }
 
 export default AnimelsScreen;
-
-
-  
-
-

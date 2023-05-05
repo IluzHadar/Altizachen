@@ -48,6 +48,20 @@ function App() {
                   <Container>
                     <Nav className="me-auto">
                       <Link
+                        to="/info"
+                        className="nav-link"
+                        style={{
+                          position: 'absolute',
+                          top: '152px',
+                          left: '280px',
+                          fontSize: '1rem',
+                          fontfamily: 'Ariel',
+                          color: 'blue',
+                        }}
+                      >
+                        <normal>Hello, </normal> {<bold>{user.name}</bold>}
+                      </Link>
+                      <Link
                         to="/upload"
                         className="nav-link"
                         style={{
@@ -61,7 +75,6 @@ function App() {
                       >
                         Upload Product
                       </Link>
-
                       <Link
                         to="/info"
                         className="nav-link"
@@ -206,7 +219,10 @@ function App() {
               >
                 <Routes>
                   <Route path="/product/:id" element={<ProductScreen />} />
-                  <Route path="/EditProduct/:id" element={<EditProductScreen />} />
+                  <Route
+                    path="/EditProduct/:id"
+                    element={<EditProductScreen />}
+                  />
                   <Route path="/HomeProdScreen" element={<HomeProdScreen />} />
                   <Route path="/upload" element={<UploadScreen />} />
                   <Route path="/info" element={<PersonalInfoScreen />} />

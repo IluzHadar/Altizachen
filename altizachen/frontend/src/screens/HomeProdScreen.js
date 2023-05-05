@@ -19,13 +19,12 @@ const reducer = (state, action) => {
 };
 
 function HomeProdScreen() {
-  
   const [{ products }, dispatch] = useReducer(logger(reducer), {
     products: [],
     loading: true,
     error: '',
   });
-  //const [products, setProducts] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       dispatch({ type: 'FETCH_REQUEST' });
@@ -35,72 +34,60 @@ function HomeProdScreen() {
       } catch (err) {
         dispatch({ type: 'FETCH_FAIL', payload: err.message });
       }
-
-      //setProducts(result.data);
     };
     fetchData();
   }, []);
 
   return (
+    <div class="card-body">
+      <h1 style={{ fontWeight: 'bold', textAlign: 'center' }}>
+        Home Products{' '}
+      </h1>
 
-
-
-
-
-        <div class="card-body" >
-        <h1 style={{fontWeight: 'bold', textAlign: "center"}}>Home Products </h1>   
-                
-                   <div className='products'>
-                {products.filter(products => products.category === 3).map((product) => (
-                  <Col
-                    className='align-items-stretch d-flex'
-                    key={product._id}
-                    sm={12}
-                    md={6}
-                    lg={4}
-                    xl={3}
-                    style={{padding:"20px"}}
-                  >
-                
-                    <Card className='w-100 h-80 my-3 p-3 rounded text-center'>
-                      <Link
-                        style={{
-                          height: '100%',
-                        }}
-                        to={`/product/${product._id}`}
-                      >
-                        <Card.Img
-                          style={{
-                            height: '100%',
-                          }}
-                          src={product.image}
-                          alt={product.name}
-                          variant='top'
-                        />
-                      </Link>
-                      <Card.Body>
-                        <Link to={`/product/${product._id}`}>
-                          <Card.Title as='div'>
-                            <strong>{product.name}</strong>
-                          </Card.Title>
-                        </Link>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                ))}
-              </div>
-            </div>
-
-  
-
-
-    
+      <div className="products">
+        {products
+          .filter(
+            (products) => products.category === 3 && products.pauseAd === true
+          )
+          .map((product) => (
+            <Col
+              className="align-items-stretch d-flex"
+              key={product._id}
+              sm={12}
+              md={6}
+              lg={4}
+              xl={3}
+              style={{ padding: '20px' }}
+            >
+              <Card className="w-100 h-80 my-3 p-3 rounded text-center">
+                <Link
+                  style={{
+                    height: '100%',
+                  }}
+                  to={`/product/${product._id}`}
+                >
+                  <Card.Img
+                    style={{
+                      height: '100%',
+                    }}
+                    src={product.image}
+                    alt={product.name}
+                    variant="top"
+                  />
+                </Link>
+                <Card.Body>
+                  <Link to={`/product/${product._id}`}>
+                    <Card.Title as="div">
+                      <strong>{product.name}</strong>
+                    </Card.Title>
+                  </Link>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
+      </div>
+    </div>
   );
 }
 
 export default HomeProdScreen;
-
-
-
-
-
