@@ -47,7 +47,7 @@ function FornitureScreen() {
       <div className="products">
         {products
           .filter(
-            (products) => products.category === 1 && products.pauseAd === true
+            (products) => products.category === 1 && products.pauseAd === false
           )
           .map((product) => (
             <Col

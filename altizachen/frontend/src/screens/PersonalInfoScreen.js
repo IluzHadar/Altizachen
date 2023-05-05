@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { useEffect, useReducer } from 'react';
 import { Store } from '../Store';
 import { Link } from 'react-router-dom';
@@ -38,6 +39,7 @@ const reducer = (state, action) => {
 };
 
 function PersonalInfoScreen() {
+  const navigate = useNavigate();
   const [{ products }, dispatch] = useReducer(logger(reducer), {
     products: [],
     loading: true,
@@ -59,9 +61,15 @@ function PersonalInfoScreen() {
     fetchData();
   }, []);
 
-  const PauseHandler = async (product) => {
-    product.pauseAd = true;
-    console.log('PauseHandler !!');
+  const PauseHandler = async (e) => {
+    console.log('PAUSEEEEEEEE_Handler');
+    products.pauseAd = true;
+    const { data4 } = await axios.put(
+      `/api/products/${products._id}`,
+      products
+    );
+    console.log('123!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+    navigate('/');
   };
 
   const deleteHandler = async (id) => {
@@ -79,6 +87,20 @@ function PersonalInfoScreen() {
           type: 'DELETE_FAIL',
         });
       }
+    }
+  };
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    try {
+      console.log('PAUSEEEEEEEE');
+      products.pauseAd = true;
+      const { data2 } = await axios.put(
+        `/api/products/${products._id}`,
+        products
+      );
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -125,12 +147,13 @@ function PersonalInfoScreen() {
                     variant="top"
                   />
                 </Link>
-                <Card.Body>
+                <Card.Body onSubmit={submitHandler}>
                   <Link to={`/product/${product._id}`}>
                     <Card.Title as="div">
                       <strong>{product.name}</strong>
                     </Card.Title>
                   </Link>
+
                   <Row>
                     <Link
                       type="button"
@@ -159,14 +182,15 @@ function PersonalInfoScreen() {
                     </Button>{' '}
                     <Button
                       variant="outline-warning"
-                      o={`/info/${product._id}`}
+                      to={`/info/${product._id}`}
                       class="btn btn-info"
                       style={{
                         color: 'black',
                         width: '64px',
                         padding: '0px',
                       }}
-                      onClick={() => PauseHandler(product)}
+                      value={true}
+                      onClick={(e) => PauseHandler(e.target.value)}
                     >
                       Pause
                     </Button>{' '}

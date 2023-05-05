@@ -47,7 +47,7 @@ function HomeProdScreen() {
       <div className="products">
         {products
           .filter(
-            (products) => products.category === 3 && products.pauseAd === true
+            (products) => products.category === 3 && products.pauseAd === false
           )
           .map((product) => (
             <Col
