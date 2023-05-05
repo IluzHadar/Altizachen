@@ -166,7 +166,15 @@ function ProductScreen() {
             <div class="container">
               <div class="row">
                 <div class="col">
-                  {/* left side*/}
+
+                  {
+                    product.reviews.map((reviews) => (
+                      <ListGroup.Item key={reviews._id} className='p-4'>
+                        <strong>{reviews.body}</strong>
+                      </ListGroup.Item>
+                    ))
+                  }
+
                 </div>
                 <div class="col"> 
                 <Card  style={{ width: '30rem' , padding: '15px'}} >
