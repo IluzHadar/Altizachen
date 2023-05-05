@@ -34,6 +34,7 @@ const productSchema = new mongoose.Schema(
     numberPhoneUser: { type: String, required: true },
     CountComments: { type: Number, required: true },
     reviews: [CommentsSchema],
+    pauseAd: { type: Boolean, required: true },
   },
   {
     timestamps: true,
