@@ -17,14 +17,41 @@ productRouter.get('/:id', async (req, res) => {
   }
 });
 
-productRouter.put('/:id', async (req, res) => {
- 
-  const product = await Product.findById(req.params.id);
 
-  product.CountComments = req.body.CountComments || product.CountComments;
-  product.reviews.push(req.body);
+
+productRouter.put('/:id', async (req, res) => {
+  const product = await Product.findById(req.params.id);
+  console.log('1-------------------------------------------------------------');
+  console.log(req.body);
+  console.log('1-------------------------------------------------------------');
+
+ 
+    
+  if(req.body.LastReqNumber === 0){
+
+     console.log('insert into : req.body.LastReqNumber === 0');
+
+  //product.CountComments = req.body.CountComments || product.CountComments;
+  product.reviews = req.body.reviews;
   const updateProduct = await product.save();
+  console.log('..................updateProduct.....................');
+  console.log(updateProduct);
+  console.log('..................product.save().....................');
+  console.log(product);
   res.send({ message: 'Product Updated', product: updateProduct });
+  }
+
+  if(req.body.LastReqNumber === 1){
+
+    console.log('insert into : req.body.LastReqNumber === 1');
+
+  product.like = req.body.like;
+  product.LastReqNumber = 0;
+  const updateProduct1 = await product.save();
+  res.send({ message: 'Product Updated', product: updateProduct1 });
+  }
+
+  
 });
 
 

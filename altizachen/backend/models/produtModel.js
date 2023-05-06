@@ -35,6 +35,8 @@ const productSchema = new mongoose.Schema(
     CountComments: { type: Number, required: true },
     reviews: [CommentsSchema],
     pauseAd: { type: Boolean, required: true },
+    like: { type: Number, required: true },
+    LastReqNumber: { type: Number, required: true },
   },
   {
     timestamps: true,

@@ -55,9 +55,20 @@ function ProductScreen() {
   }, [id]);
   //-------------------------------------------------------------------End
 
-  //-------------------------------------------------------------------Get of the comments
+  const submitHandlerLike = async (e) => {
+    e.preventDefault();
+    try {
+      product.LastReqNumber = 1;
+      product.like = product.like + 1;
+      const { data2 } = await axios.put(`/api/products/${product._id}`,product);
+      navigate('/');
+    } catch (error) {
+      console.log('Error in insert like into product');
+      console.log(error);
+      setErrorMsg(error.response.data.message);
+    }
+  };
 
-  //-------------------------------------------------------------------End
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -67,11 +78,11 @@ function ProductScreen() {
         setErrorMsg('Enter txet into comment body');
       }
 
-      product.CountComments = product.CountComments + 1;
-      const { data2 } = await axios.put(
-        `/api/products/${product._id}`,
-        product
-      );
+      //product.CountComments = product.CountComments + 1;
+      // const { data2 } = await axios.put(
+      //   `/api/products/${product._id}`,
+      //   product
+      // );
 
       //comment.IdOfProduct = product._id;
       comment.commentID = product.CountComments;
@@ -79,12 +90,9 @@ function ProductScreen() {
       comment.EmailOwner = user.email;
       comment.PhoneOwner = user.numberPhone;
       comment.CommentOwner = user.name;
-      const { data1 } = await axios.put(
-        `/api/products/${product._id}`,
-        comment
-      );
+      product.reviews.push(comment)
+      const { data1 } = await axios.put(`/api/products/${product._id}`,product);
       console.log('123!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-      console.log(comment);
       navigate('/');
     } catch (error) {
       console.log('The error: ......................................');
@@ -148,6 +156,14 @@ function ProductScreen() {
               </Row>
             </ListGroup.Item>
           </ListGroup>
+
+          <React.Fragment>
+            <Form onSubmit={submitHandlerLike}>
+              <Button  className="mt-2" type="submit" variant="success" style={{ width: '100px' }}>
+                Like
+              </Button>
+            </Form>
+          </React.Fragment>
 
           <Card.Body>
             <ListGroup variant="flush">

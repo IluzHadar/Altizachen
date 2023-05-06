@@ -59,6 +59,8 @@ const UploadScreen = () => {
       product.CountComments = 0;
       product.pauseAd = false;
       product.reviews = [];
+      product.like = 0 ;
+      product.LastReqNumber = 0;
       const { data } = await axios.post(`/api/products`, { product });
       navigate('/');
     } catch (error) {
