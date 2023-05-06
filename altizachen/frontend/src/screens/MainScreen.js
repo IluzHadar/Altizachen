@@ -74,7 +74,10 @@ function MainScreen() {
               
                 <div>
                    <div className='products'>
-                {products.map((product) => (
+
+                {products.filter(
+            (products) => products.pauseAd === false
+          ).map((product) => (
                   <Col
                     className='align-items-stretch d-flex'
                     key={product._id}

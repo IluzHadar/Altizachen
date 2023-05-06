@@ -72,11 +72,6 @@ function EditProductScreen() {
       product1.UploadTime = new Date().toLocaleDateString();
       product1.LastReqNumber = 2;
       product1._id = product._id;
-      console.log('product._id: '+product._id);
-      console.log('1---------------------------product-----------------------');
-      console.log(product1);
-      console.log('1---------------------------product-----------------------');
-
       const { data } = await axios.put(`/api/products/${product._id}`,product1);
       navigate('/');
     } catch (error) {
@@ -184,14 +179,15 @@ function EditProductScreen() {
               <ListGroup.Item>
                 <Row>
                   <Form.Group className="mt-2" controlId="category">
-                    <Form.Label>Pause Ad:</Form.Label>
+                    <Form.Label>The last status of product is : {String(product.pauseAd)}
+                    <br></br>Pause Ad:</Form.Label>
                     <Form.Control
                       as="select"
                       defaultValue="0"
                       value={pauseAd}
                       onChange={(e) => setPauseAd(e.target.value)}>
-                      <option value="0">No</option>
-                      <option value="1">Yes</option>
+                      <option value={false}>No</option>
+                      <option value={true}>Yes</option>
                     </Form.Control>
                   </Form.Group>
                 </Row>

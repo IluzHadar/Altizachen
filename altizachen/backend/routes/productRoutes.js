@@ -24,7 +24,7 @@ productRouter.put('/:id', async (req, res) => {
   const product = await Product.findById(req.params.id);
 
     
-  if(req.body.LastReqNumber === 0){
+  if(req.body.LastReqNumber === 0){       //Put of: Add a new comment
 
      console.log('insert into : req.body.LastReqNumber === 0');
 
@@ -34,7 +34,7 @@ productRouter.put('/:id', async (req, res) => {
   res.send({ message: 'Product Updated', product: updateProduct });
   }
 
-  if(req.body.LastReqNumber === 1){
+  if(req.body.LastReqNumber === 1){       //Put of:LikeButton in product screen
 
     console.log('insert into : req.body.LastReqNumber === 1');
 
@@ -44,7 +44,7 @@ productRouter.put('/:id', async (req, res) => {
   res.send({ message: 'Product Updated', product: updateProduct1 });
   }
 
-  if(req.body.LastReqNumber === 2){
+  if(req.body.LastReqNumber === 2){         //Put of: EditScreen
 
   console.log('insert into : req.body.LastReqNumber === 2');
   product.LastReqNumber = 0;
