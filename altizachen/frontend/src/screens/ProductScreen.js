@@ -34,6 +34,7 @@ function ProductScreen() {
   const { id } = params;
   const [errorMsg, setErrorMsg] = useState(null);
 
+
   //------------------------------------------------------------------- Get of the products
   const [{ loading, error, product }, dispatch] = useReducer(reducer, {
     product: [],
@@ -60,6 +61,7 @@ function ProductScreen() {
     try {
       product.LastReqNumber = 1;
       product.like = product.like + 1;
+      console.log(product);
       const { data2 } = await axios.put(`/api/products/${product._id}`,product);
       navigate('/');
     } catch (error) {
@@ -159,7 +161,7 @@ function ProductScreen() {
 
           <React.Fragment>
             <Form onSubmit={submitHandlerLike}>
-              <Button  className="mt-2" type="submit" variant="success" style={{ width: '100px' }}>
+              <Button  className="mt-2" type="submit" variant="success" style={{ width: '100px' }} >
                 Like
               </Button>
             </Form>

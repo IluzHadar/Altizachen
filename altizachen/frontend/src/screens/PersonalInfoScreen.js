@@ -10,6 +10,9 @@ import React, { useState, useContext } from 'react';
 import { Row } from 'react-bootstrap';
 import { right } from '@popperjs/core';
 import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import MessageBox from '../components/MessageBox';
+
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -45,6 +48,8 @@ function PersonalInfoScreen() {
     loading: true,
     error: '',
   });
+
+
   const { state } = useContext(Store);
   const { user } = state;
 
@@ -61,17 +66,7 @@ function PersonalInfoScreen() {
     fetchData();
   }, []);
 
-  const PauseHandler = async (e) => {
-    console.log('PAUSEEEEEEEE_Handler');
-    products.pauseAd = true;
-    const { data4 } = await axios.put(
-      `/api/products/${products._id}`,
-      products
-    );
-    console.log('123!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-    navigate('/');
-  };
-
+ 
   const deleteHandler = async (id) => {
     if (window.confirm('Are you sure to delete?')) {
       console.log('DELETEEEEEEEEEEEEEEEEEEE');
@@ -90,19 +85,19 @@ function PersonalInfoScreen() {
     }
   };
 
-  const submitHandler = async (e) => {
-    e.preventDefault();
-    try {
-      console.log('PAUSEEEEEEEE');
-      products.pauseAd = true;
-      const { data2 } = await axios.put(
-        `/api/products/${products._id}`,
-        products
-      );
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const submitHandler = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     console.log('PAUSEEEEEEEE');
+  //     products.pauseAd = true;
+  //     const { data2 } = await axios.put(
+  //       `/api/products/${products._id}`,
+  //       products
+  //     );
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <div class="card-body">
@@ -147,7 +142,7 @@ function PersonalInfoScreen() {
                     variant="top"
                   />
                 </Link>
-                <Card.Body onSubmit={submitHandler}>
+                <Card.Body >
                   <Link to={`/product/${product._id}`}>
                     <Card.Title as="div">
                       <strong>{product.name}</strong>
@@ -179,21 +174,7 @@ function PersonalInfoScreen() {
                       onClick={() => deleteHandler(product._id)}
                     >
                       Delete
-                    </Button>{' '}
-                    <Button
-                      variant="outline-warning"
-                      to={`/info/${product._id}`}
-                      class="btn btn-info"
-                      style={{
-                        color: 'black',
-                        width: '64px',
-                        padding: '0px',
-                      }}
-                      value={true}
-                      onClick={(e) => PauseHandler(e.target.value)}
-                    >
-                      Pause
-                    </Button>{' '}
+                    </Button>
                   </Row>
                 </Card.Body>
               </Card>

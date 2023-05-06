@@ -3,6 +3,7 @@ import Product from '../models/produtModel.js';
 
 const productRouter = express.Router();
 
+
 productRouter.get('/', async (req, res) => {
   const products = await Product.find();
   res.send(products);
@@ -21,11 +22,7 @@ productRouter.get('/:id', async (req, res) => {
 
 productRouter.put('/:id', async (req, res) => {
   const product = await Product.findById(req.params.id);
-  console.log('1-------------------------------------------------------------');
-  console.log(req.body);
-  console.log('1-------------------------------------------------------------');
 
- 
     
   if(req.body.LastReqNumber === 0){
 
@@ -34,10 +31,6 @@ productRouter.put('/:id', async (req, res) => {
   //product.CountComments = req.body.CountComments || product.CountComments;
   product.reviews = req.body.reviews;
   const updateProduct = await product.save();
-  console.log('..................updateProduct.....................');
-  console.log(updateProduct);
-  console.log('..................product.save().....................');
-  console.log(product);
   res.send({ message: 'Product Updated', product: updateProduct });
   }
 
@@ -51,8 +44,20 @@ productRouter.put('/:id', async (req, res) => {
   res.send({ message: 'Product Updated', product: updateProduct1 });
   }
 
-  
+  if(req.body.LastReqNumber === 2){
+
+  console.log('insert into : req.body.LastReqNumber === 2');
+  product.LastReqNumber = 0;
+  product.name = req.body.name;
+  product.category = req.body.category;
+  product.description = req.body.description;
+  product.pauseAd = req.body.pauseAd;
+  product.UploadTime = req.body.UploadTime;
+  const updateProduct2 = await product.save();
+  res.send({ message: 'Product Updated', product: updateProduct2 });
+  } 
 });
+
 
 
 productRouter.post('/', async (req, res) => {

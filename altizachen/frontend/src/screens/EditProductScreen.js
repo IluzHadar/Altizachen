@@ -39,7 +39,6 @@ function EditProductScreen() {
   const [image, setImage] = useState('');
   const [uploading, setUploading] = useState(false);
   const [category, setcategory] = useState(null);
-
   const [pauseAd, setPauseAd] = useState(null);
 
   const [description, setDescription] = useState('');
@@ -62,19 +61,26 @@ function EditProductScreen() {
     fetchData();
   }, [id]);
 
+
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const product = { name, image, category, description };
-      if (!name || !image || !description || !category) {
+    const product1 = { name, category, description,  pauseAd};
+      if (!name || !description || !category || !pauseAd) {
         setErrorMsg('Enter All Fields');
       }
-      product.UploadTime = new Date().toLocaleDateString();
-      product.numberPhoneUser = user.numberPhone;
-      //product.CountComments = 0; //??
-      const { data } = await axios.post(`/api/products`, { product });
+      product1.UploadTime = new Date().toLocaleDateString();
+      product1.LastReqNumber = 2;
+      product1._id = product._id;
+      console.log('product._id: '+product._id);
+      console.log('1---------------------------product-----------------------');
+      console.log(product1);
+      console.log('1---------------------------product-----------------------');
+
+      const { data } = await axios.put(`/api/products/${product._id}`,product1);
       navigate('/');
     } catch (error) {
+      console.log('Error in edit of product');
       console.log(error);
       setErrorMsg(error.response.data.message);
     }
@@ -127,17 +133,6 @@ function EditProductScreen() {
 
               <ListGroup.Item>
                 <Row>
-                  <Col>Active Ad:</Col>
-                  <Col>
-                    <normal style={{ color: 'orange' }}>
-                      {product.pauseAd === false ? 'Yes' : 'No'}
-                    </normal>
-                  </Col>
-                </Row>
-              </ListGroup.Item>
-
-              <ListGroup.Item>
-                <Row>
                   <Col>Count Comments:</Col>
                   <Col>{product.CountComments}</Col>
                 </Row>
@@ -170,7 +165,9 @@ function EditProductScreen() {
                     </Form.Control>
                   </Form.Group>
                 </Row>
-
+                </ListGroup.Item>
+                
+                <ListGroup.Item>
                 <Row>
                   <Form.Group className="mt-2" controlId="description">
                     <Form.Label>Description:</Form.Label>
@@ -183,6 +180,24 @@ function EditProductScreen() {
                   </Form.Group>
                 </Row>
               </ListGroup.Item>
+
+              <ListGroup.Item>
+                <Row>
+                  <Form.Group className="mt-2" controlId="category">
+                    <Form.Label>Pause Ad:</Form.Label>
+                    <Form.Control
+                      as="select"
+                      defaultValue="0"
+                      value={pauseAd}
+                      onChange={(e) => setPauseAd(e.target.value)}>
+                      <option value="0">No</option>
+                      <option value="1">Yes</option>
+                    </Form.Control>
+                  </Form.Group>
+                </Row>
+                </ListGroup.Item>
+
+
             </ListGroup>
 
             <Button className="mt-3" type="submit" variant="success">
