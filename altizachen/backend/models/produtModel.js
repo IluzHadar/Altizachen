@@ -10,14 +10,12 @@ import mongoose from 'mongoose';
 const CommentsSchema = new mongoose.Schema(
   {
     //IdOfProduct: { type: String, required: true},
-    commentID: { type: Number, required: true},
-    body: { type: String, required: true},
-    UploadDate: { type: String, required: true},
-    EmailOwner: { type: String, required: true},        // ?
-    PhoneOwner: { type: String, required: true},        // ?
-    CommentOwner: { type: String, required: true},
-  
-
+    commentID: { type: Number, required: true },
+    body: { type: String, required: true },
+    UploadDate: { type: String, required: true },
+    EmailOwner: { type: String, required: true }, // ?
+    PhoneOwner: { type: String, required: true }, // ?
+    CommentOwner: { type: String, required: true },
   },
   {
     timestamps: true,
@@ -31,7 +29,7 @@ const productSchema = new mongoose.Schema(
     description: { type: String, required: true },
     category: { type: Number, required: true },
     UploadTime: { type: String, required: true },
-    numberPhoneUser: { type: String, required: true },
+    numberPhoneUser: { type: String, required: false },
     CountComments: { type: Number, required: true },
     reviews: [CommentsSchema],
     pauseAd: { type: Boolean, required: true },
