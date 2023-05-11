@@ -15,6 +15,7 @@ const userSchema = mongoose.Schema(
     numberPhone: {type: String, required: true,},
     password: { type: String, required: true },
     isAdmin: { type: Boolean, default: false, required: true },
+    sumOfLike: { type: Number, default: false, required: true },
   },
   {
     timestamps: true,

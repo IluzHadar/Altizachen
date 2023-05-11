@@ -22,6 +22,7 @@ userRouter.post('/login', async (req, res) => {
       res.json({
         _id: user._id,
         name: user.name,
+        numberPhone: user.numberPhone,
         email: user.email,
       });
     } else {

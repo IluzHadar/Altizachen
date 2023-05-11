@@ -24,17 +24,17 @@ const CommentsSchema = new mongoose.Schema(
 
 const productSchema = new mongoose.Schema(
   {
-    name: { type: String, required: true, unique: true },
-    image: { type: String, required: true },
-    description: { type: String, required: true },
-    category: { type: Number, required: true },
-    UploadTime: { type: String, required: true },
-    numberPhoneUser: { type: String, required: false },
-    CountComments: { type: Number, required: true },
+    name: { type: String, unique: true },
+    image: { type: String },
+    description: { type: String },
+    category: { type: Number },
+    UploadTime: { type: String},
+    numberPhoneUser: { type: String},
+    CountComments: { type: Number},
     reviews: [CommentsSchema],
-    pauseAd: { type: Boolean, required: true },
-    like: { type: Number, required: true },
-    LastReqNumber: { type: Number, required: true },
+    pauseAd: { type: Boolean},
+    like: { type: Number },
+    LastReqNumber: { type: Number},
   },
   {
     timestamps: true,

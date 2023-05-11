@@ -180,6 +180,7 @@ function PersonalInfoScreen() {
               </Card>
             </Col>
           ))}
+          
       </div>
     </div>
   );

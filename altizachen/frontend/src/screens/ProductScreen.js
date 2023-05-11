@@ -11,6 +11,7 @@ import Button from 'react-bootstrap/Button';
 import { Helmet } from 'react-helmet-async';
 import { Image } from 'react-bootstrap';
 import { Store } from '../Store';
+import logger from 'use-reducer-logger';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -33,6 +34,12 @@ function ProductScreen() {
   const params = useParams();
   const { id } = params;
   const [errorMsg, setErrorMsg] = useState(null);
+
+  // const [{ products }, dispatch1] = useReducer(logger(reducer), {
+  //   products: [],
+  //   loading: true,
+  //   error: '',
+  // });
 
 
   //------------------------------------------------------------------- Get of the products
@@ -63,6 +70,12 @@ function ProductScreen() {
       product.like = product.like + 1;
       console.log(product);
       const { data2 } = await axios.put(`/api/products/${product._id}`,product);
+      if(user)
+        {
+          user.sumOfLike = user.sumOfLike + 1; 
+          //const { data3 } = await axios.put(`/api/products/${product._id}`,product);       
+        }
+      
       navigate('/');
     } catch (error) {
       console.log('Error in insert like into product');
@@ -89,9 +102,11 @@ function ProductScreen() {
       //comment.IdOfProduct = product._id;
       comment.commentID = product.CountComments;
       comment.UploadDate = new Date().toLocaleDateString();
+      if(user){
       comment.EmailOwner = user.email;
       comment.PhoneOwner = user.numberPhone;
       comment.CommentOwner = user.name;
+      }
       product.reviews.push(comment)
       const { data1 } = await axios.put(`/api/products/${product._id}`,product);
       console.log('123!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
@@ -146,7 +161,13 @@ function ProductScreen() {
             </ListGroup.Item>
             <ListGroup.Item>
               <Row>
-                <Col>Description:</Col>
+                <Col>Description:
+
+                {/* {products
+          .filter((products) => products.numberPhoneUser === user.numberPhone)
+          .map((product) => ( product)).length} */}
+
+                </Col>
                 <Col>{product.description}</Col>
               </Row>
             </ListGroup.Item>
@@ -177,9 +198,11 @@ function ProductScreen() {
           </Card.Body>
         </Col>
       </Row>
-      <div></div>
+      
       <Row>
-        <React.Fragment>
+      
+        <React.Fragment >
+        {user && <Form> 
           {errorMsg && <MessageBox variant="danger">{errorMsg}</MessageBox>}
           <Form onSubmit={submitHandler}>
             <div class="container">
@@ -237,13 +260,17 @@ function ProductScreen() {
                       style={{ width: '100px' }}
                     >
                       Post
+                      
                     </Button>
                   </Card>
                 </div>
               </div>
             </div>
           </Form>
+          </Form>}
         </React.Fragment>
+        
+        
       </Row>
     </div>
   );
