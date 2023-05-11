@@ -24,6 +24,7 @@ userRouter.post('/login', async (req, res) => {
         name: user.name,
         numberPhone: user.numberPhone,
         email: user.email,
+        sumOfLike: user.sumOfLike,
       });
     } else {
       res.status(404).send({ message: 'Wrong Email / Invalid Password' });
@@ -40,5 +41,20 @@ userRouter.post('/', async (req, res) => {
     res.status(404).send({ message: 'Error - Try Again to create new user' });
   }
 });
+
+
+userRouter.put('/:id', async (req, res) => {
+  console.log('55-----------------------------------------------------------');
+  console.log(req.body);
+  const user = await User.findById(req.body._id);
+  console.log('55-----------------------------------------------------------');
+  product.reviews = req.body.reviews;
+  const updateProduct = await product.save();
+  res.send({ message: 'Product Updated', product: updateProduct });
+  });
+
+ 
+ 
+
 
 export default userRouter;

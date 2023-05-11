@@ -73,7 +73,7 @@ function ProductScreen() {
       if(user)
         {
           user.sumOfLike = user.sumOfLike + 1; 
-          //const { data3 } = await axios.put(`/api/products/${product._id}`,product);       
+          const { data3 } = await axios.put(`/api/users/${product.OwnerAdID}`,user);       
         }
       
       navigate('/');

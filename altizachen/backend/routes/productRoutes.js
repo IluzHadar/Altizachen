@@ -63,9 +63,6 @@ productRouter.put('/:id', async (req, res) => {
 productRouter.post('/', async (req, res) => {
   const { product } = req.body;
   try {
-    console.log('---------------------------------------------');
-    console.log(req.body);
-    console.log('---------------------------------------------');
     const createdProduct = await Product.create(product);
     res.status(201).json(createdProduct);
  } catch (err) {
