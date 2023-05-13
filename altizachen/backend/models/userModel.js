@@ -8,6 +8,15 @@ import bcrypt from 'bcryptjs';
 //
 //
 
+const likesProductsByUserSchema = new mongoose.Schema(
+  {
+    product_id:  { type: String, required: false },
+  },
+  {
+    timestamps: true,
+  }
+);
+
 const userSchema = mongoose.Schema(
   {
     name: { type: String, required: true },
@@ -18,7 +27,7 @@ const userSchema = mongoose.Schema(
     sumOfLike: { type: Number, required: true },
     userRating:  { type: Number, required: true },
     userAdCounter: { type: Number, required: true },
-    LikeInAs: [String],
+    likeInAds: [String],
   },
   {
     timestamps: true,

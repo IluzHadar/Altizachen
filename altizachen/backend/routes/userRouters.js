@@ -25,6 +25,7 @@ userRouter.post('/login', async (req, res) => {
         numberPhone: user.numberPhone,
         email: user.email,
         sumOfLike: user.sumOfLike,
+        likeInAds: user.likeInAds,
       });
     } else {
       res.status(404).send({ message: 'Wrong Email / Invalid Password' });
@@ -44,10 +45,16 @@ userRouter.post('/', async (req, res) => {
 
 
 userRouter.put('/:id', async (req, res) => {
+  console.log('req.body99-----------------------------------------------');
+  console.log(req.body);
+  console.log('req.body99-----------------------------------------------');
   const user = await User.findById(req.body._id);
   user.sumOfLike = user.sumOfLike + 1;
-  console.log(user);
+  user.likeInAds = req.body.likeInAds;
   user.userRating = (user.sumOfLike)/(req.body.userAdCounter);
+  console.log('user99-----------------------------------------------');
+  console.log( user);
+  console.log('user99-----------------------------------------------');
   const updateuser= await user.save();
   res.send({ message: 'user Updated', user: updateuser });
   });

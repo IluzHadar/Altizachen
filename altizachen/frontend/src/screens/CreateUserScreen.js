@@ -34,6 +34,7 @@ const CreateUserScreen = () => {
       user.sumOfLike = 0;
       user.userRating = 0;
       user.userAdCounter = 0;
+      user.likeInAds = [];
       const { data } = await axios.post(`/api/users`, { user });
       navigate('/login');
     } catch (error) {

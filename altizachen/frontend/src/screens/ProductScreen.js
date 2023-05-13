@@ -118,7 +118,16 @@ function ProductScreen() {
         //user.sumOfLike = user.sumOfLike + 1;  add in put
           user.userAdCounter =products.filter((products) => products.numberPhoneUser === product.numberPhoneUser)
             .map((product) => ( product)).length ;
-          user.LikeInAs.push(product._id);
+      const likesProductsByUserSchema = {};
+      likesProductsByUserSchema.product_id = product._id;
+          console.log('product._id');
+          console.log(product._id);
+          console.log('user');
+          console.log(user);
+          console.log(user.likeInAds);
+
+          user.likeInAds.push( product._id);
+
           const { data3 } = await axios.put(`/api/users/${product.OwnerAdID}`,user);       
         }
         
@@ -148,10 +157,9 @@ function ProductScreen() {
       comment.CommentOwner = user.name;
       }
       product.reviews.push(comment)
-      console.log(comment);
       const { data1 } = await axios.put(`/api/products/${product._id}`,product);
-      navigate(0);
 
+      navigate(0);
 
     } catch (error) {
       console.log('The error: ......................................');
