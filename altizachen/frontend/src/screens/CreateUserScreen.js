@@ -35,7 +35,7 @@ const CreateUserScreen = () => {
       user.userRating = 0;
       user.userAdCounter = 0;
       const { data } = await axios.post(`/api/users`, { user });
-      navigate('/');
+      navigate('/login');
     } catch (error) {
       console.log(error);
       setErrorMsg(error.response.data.message);

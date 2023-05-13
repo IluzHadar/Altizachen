@@ -18,6 +18,7 @@ const userSchema = mongoose.Schema(
     sumOfLike: { type: Number, required: true },
     userRating:  { type: Number, required: true },
     userAdCounter: { type: Number, required: true },
+    LikeInAs: [String],
   },
   {
     timestamps: true,

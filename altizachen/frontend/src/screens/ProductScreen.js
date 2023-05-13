@@ -118,9 +118,10 @@ function ProductScreen() {
         //user.sumOfLike = user.sumOfLike + 1;  add in put
           user.userAdCounter =products.filter((products) => products.numberPhoneUser === product.numberPhoneUser)
             .map((product) => ( product)).length ;
+          user.LikeInAs.push(product._id);
           const { data3 } = await axios.put(`/api/users/${product.OwnerAdID}`,user);       
         }
-      
+        
       navigate('/');
     } catch (error) {
       console.log('Error in insert like into product');
@@ -133,18 +134,12 @@ function ProductScreen() {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
+      console.log('1111111111111111111111111111111111111111');
       const comment = { body };
       if (!body) {
         setErrorMsg('Enter txet into comment body');
       }
-
-      //product.CountComments = product.CountComments + 1;
-      // const { data2 } = await axios.put(
-      //   `/api/products/${product._id}`,
-      //   product
-      // );
-
-      //comment.IdOfProduct = product._id;
+      
       comment.commentID = product.CountComments;
       comment.UploadDate = new Date().toLocaleDateString();
       if(user){
@@ -153,9 +148,11 @@ function ProductScreen() {
       comment.CommentOwner = user.name;
       }
       product.reviews.push(comment)
+      console.log(comment);
       const { data1 } = await axios.put(`/api/products/${product._id}`,product);
-      console.log('123!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-      navigate('/');
+      navigate(0);
+
+
     } catch (error) {
       console.log('The error: ......................................');
       console.log(error);
@@ -222,9 +219,9 @@ function ProductScreen() {
 
           <React.Fragment>
             <Form onSubmit={submitHandlerLike}>
-              <Button  className="mt-2" type="submit" variant="success" style={{ width: '100px' }} >
+              {user && <Button  className="mt-2" type="submit" variant="success" style={{ width: '100px' }} >
                 Like
-              </Button>
+              </Button> }
             </Form>
           </React.Fragment>
 
@@ -242,9 +239,9 @@ function ProductScreen() {
       <Row>
       
         <React.Fragment >
-        {user && <Form> 
+         
           {errorMsg && <MessageBox variant="danger">{errorMsg}</MessageBox>}
-          <Form onSubmit={submitHandler}>
+          {user && <Form onSubmit={submitHandler}>
             <div class="container">
               <div class="row">
                 <div class="col">
@@ -306,8 +303,8 @@ function ProductScreen() {
                 </div>
               </div>
             </div>
-          </Form>
           </Form>}
+         
         </React.Fragment>
         
         
