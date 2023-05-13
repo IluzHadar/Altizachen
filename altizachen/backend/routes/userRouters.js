@@ -48,16 +48,28 @@ userRouter.put('/:id', async (req, res) => {
   console.log('req.body99-----------------------------------------------');
   console.log(req.body);
   console.log('req.body99-----------------------------------------------');
-  const user = await User.findById(req.body._id);
-  user.sumOfLike = user.sumOfLike + 1;
-  user.likeInAds = req.body.likeInAds;
-  user.userRating = (user.sumOfLike)/(req.body.userAdCounter);
-  user.userAdCounter = req.body.userAdCounter;
-  console.log('user99-----------------------------------------------');
-  console.log( user);
-  console.log('user99-----------------------------------------------');
-  const updateuser= await user.save();
-  res.send({ message: 'user Updated', user: updateuser });
+  const user1 = await User.findById(req.body._id);
+  user1.sumOfLike = user1.sumOfLike + 1;
+
+  user1.userRating = (user1.sumOfLike)/(req.body.userAdCounter);
+  user1.userAdCounter = req.body.userAdCounter;
+    const updateuser1= await user1.save();
+  console.log('user1-----------------------------------------------');
+  console.log( user1);
+  console.log('user1-----------------------------------------------');
+
+  const user2 = await User.findOne({numberPhone: req.body.numberPhone});
+  user2.likeInAds = req.body.likeInAds;
+
+  console.log('user1-----------------------------------------------');
+  console.log( user2);
+  console.log('user1-----------------------------------------------');
+  const updateuser2= await user2.save();
+  res.send({
+    message: 'User updated successfully',
+    user1: updateuser1,
+    user2: updateuser2
+  });
   });
 
  
