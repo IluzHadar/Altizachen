@@ -47,10 +47,11 @@ userRouter.put('/:id', async (req, res) => {
   console.log('55-----------------------------------------------------------');
   console.log(req.body);
   const user = await User.findById(req.body._id);
+  user.sumOfLike = user.sumOfLike + 1;
   console.log('55-----------------------------------------------------------');
-  product.reviews = req.body.reviews;
-  const updateProduct = await product.save();
-  res.send({ message: 'Product Updated', product: updateProduct });
+  
+  const updateuser= await user.save();
+  res.send({ message: 'user Updated', user: updateuser });
   });
 
  

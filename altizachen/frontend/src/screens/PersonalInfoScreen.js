@@ -101,8 +101,8 @@ function PersonalInfoScreen() {
 
   return (
     <div class="card-body">
-      <h1 style={{ fontWeight: 'bold', textAlign: 'center' }}>Personal Info</h1>
-
+      {user &&<h1 style={{ fontWeight: 'bold', textAlign: 'center' }}>Personal Info</h1>}
+      {user &&
       <Card className="w-100 h-80 my-3 p-3 rounded text-center">
         <Card.Body>
           <h7>
@@ -111,10 +111,10 @@ function PersonalInfoScreen() {
             <div>Email : {user.email}</div>
           </h7>
         </Card.Body>
-      </Card>
-
+      </Card> }
+      
       <div className="products">
-        {products
+        {user && products
           .filter((products) => products.numberPhoneUser === user.numberPhone)
           .map((product) => (
             <Col
