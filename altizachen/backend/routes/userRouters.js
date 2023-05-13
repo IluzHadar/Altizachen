@@ -52,6 +52,7 @@ userRouter.put('/:id', async (req, res) => {
   user.sumOfLike = user.sumOfLike + 1;
   user.likeInAds = req.body.likeInAds;
   user.userRating = (user.sumOfLike)/(req.body.userAdCounter);
+  user.userAdCounter = req.body.userAdCounter;
   console.log('user99-----------------------------------------------');
   console.log( user);
   console.log('user99-----------------------------------------------');
