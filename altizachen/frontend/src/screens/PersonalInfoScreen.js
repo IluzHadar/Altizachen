@@ -179,7 +179,7 @@ function PersonalInfoScreen() {
                 </Card.Body>
               </Card>
             </Col>
-          ))}
+          )).length}
           
       </div>
     </div>

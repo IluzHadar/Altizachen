@@ -44,12 +44,10 @@ userRouter.post('/', async (req, res) => {
 
 
 userRouter.put('/:id', async (req, res) => {
-  console.log('55-----------------------------------------------------------');
-  console.log(req.body);
   const user = await User.findById(req.body._id);
   user.sumOfLike = user.sumOfLike + 1;
-  console.log('55-----------------------------------------------------------');
-  
+  console.log(user);
+  user.userRating = (user.sumOfLike)/(req.body.userAdCounter);
   const updateuser= await user.save();
   res.send({ message: 'user Updated', user: updateuser });
   });

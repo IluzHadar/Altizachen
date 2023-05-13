@@ -15,7 +15,9 @@ const userSchema = mongoose.Schema(
     numberPhone: {type: String, required: true,},
     password: { type: String, required: true },
     isAdmin: { type: Boolean, default: false, required: true },
-    sumOfLike: { type: Number, default: false, required: true },
+    sumOfLike: { type: Number, required: true },
+    userRating:  { type: Number, required: true },
+    userAdCounter: { type: Number, required: true },
   },
   {
     timestamps: true,

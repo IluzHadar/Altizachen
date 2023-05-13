@@ -7,7 +7,10 @@ const data123 = {
       email: 'admin@example.com',
       password: bcrypt.hashSync('123456'),
       isAdmin: true,
-    },
+      sumOfLike: 0,
+      userRating: 0,
+      userAdCounter: 0,
+        },
   ],
 
   products: [

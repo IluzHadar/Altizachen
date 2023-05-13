@@ -21,10 +21,38 @@ const reducer = (state, action) => {
       return { ...state, product: action.payload, loading: false };
     case 'FETCH_FAIL':
       return { ...state, loading: false, erroe: action.payload };
+
+      ///////////////////////////////////////////////////////////////For useEffect of 'products'
+      case 'FETCH_REQUEST1':
+        return { ...state, loading: true };
+      case 'FETCH_SUCCESS1':
+        return { ...state, products: action.payload, loading: false };
+      case 'FETCH_FAIL1':
+        return { ...state, loading: false, erroe: action.payload };
+  
+      case 'DELETE_REQUEST1':
+        return { ...state, loadingDelete: true, successDelete: false };
+      case 'DELETE_SUCCESS1':
+        return {
+          ...state,
+          loadingDelete: false,
+          successDelete: true,
+        };
+      case 'DELETE_FAIL1':
+        return { ...state, loadingDelete: false, successDelete: false };
+  
+      case 'DELETE_RESET1':
+        return { ...state, loadingDelete: false, successDelete: false };
+
+      //////////////////////////////////////////////////////////////
+      
     default:
       return state;
+
   }
 };
+
+
 
 function ProductScreen() {
   const navigate = useNavigate();
@@ -35,11 +63,11 @@ function ProductScreen() {
   const { id } = params;
   const [errorMsg, setErrorMsg] = useState(null);
 
-  // const [{ products }, dispatch1] = useReducer(logger(reducer), {
-  //   products: [],
-  //   loading: true,
-  //   error: '',
-  // });
+  const [{ products }, dispatch1] = useReducer(logger(reducer), {
+    products: [],
+    loading: true,
+    error: '',
+  });
 
 
   //------------------------------------------------------------------- Get of the products
@@ -61,18 +89,35 @@ function ProductScreen() {
     };
     fetchData();
   }, [id]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      dispatch1({ type: 'FETCH_REQUEST1' });
+      try {
+        const result = await axios.get(`/api/products`);
+        dispatch1({ type: 'FETCH_SUCCESS1', payload: result.data });
+      } catch (err) {
+        dispatch1({ type: 'FETCH_FAIL1', payload: err.message });
+      }
+    };
+    fetchData();
+  }, [id]);
   //-------------------------------------------------------------------End
 
   const submitHandlerLike = async (e) => {
     e.preventDefault();
     try {
+      console.log('asdasdsadasdasd1!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
       product.LastReqNumber = 1;
       product.like = product.like + 1;
       console.log(product);
       const { data2 } = await axios.put(`/api/products/${product._id}`,product);
       if(user)
         {
-          user.sumOfLike = user.sumOfLike + 1; 
+          user._id = product.OwnerAdID;
+        //user.sumOfLike = user.sumOfLike + 1;  add in put
+          user.userAdCounter =products.filter((products) => products.numberPhoneUser === product.numberPhoneUser)
+            .map((product) => ( product)).length ;
           const { data3 } = await axios.put(`/api/users/${product.OwnerAdID}`,user);       
         }
       
@@ -162,11 +207,6 @@ function ProductScreen() {
             <ListGroup.Item>
               <Row>
                 <Col>Description:
-
-                {/* {products
-          .filter((products) => products.numberPhoneUser === user.numberPhone)
-          .map((product) => ( product)).length} */}
-
                 </Col>
                 <Col>{product.description}</Col>
               </Row>

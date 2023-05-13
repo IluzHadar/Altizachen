@@ -32,6 +32,8 @@ const CreateUserScreen = () => {
 
       user.password = bcrypt.hashSync(password);
       user.sumOfLike = 0;
+      user.userRating = 0;
+      user.userAdCounter = 0;
       const { data } = await axios.post(`/api/users`, { user });
       navigate('/');
     } catch (error) {
