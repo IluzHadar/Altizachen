@@ -101,7 +101,7 @@ function AdminInfoScreen() {
           {user &&<h1 style={{ fontWeight: 'bold', textAlign: 'center',padding: '20px' }}>Admin management center</h1>}
           {user &&
       
-      <div class="card-body">
+      <div class="card-body" style={{textAlign: 'center'}}>
         <div style={{ textAlign: 'center'}}>
         <Button  style={{ marginRight: '20px' }} onClick={() => handleButtonClick(1)}>Show Ads</Button>
         <Button style={{ marginLeft: '20px' } }onClick={() => handleButtonClick(2)}>Show Statistic</Button>
@@ -175,8 +175,74 @@ function AdminInfoScreen() {
         {activeLayer === 2 && (
           <div style={{ backgroundColor: 'lightgray', padding: '20px', marginTop: '10px',  borderRadius: '10px', textAlign: 'center' }}>
             <h2 style={{color:'white',  fontWeight: 'bold', textDecoration: 'underline'}}>Statistic   </h2>
-            <p>This is the content of Card Layer 2.</p>
+          
+          <Col style={{textAlign: 'left'}} >
+          <div>The amount of ads in Forniture caregory: 
+           {products.filter((products) =>products.category === 1 )
+            .map((product) => ( product)).length}
           </div>
+          <br></br>
+          <div>The amount of ads in Electrical products caregory: 
+           {products.filter((products) =>products.category === 2 )
+            .map((product) => ( product)).length}
+          </div><br></br>
+          <div>The amount of ads in Home Products caregory: 
+           {products.filter((products) =>products.category === 3 )
+            .map((product) => ( product)).length}
+          </div><br></br>
+          <div>The amount of ads in Garden products caregory: 
+           {products.filter((products) =>products.category === 4 )
+            .map((product) => ( product)).length}
+          </div><br></br>
+          <div>The amount of ads in Car Products caregory: 
+           {products.filter((products) =>products.category === 5 )
+            .map((product) => ( product)).length}
+          </div><br></br>
+          <div>The amount of ads in Animel Products caregory: 
+           {products.filter((products) =>products.category === 6 )
+            .map((product) => ( product)).length}
+          </div><br></br>
+          <div>The amount of ads in Forniture caregory: 
+           {products.filter((products) =>products.category === 1 )
+            .map((product) => ( product)).length}
+          </div><br></br>
+          <div>The amount of ads in Electrical products caregory: 
+           {products.filter((products) =>products.category === 2 )
+            .map((product) => ( product)).length}
+          </div><br></br>
+          <div>The amount of ads in Home Products caregory: 
+           {products.filter((products) =>products.category === 3 )
+            .map((product) => ( product)).length}
+          </div><br></br>
+          <div>The amount of ads in Garden products caregory: 
+           {products.filter((products) =>products.category === 4 )
+            .map((product) => ( product)).length}
+          </div><br></br>
+          <div>The amount of ads in Car Products caregory: 
+           {products.filter((products) =>products.category === 5 )
+            .map((product) => ( product)).length}
+          </div><br></br>
+          <div>The amount of ads in status pause: 
+           {products.filter((products) =>products.pauseAd === true )
+            .map((product) => ( product)).length}
+          </div><br></br>
+          <div>The amount of ads in the website: 
+           {products.filter((products) =>products )
+            .map((product) => ( product)).length}
+          </div>
+          
+          </Col>
+
+          
+          
+          
+          
+          
+          
+          </div>
+
+            
+
         )}
       </div>
         </div>
