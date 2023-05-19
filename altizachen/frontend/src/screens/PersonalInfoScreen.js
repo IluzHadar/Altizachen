@@ -107,8 +107,8 @@ function PersonalInfoScreen() {
         <Card.Body>
           <h7>
             Hello, {user.name}
-            <div>Phone number: {user.numberPhone}</div>
-            <div>Email : {user.email}</div>
+            <div><span style={{ fontWeight: 'bold'}}>Phone number: </span>{user.numberPhone}</div>
+            <div><span style={{ fontWeight: 'bold'}}>Email : </span>{user.email}</div>
           </h7>
         </Card.Body>
       </Card> }
@@ -151,25 +151,24 @@ function PersonalInfoScreen() {
 
                   <Row>
                     <Link
-                      type="button"
-                      variant="outline-success"
+                      variant="outline-info"
                       to={`/EditProduct/${product._id}`}
                       class="btn btn-info"
                       style={{
-                        width: '64px',
                         padding: '0px',
-                        color: 'green',
+                        positionAlign: 'center'
                       }}
                     >
                       Edit
                     </Link>
+                    <Row><br></br></Row>
                     <Button
                       variant="outline-danger"
                       to={`/info/${product._id}`}
                       class="btn btn-info"
                       style={{
-                        width: '64px',
                         padding: '0px',
+                        positionAlign: 'center'
                       }}
                       onClick={() => deleteHandler(product._id)}
                     >

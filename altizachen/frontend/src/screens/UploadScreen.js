@@ -78,7 +78,7 @@ const UploadScreen = () => {
         <h1 style={{ fontWeight: 'bold' }}>Upload Product Page</h1>
         <br></br>
         <Form.Group className="mt-2" controlId="name">
-          <Form.Label>Name:</Form.Label>
+          <Form.Label style={{ fontWeight: 'bold'}} >Name:</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter Name"
@@ -88,7 +88,7 @@ const UploadScreen = () => {
         </Form.Group>
 
         <Form.Group className="mt-2" controlId="image">
-          <Form.Label>Image:</Form.Label>
+          <Form.Label style={{ fontWeight: 'bold'}} >Image:</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter image url"
@@ -96,6 +96,7 @@ const UploadScreen = () => {
             onChange={(e) => setImage(e.target.value)}
           ></Form.Control>
           <Form.Control
+          style={{padding: '10px'}}
             type="file"
             id="image-file"
             label="Choose file"
@@ -106,7 +107,7 @@ const UploadScreen = () => {
         </Form.Group>
 
         <Form.Group className="mt-2" controlId="category">
-          <Form.Label>Select Category:</Form.Label>
+          <Form.Label style={{ fontWeight: 'bold'}} >Select Category:</Form.Label>
           <Form.Control
             as="select"
             defaultValue="0"
@@ -124,7 +125,7 @@ const UploadScreen = () => {
         </Form.Group>
 
         <Form.Group className="mt-2" controlId="description">
-          <Form.Label>Description:</Form.Label>
+          <Form.Label style={{ fontWeight: 'bold'}} >Description:</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter Description"
@@ -132,7 +133,7 @@ const UploadScreen = () => {
             onChange={(e) => setDescription(e.target.value)}
           ></Form.Control>
         </Form.Group>
-        <Button className="mt-3" type="submit" variant="success">
+        <Button className="mt-3" type="submit" variant="success" >
           Upload Product
         </Button>
       </Form>

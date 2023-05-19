@@ -193,31 +193,31 @@ function ProductScreen() {
           <ListGroup variant="flush">
             <ListGroup.Item>
               <Helmet>
-                <title>{product.name}</title>
+                <title style={{ fontWeight: 'bold'}}>{product.name}</title>
               </Helmet>
               <h1>{product.name}</h1>
             </ListGroup.Item>
             <ListGroup.Item>
               <Row>
-                <Col>Uplaod date:</Col>
+                <Col style={{ fontWeight: 'bold'}}>Uplaod date:</Col>
                 <Col>{product.UploadTime}</Col>
               </Row>
             </ListGroup.Item>
             <ListGroup.Item>
               <Row>
-                <Col>Number phone:</Col>
+                <Col style={{ fontWeight: 'bold'}}>Number phone:</Col>
                 <Col>{product.numberPhoneUser}</Col>
               </Row>
             </ListGroup.Item>
             <ListGroup.Item>
               <Row>
-                <Col>Owner name:</Col>
+                <Col style={{ fontWeight: 'bold'}}>Owner name:</Col>
                 <Col>{product.OwnerName}</Col>
               </Row>
             </ListGroup.Item>
             <ListGroup.Item>
               <Row>
-                <Col>Description:
+                <Col style={{ fontWeight: 'bold'}}>Description:
                 </Col>
                 <Col>{product.description}</Col>
               </Row>
@@ -225,7 +225,7 @@ function ProductScreen() {
 
             <ListGroup.Item>
               <Row>
-                <Col>Active Ad:</Col>
+                <Col style={{ fontWeight: 'bold'}}>Active Ad:</Col>
                 <Col>{product.pauseAd === false ? 'Yes' : 'No'}</Col>
               </Row>
             </ListGroup.Item>
