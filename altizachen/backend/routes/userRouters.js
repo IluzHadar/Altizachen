@@ -6,9 +6,15 @@ import data123 from '../data123.js';
 const userRouter = express.Router();
 
 userRouter.get('/', async (req, res) => {
+ try{
   //await User.deleteMany({});
-  const createedUsers = await User.insertMany(data123.users);
-  res.send({ createedUsers });
+  const uesrs = await User.find();
+  res.send(uesrs);
+ }catch (err){
+  console.log(err);
+  res.status(404).send({ message: 'Error - file in get funcation in userRouters' });
+
+ }
 });
 
 userRouter.post('/login', async (req, res) => {

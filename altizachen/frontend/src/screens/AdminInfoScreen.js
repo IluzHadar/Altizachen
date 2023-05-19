@@ -17,6 +17,12 @@ import MessageBox from '../components/MessageBox';
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case 'FETCH_REQUEST1':
+      return { ...state, loading: true };
+    case 'FETCH_SUCCESS1':
+      return { ...state, users: action.payload, loading: false };
+    case 'FETCH_FAIL1':
+      return { ...state, loading: false, erroe: action.payload };
     case 'FETCH_REQUEST':
       return { ...state, loading: true };
     case 'FETCH_SUCCESS':
@@ -51,6 +57,13 @@ function AdminInfoScreen() {
     error: '',
   });
 
+  const [{ users }, dispatch1] = useReducer(logger(reducer), {
+    users: [],
+    loading: true,
+    error: '',
+  });
+  
+
   const [activeLayer, setActiveLayer] = useState(1);
 
 
@@ -75,10 +88,23 @@ function AdminInfoScreen() {
     fetchData();
   }, []);
 
+    useEffect(() => {
+    const fetchData = async () => {
+      dispatch1({ type: 'FETCH_REQUEST1' });
+      try {
+        const result = await axios.get('/api/users');
+        dispatch1({ type: 'FETCH_SUCCESS1', payload: result.data });
+      } catch (err) {
+        dispatch1({ type: 'FETCH_FAIL1', payload: err.message });
+      }
+    };
+    fetchData();
+  }, []);
+
+
  
   const deleteHandler = async (id) => {
     if (window.confirm('Are you sure to delete?')) {
-      console.log('DELETEEEEEEEEEEEEEEEEEEE');
       try {
         await axios.delete(`/api/products/${id}`, {
           headers: { Authorization: `Bearer ${user.token}` },
@@ -229,7 +255,14 @@ function AdminInfoScreen() {
           <div>The amount of ads in the website: 
            {products.filter((products) =>products )
             .map((product) => ( product)).length}
+          </div><br></br>
+          <div>The amount of users in the website: 
+          {console.log('---------------------------------')}
+           {users.filter((users) =>users )
+            .map((user) => ( user)).length}
+            {console.log('---------------------------------')}
           </div>
+         
           
           </Col>
 
