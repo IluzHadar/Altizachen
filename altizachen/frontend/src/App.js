@@ -21,6 +21,7 @@ import LoginScreen from './screens/LoginScreen';
 import UploadScreen from './screens/UploadScreen';
 import CreateUserScreen from './screens/CreateUserScreen';
 import PersonalInfoScreen from './screens/PersonalInfoScreen';
+import AdminInfoScreen from './screens/AdminInfoScreen';
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -59,8 +60,12 @@ function App() {
                           color: 'blue',
                         }}
                       >
-                        <normal>Hello, </normal> {<bold>{user.name}</bold>}
                       </Link>
+                      <div style={{position: 'absolute', top: '120px', left: '300px'}}>
+                        <span> Hello, </span> 
+                        <span style={{ fontWeight: 'bold'}}>
+                            {user.name}</span>
+                        </div>
                       <Link
                         to="/upload"
                         className="nav-link"
@@ -81,7 +86,7 @@ function App() {
                         style={{
                           position: 'absolute',
                           top: '150px',
-                          left: '550px',
+                          left: '560px',
                           fontWeight: 'bold',
                           fontSize: '1.2rem',
                           fontfamily: 'Ariel',
@@ -89,6 +94,21 @@ function App() {
                       >
                         | Personal Info
                       </Link>
+                      <Link
+                        to="/AdminInfoScreen"
+                        className="nav-link"
+                        style={{
+                          position: 'absolute',
+                          top: '150px',
+                          left: '700px',
+                          fontWeight: 'bold',
+                          fontSize: '1.2rem',
+                          fontfamily: 'Ariel',
+                        }}
+                      >
+                        | Admin management
+                      </Link>
+
                     </Nav>
                   </Container>
                 )}
@@ -243,6 +263,7 @@ function App() {
                   <Route path="/CarsScreen" element={<CarsScreen />} />
                   <Route path="/AnimelsScreen" element={<AnimelsScreen />} />
                   <Route path="/" element={<MainScreen />} />
+                  <Route path="/AdminInfoScreen" element={<AdminInfoScreen />} />
                 </Routes>
               </Container>
             </div>
