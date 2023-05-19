@@ -14,6 +14,7 @@ import Form from 'react-bootstrap/Form';
 import MessageBox from '../components/MessageBox';
 
 
+
 const reducer = (state, action) => {
   switch (action.type) {
     case 'FETCH_REQUEST':
@@ -92,105 +93,15 @@ function AdminInfoScreen() {
     }
   };
 
-//   return (
-//     <div >
-      // {user &&<h1 style={{ fontWeight: 'bold', textAlign: 'center' }}>Admin management</h1>}
-      // {user &&
-      // <Card className="w-100 h-80 my-3 p-3 rounded text-center">
-      //   <Card.Body>
-      //     <h7>
-      //       Hello, {user.name}
-      //       <div>Phone number: {user.numberPhone}</div>
-      //       <div>Email : {user.email}</div>
-      //     </h7>
-      //   </Card.Body>
-      // </Card> }
-      
-      // <div className="products">
-      //   {user && products
-      //     .filter((products) => products.numberPhoneUser === user.numberPhone)
-      //     .map((product) => (
-      //       <Col
-      //         className="align-items-stretch d-flex"
-      //         key={product._id}
-      //         sm={12}
-      //         md={6}
-      //         lg={4}
-      //         xl={3}
-      //         style={{ padding: '5px' }}
-      //       >
-      //         <Card className="w-100 h-80 my-3 p-3 rounded text-center">
-      //           <Link
-      //             style={{
-      //               height: '100%',
-      //             }}
-      //             to={`/product/${product._id}`}
-      //           >
-      //             <Card.Img
-      //               style={{
-      //                 height: '100%',
-      //               }}
-      //               src={product.image}
-      //               alt={product.name}
-      //               variant="top"
-      //             />
-      //           </Link>
-      //           <Card.Body >
-      //             <Link to={`/product/${product._id}`}>
-      //               <Card.Title as="div">
-      //                 <strong>{product.name}</strong>
-      //               </Card.Title>
-      //             </Link>
-
-      //             <Row>
-      //               <Link
-      //                 type="button"
-      //                 variant="outline-success"
-      //                 to={`/EditProduct/${product._id}`}
-      //                 class="btn btn-info"
-      //                 style={{
-      //                   width: '64px',
-      //                   padding: '0px',
-      //                   color: 'green',
-      //                 }}
-      //               >
-      //                 Edit
-      //               </Link>
-      //               <Button
-      //                 variant="outline-danger"
-      //                 to={`/info/${product._id}`}
-      //                 class="btn btn-info"
-      //                 style={{
-      //                   width: '64px',
-      //                   padding: '0px',
-      //                 }}
-      //                 onClick={() => deleteHandler(product._id)}
-      //               >
-      //                 Delete
-      //               </Button>
-      //             </Row>
-      //           </Card.Body>
-      //         </Card>
-      //       </Col>
-      //     ))}
-          
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default AdminInfoScreen;
-
-// import React, { useState } from 'react';
 
 
   return (
-    <div>
+    
       <div>
           {user &&<h1 style={{ fontWeight: 'bold', textAlign: 'center',padding: '20px' }}>Admin management center</h1>}
           {user &&
       
-        <Card.Body>
+      <div class="card-body">
         <div style={{ textAlign: 'center'}}>
         <Button  style={{ marginRight: '20px' }} onClick={() => handleButtonClick(1)}>Show Ads</Button>
         <Button style={{ marginLeft: '20px' } }onClick={() => handleButtonClick(2)}>Show Statistic</Button>
@@ -213,7 +124,7 @@ function AdminInfoScreen() {
                     md={6}
                     lg={4}
                     xl={3}
-                    style={{ padding: '5px' }}
+                    style={{ padding: '20px' }}
                   >
                     <Card className="w-100 h-80 my-3 p-3 rounded text-center">
                       <Link
@@ -267,12 +178,12 @@ function AdminInfoScreen() {
           </div>
         )}
       </div>
-        </Card.Body>
+        </div>
      }
       
       </div>
       
-    </div>
+  
   );
 };
 

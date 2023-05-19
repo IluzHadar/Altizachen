@@ -211,6 +211,12 @@ function ProductScreen() {
             </ListGroup.Item>
             <ListGroup.Item>
               <Row>
+                <Col>Owner name:</Col>
+                <Col>{product.OwnerName}</Col>
+              </Row>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <Row>
                 <Col>Description:
                 </Col>
                 <Col>{product.description}</Col>

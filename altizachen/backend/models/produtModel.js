@@ -25,6 +25,7 @@ const CommentsSchema = new mongoose.Schema(
 const productSchema = new mongoose.Schema(
   {
     OwnerAdID: { type: String },
+    OwnerName: { type: String },
     name: { type: String, unique: true },
     image: { type: String },
     description: { type: String },

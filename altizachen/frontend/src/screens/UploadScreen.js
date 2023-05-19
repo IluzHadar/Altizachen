@@ -56,6 +56,7 @@ const UploadScreen = () => {
       }
       product.UploadTime = new Date().toLocaleDateString();
       product.numberPhoneUser = user.numberPhone;
+      product.OwnerName = user.name;
       product.CountComments = 0;
       product.pauseAd = false;
       product.reviews = [];
