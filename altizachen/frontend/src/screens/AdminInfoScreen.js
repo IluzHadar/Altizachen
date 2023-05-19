@@ -114,7 +114,7 @@ function AdminInfoScreen() {
          
           <div style={{ backgroundColor: 'lightgray', padding: '20px', marginTop: '10px', borderRadius: '10px', textAlign: 'center' }}>
             <h2 style={{color:'white',  fontWeight: 'bold', textDecoration: 'underline'}}>List of Ads in the website </h2>
-            <div>
+            <div className = 'products'>
 
               {user && products.map((product) => (
                   <Col
@@ -123,7 +123,7 @@ function AdminInfoScreen() {
                     sm={12}
                     md={6}
                     lg={4}
-                    xl={3}
+                    xl={4}
                     style={{ padding: '20px' }}
                   >
                     <Card className="w-100 h-80 my-3 p-3 rounded text-center">
@@ -146,9 +146,10 @@ function AdminInfoScreen() {
                         <Link to={`/product/${product._id}`}>
                           <Card.Title as="div">
                             <strong>{product.name}</strong>
+                            
                           </Card.Title>
                         </Link>
-
+                        <span style={{fontWeight: 'bold'}}>Owner: </span>{product.OwnerName}
                         <Row>
                           <Button
                             variant="outline-danger"
