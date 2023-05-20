@@ -131,7 +131,7 @@ function ProductScreen() {
           const { data3 } = await axios.put(`/api/users/${product.OwnerAdID}`,user);       
         }
         
-      navigate('/');
+      navigate(0);
     } catch (error) {
       console.log('Error in insert like into product');
       console.log(error);
@@ -225,8 +225,8 @@ function ProductScreen() {
 
             <ListGroup.Item>
               <Row>
-                <Col style={{ fontWeight: 'bold'}}>Active Ad:</Col>
-                <Col>{product.pauseAd === false ? 'Yes' : 'No'}</Col>
+                <Col style={{ fontWeight: 'bold'}}>Amount likes:</Col>
+                <Col>{product.like}</Col>
               </Row>
             </ListGroup.Item>
           </ListGroup>
