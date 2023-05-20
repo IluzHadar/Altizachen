@@ -102,7 +102,6 @@ function AdminInfoScreen() {
   }, []);
 
 
- 
   const deleteHandler = async (id) => {
     if (window.confirm('Are you sure to delete?')) {
       try {
@@ -201,7 +200,7 @@ function AdminInfoScreen() {
         {activeLayer === 2 && (
           <div style={{ backgroundColor: 'lightgray', padding: '20px', marginTop: '10px',  borderRadius: '10px', textAlign: 'center' }}>
             <h2 style={{color:'white',  fontWeight: 'bold', textDecoration: 'underline'}}>Statistic   </h2>
-          
+        <Row>
           <Col style={{textAlign: 'left'}} >
           <div>The amount of ads in Forniture caregory: 
            {products.filter((products) =>products.category === 1 )
@@ -257,15 +256,22 @@ function AdminInfoScreen() {
             .map((product) => ( product)).length}
           </div><br></br>
           <div>The amount of users in the website: 
-          {console.log('---------------------------------')}
            {users.filter((users) =>users )
             .map((user) => ( user)).length}
-            {console.log('---------------------------------')}
           </div>
-         
-          
-          </Col>
 
+          </Col>
+          <Col style={{textAlign: 'left'}} >
+            <div><Link to={`/product/${(products.reduce((maxProd, currprod) => (currprod.like > maxProd.like ? currprod : maxProd)))._id}`}>The ad with the most likes </Link>
+            </div><br></br>
+            <div>The highest number of likes on an ad: 
+            {products.reduce((max, product) => (product.like > max ? product.like : max), 0)}
+            </div>
+
+            
+
+          </Col>
+        </Row>
           
           
           
