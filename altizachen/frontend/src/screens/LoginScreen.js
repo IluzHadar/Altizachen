@@ -30,6 +30,7 @@ const LoginScreen = () => {
       ctxDispatch({ type: 'LOGIN', payload: data });
       navigate('/');
     } catch (error) {
+      setErrorMsg('Email or Password not valid');
       setErrorMsg(error.response.data.message);
     }
   };

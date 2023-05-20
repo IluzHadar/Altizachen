@@ -22,21 +22,26 @@ userRouter.post('/login', async (req, res) => {
   if (!email || !password) {
     res.status(404).send({ message: 'Please Enter Email And Password' });
   } else {
-    const user = await User.findOne({ email }); //search the email id exist in data
-    const passwordMatch = await bcrypt.compare(password, user.password); //check valid pass
-    if (user && passwordMatch) {
-      res.json({
-        _id: user._id,
-        name: user.name,
-        numberPhone: user.numberPhone,
-        email: user.email,
-        sumOfLike: user.sumOfLike,
-        likeInAds: user.likeInAds,
-        isAdmin: user.isAdmin
-      });
-    } else {
-      res.status(404).send({ message: 'Wrong Email / Invalid Password' });
-    }
+    try{
+          const user = await User.findOne({ email }); //search the email id exist in data
+          const passwordMatch = await bcrypt.compare(password, user.password); //check valid pass
+          if (user && passwordMatch) {
+            res.json({
+              _id: user._id,
+              name: user.name,
+              numberPhone: user.numberPhone,
+              email: user.email,
+              sumOfLike: user.sumOfLike,
+              likeInAds: user.likeInAds,
+              isAdmin: user.isAdmin
+            });
+          } else {
+            console.log('Wrong Email / Invalid Password');
+            res.status(404).send({ message: 'Wrong Email / Invalid Password' });
+          }
+  }catch(err){
+    res.status(404).send({ message: 'The Email or Password not matchs' });
+  }
   }
 });
 
