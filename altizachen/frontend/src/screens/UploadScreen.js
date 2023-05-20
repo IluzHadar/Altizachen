@@ -53,6 +53,7 @@ const UploadScreen = () => {
       const product = { name, image, category, description };
       if (!name || !image || !description || !category) {
         setErrorMsg('Enter All Fields');
+        return;
       }
       product.UploadTime = new Date().toLocaleDateString();
       product.numberPhoneUser = user.numberPhone;

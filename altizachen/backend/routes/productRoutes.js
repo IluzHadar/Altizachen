@@ -48,12 +48,14 @@ productRouter.put('/:id', async (req, res) => {
   if(req.body.LastReqNumber === 2){         //Put of: EditScreen
 
   console.log('insert into : req.body.LastReqNumber === 2');
+  console.log(req.body);
   product.LastReqNumber = 0;
-  product.name = req.body.name;
-  product.category = req.body.category;
-  product.description = req.body.description;
-  product.pauseAd = req.body.pauseAd;
+  product.name = req.body.name || product.name;
+  product.category = req.body.category || product.category ;
+  product.description = req.body.description || product.description;
+  product.pauseAd = req.body.pauseAd || product.pauseAd;
   product.UploadTime = req.body.UploadTime;
+  console.log(product);
   const updateProduct2 = await product.save();
   res.send({ message: 'Product Updated', product: updateProduct2 });
   } 
