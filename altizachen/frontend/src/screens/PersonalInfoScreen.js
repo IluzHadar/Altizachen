@@ -150,30 +150,33 @@ function PersonalInfoScreen() {
                   </Link>
 
                   <Row>
+                    <Col>
                     <Link
                       variant="outline-info"
                       to={`/EditProduct/${product._id}`}
                       class="btn btn-info"
                       style={{
-                        padding: '0px',
+                        padding: '0px 20px 0px 20px',
                         positionAlign: 'center'
                       }}
                     >
                       Edit
                     </Link>
-                    <Row><br></br></Row>
+                    </Col>
+                    <Col>
                     <Button
                       variant="outline-danger"
                       to={`/info/${product._id}`}
                       class="btn btn-info"
                       style={{
-                        padding: '0px',
+                        padding: '0px 10px 0px 10px',
                         positionAlign: 'center'
                       }}
                       onClick={() => deleteHandler(product._id)}
                     >
                       Delete
                     </Button>
+                    </Col>
                   </Row>
                 </Card.Body>
               </Card>
