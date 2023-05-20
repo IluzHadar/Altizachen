@@ -12,6 +12,9 @@ import { Helmet } from 'react-helmet-async';
 import { Image } from 'react-bootstrap';
 import { Store } from '../Store';
 import logger from 'use-reducer-logger';
+import {  MDBCard,  MDBCardBody,  MDBCardImage,  MDBCol,  MDBContainer,
+    MDBIcon,  MDBInput,  MDBRow,} from "mdb-react-ui-kit";
+    import Modal from 'react-bootstrap/Modal';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -107,7 +110,6 @@ function ProductScreen() {
   const submitHandlerLike = async (e) => {
     e.preventDefault();
     try {
-      console.log('asdasdsadasdasd1!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
       product.LastReqNumber = 1;
       product.like = product.like + 1;
       console.log(product);
@@ -143,7 +145,6 @@ function ProductScreen() {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      console.log('1111111111111111111111111111111111111111');
       const comment = { body };
       if (!body) {
         setErrorMsg('Enter txet into comment body');
@@ -258,12 +259,29 @@ function ProductScreen() {
           {user && <Form onSubmit={submitHandler}>
             <div class="container">
               <div class="row">
-                <div class="col">
-                  {product.reviews.map((reviews) => (
-                    <ListGroup.Item key={reviews._id} className="p-4">
-                      <strong>{reviews.body}</strong>
-                    </ListGroup.Item>
-                  ))}
+
+                <div class="col">  
+                <Card>
+                <Modal.Body style={{  maxHeight: 'calc(75vh - 210px)',
+                                      overflowY: 'auto'
+                                    }}
+                >
+               {product.reviews.map((reviews) => (
+                    <MDBContainer className="mt-2" >
+                        <MDBCard className="mb-2">
+                          <MDBCardBody>
+                          <ListGroup.Item key={reviews._id} className="p-1">
+                            <div><span style={{ fontWeight: 'bold'}}>Name:        </span>{reviews.CommentOwner}</div>
+                            <div><span style={{ fontWeight: 'bold'}}>UploadDate:  </span>{reviews.UploadDate}</div>
+                            <div><span style={{ fontWeight: 'bold'}}>Body:        </span>{reviews.body}</div>
+                          </ListGroup.Item>
+                          </MDBCardBody>
+                        </MDBCard>
+                      </MDBContainer>
+                    ))}
+                    
+                </Modal.Body>
+                </Card>
                 </div>
                 <div class="col">
                   <Card style={{ width: '30rem', padding: '15px' }}>
