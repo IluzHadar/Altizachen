@@ -18,7 +18,8 @@ const CreateUserScreen = () => {
   const [numberPhone, setnumberPhone] = useState('');
   const [uploading, setUploading] = useState(false);  
   const [errorMsg, setErrorMsg] = useState(null);
-
+  var isUser = false;
+  isUser = user ? (user.isAdmin ? true : false) : true;   //if is manager of unuser return true
 
 
 
@@ -37,10 +38,6 @@ const CreateUserScreen = () => {
       Newuser.userRating = 0;
       Newuser.userAdCounter = 0;
       Newuser.likeInAds = [];
-      console.log('------');
-      console.log(user1);
-      console.log(Newuser);
-      console.log('------');
 
       const { data } = await axios.post(`/api/users`, { Newuser });
       navigate('/login');
@@ -49,18 +46,26 @@ const CreateUserScreen = () => {
       setErrorMsg(error.response.data.message);
     }
   };
-
   
-
+      
   return (
 
     <React.Fragment>
+      
       {errorMsg && <MessageBox variant='danger'>{errorMsg}</MessageBox>}
       <Form onSubmit={submitHandler}>
-      <h1 style={{fontWeight: 'bold'}}>Create User Page</h1>
+      {user && user.isAdmin ? <h1 style={{fontWeight: 'bold'}}>Create new manager</h1>
+                    : null
+      }
+      {!user ? <h1 style={{fontWeight: 'bold'}}>Create new user</h1> : null}
       <br></br>
+      {isUser && 
+      <div>                                   {/*Only unuser can create a new user Or 
+                                                 manager create a new manager           */}
         <Form.Group className='mt-2' controlId='name'>
-          <Form.Label>Name:</Form.Label>
+          <Form.Label>Name:{
+          console.log(isUser)
+          }</Form.Label> 
           <Form.Control
             type='text'
             placeholder='Enter Name'
@@ -98,10 +103,12 @@ const CreateUserScreen = () => {
             onChange={(e) => setpassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
-        <br></br>
         <Button className='mt-3' type='submit' variant='success'>
           Create User
         </Button>
+        </div> 
+        }
+            
       </Form>
     </React.Fragment>
   );

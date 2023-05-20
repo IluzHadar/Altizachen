@@ -142,7 +142,7 @@ function App() {
                       title={'≣'}
                       id="username"
                     >
-                      <NavDropdown.Item onClick={logoutHandler}>
+                      <NavDropdown.Item onClick={logoutHandler} >
                         Log out
                       </NavDropdown.Item>
                     </NavDropdown>)                                        
