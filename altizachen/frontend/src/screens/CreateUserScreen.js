@@ -25,17 +25,24 @@ const CreateUserScreen = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const user = { name, email, password, numberPhone};
+      const user1 = user; 
+      const Newuser = { name, email, password, numberPhone};
       if (!name || !email || !password || !numberPhone) {
         setErrorMsg('Enter All Fields');
       }
 
-      user.password = bcrypt.hashSync(password);
-      user.sumOfLike = 0;
-      user.userRating = 0;
-      user.userAdCounter = 0;
-      user.likeInAds = [];
-      const { data } = await axios.post(`/api/users`, { user });
+      user1 &&( user1.isAdmin ? Newuser.isAdmin=true : Newuser.isAdmin=false )    //only for create manager by manager
+      Newuser.password = bcrypt.hashSync(password);
+      Newuser.sumOfLike = 0;
+      Newuser.userRating = 0;
+      Newuser.userAdCounter = 0;
+      Newuser.likeInAds = [];
+      console.log('------');
+      console.log(user1);
+      console.log(Newuser);
+      console.log('------');
+
+      const { data } = await axios.post(`/api/users`, { Newuser });
       navigate('/login');
     } catch (error) {
       console.log(error);

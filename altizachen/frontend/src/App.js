@@ -32,6 +32,7 @@ function App() {
   };
 
   return (
+    
     <BrowserRouter>
       <div className="a-flex flex-column site-container">
         <header>
@@ -94,24 +95,32 @@ function App() {
                       >
                         | Personal Info
                       </Link>
-                      <Link
-                        to="/AdminInfoScreen"
-                        className="nav-link"
-                        style={{
-                          position: 'absolute',
-                          top: '150px',
-                          left: '700px',
-                          fontWeight: 'bold',
-                          fontSize: '1.2rem',
-                          fontfamily: 'Ariel',
-                        }}
-                      >
-                        | Admin management
-                      </Link>
 
-                    </Nav>
-                  </Container>
-                )}
+                      </Nav>
+                      </Container>
+                      ) 
+                }
+
+                {
+                  user && (user.isAdmin &&  (
+                    <Container>
+                      <Nav>
+                        <Link
+                          to="/AdminInfoScreen"
+                          className="nav-link"
+                          style={{
+                            position: 'absolute',
+                            top: '150px',
+                            left: '700px',
+                            fontWeight: 'bold',
+                            fontSize: '1.2rem',
+                            fontfamily: 'Ariel',
+                          }}>| Admin management
+                        </Link>
+                      </Nav>
+                   </Container>
+                  ))
+                }
 
                 <Nav
                   className="ml-auto"
@@ -121,7 +130,7 @@ function App() {
                     fontSize: '1.2rem',
                   }}
                 >
-                  {user && (
+                  {user && !user.isAdmin &&(
                     <NavDropdown
                       style={{
                         position: 'absolute',
@@ -136,8 +145,35 @@ function App() {
                       <NavDropdown.Item onClick={logoutHandler}>
                         Log out
                       </NavDropdown.Item>
-                    </NavDropdown>
-                  )}
+                    </NavDropdown>)                                        
+                    }
+
+                  {user && user.isAdmin &&(
+                    <NavDropdown
+                      style={{
+                        position: 'absolute',
+                        top: '145px',
+                        right: '150px',
+                        fontWeight: 'bold',
+                        fontSize: '2.0rem',
+                      }}
+                      title={'≣'}
+                      id="username"
+                    >
+                      <NavDropdown.Item onClick={logoutHandler}>
+                        Log out
+                      </NavDropdown.Item>
+                      <NavDropdown.Item >
+                        <Link to="/login/CreateUserScreen"
+                              style={{color:'black',  textDecoration: 'none' }}
+                        >
+                        Create a new manager
+                        </Link>
+                      </NavDropdown.Item>
+                    </NavDropdown>)                                        
+                    }
+
+
 
                   {!user && (
                     <LinkContainer
@@ -176,7 +212,7 @@ function App() {
                       aria-current="true"
                     >
                       <i class="fas fa-tachometer-alt fa-fw me-3"></i>
-                      <span>Main page</span>{' '}
+                      <span>Main page</span>{' '} {console.log(user)}
                     </a>
 
                     <a

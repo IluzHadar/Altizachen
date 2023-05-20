@@ -32,6 +32,7 @@ userRouter.post('/login', async (req, res) => {
         email: user.email,
         sumOfLike: user.sumOfLike,
         likeInAds: user.likeInAds,
+        isAdmin: user.isAdmin
       });
     } else {
       res.status(404).send({ message: 'Wrong Email / Invalid Password' });
@@ -40,9 +41,9 @@ userRouter.post('/login', async (req, res) => {
 });
 
 userRouter.post('/', async (req, res) => {
-  const { user } = req.body;
+  const { Newuser } = req.body;
   try {
-    const createdUser = await User.create(user);
+    const createdUser = await User.create(Newuser);
     res.status(201).json(createdUser);
   } catch (err) {
     res.status(404).send({ message: 'Error - Try Again to create new user' });
