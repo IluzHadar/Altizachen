@@ -20,7 +20,7 @@ const CommentsSchema = new mongoose.Schema(
   {
     timestamps: true,
   }
-);
+)
 
 const productSchema = new mongoose.Schema(
   {
@@ -30,9 +30,10 @@ const productSchema = new mongoose.Schema(
     image: { type: String },
     description: { type: String },
     category: { type: Number },
-    UploadTime: { type: String},
-    numberPhoneUser: { type: String},
-    CountComments: { type: Number},
+    location: { type: String, required: true },
+    UploadTime: { type: String },
+    numberPhoneUser: { type: String },
+    CountComments: { type: Number },
     reviews: [CommentsSchema],
     pauseAd: { type: Boolean},
     like: { type: Number },
@@ -41,7 +42,7 @@ const productSchema = new mongoose.Schema(
   {
     timestamps: true,
   }
-);
+)
 
-const Product = mongoose.model('Product', productSchema);
-export default Product;
+const Product = mongoose.model('Product', productSchema)
+export default Product
