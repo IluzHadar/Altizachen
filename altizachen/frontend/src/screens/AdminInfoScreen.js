@@ -242,152 +242,181 @@ function AdminInfoScreen() {
                 </h2>
                 <Row>
                   <Col style={{ textAlign: 'left' }}>
-                    <div>
-                      The amount of ads in Forniture caregory:
-                      {
-                        products
-                          .filter((products) => products.category === 1)
-                          .map((product) => product).length
-                      }
-                    </div>
-                    <br></br>
-                    <div>
-                      The amount of ads in Electrical products caregory:
-                      {
-                        products
-                          .filter((products) => products.category === 2)
-                          .map((product) => product).length
-                      }
-                    </div>
-                    <br></br>
-                    <div>
-                      The amount of ads in Home Products caregory:
-                      {
-                        products
-                          .filter((products) => products.category === 3)
-                          .map((product) => product).length
-                      }
-                    </div>
-                    <br></br>
-                    <div>
-                      The amount of ads in Garden products caregory:
-                      {
-                        products
-                          .filter((products) => products.category === 4)
-                          .map((product) => product).length
-                      }
-                    </div>
-                    <br></br>
-                    <div>
-                      The amount of ads in Car Products caregory:
-                      {
-                        products
-                          .filter((products) => products.category === 5)
-                          .map((product) => product).length
-                      }
-                    </div>
-                    <br></br>
-                    <div>
-                      The amount of ads in Animel Products caregory:
-                      {
-                        products
-                          .filter((products) => products.category === 6)
-                          .map((product) => product).length
-                      }
-                    </div>
-                    <br></br>
-                    <div>
-                      The amount of ads in Forniture caregory:
-                      {
-                        products
-                          .filter((products) => products.category === 1)
-                          .map((product) => product).length
-                      }
-                    </div>
-                    <br></br>
-                    <div>
-                      The amount of ads in Electrical products caregory:
-                      {
-                        products
-                          .filter((products) => products.category === 2)
-                          .map((product) => product).length
-                      }
-                    </div>
-                    <br></br>
-                    <div>
-                      The amount of ads in Home Products caregory:
-                      {
-                        products
-                          .filter((products) => products.category === 3)
-                          .map((product) => product).length
-                      }
-                    </div>
-                    <br></br>
-                    <div>
-                      The amount of ads in Garden products caregory:
-                      {
-                        products
-                          .filter((products) => products.category === 4)
-                          .map((product) => product).length
-                      }
-                    </div>
-                    <br></br>
-                    <div>
-                      The amount of ads in Car Products caregory:
-                      {
-                        products
-                          .filter((products) => products.category === 5)
-                          .map((product) => product).length
-                      }
-                    </div>
-                    <br></br>
-                    <div>
-                      The amount of ads in status pause:
-                      {
-                        products
-                          .filter((products) => products.pauseAd === true)
-                          .map((product) => product).length
-                      }
-                    </div>
-                    <br></br>
-                    <div>
-                      The amount of ads in the website:
-                      {
-                        products
-                          .filter((products) => products)
-                          .map((product) => product).length
-                      }
-                    </div>
-                    <br></br>
-                    <div>
-                      The amount of users in the website:
-                      {
-                        users.filter((users) => users).map((user) => user)
-                          .length
-                      }
-                    </div>
+                    <Card>
+                      <Card.Body>
+                        <h7>
+                          <div
+                            style={{ background: 'pink', textAlign: 'center' }}
+                          >
+                            Amount of ads per category
+                          </div>
+                        </h7>
+                        <div>
+                          The amount of ads in Forniture caregory:
+                          {
+                            products
+                              .filter((products) => products.category === 1)
+                              .map((product) => product).length
+                          }
+                        </div>
+                        <br></br>
+                        <div>
+                          The amount of ads in Electrical products caregory:
+                          {
+                            products
+                              .filter((products) => products.category === 2)
+                              .map((product) => product).length
+                          }
+                        </div>
+                        <br></br>
+                        <div>
+                          The amount of ads in Home Products caregory:
+                          {
+                            products
+                              .filter((products) => products.category === 3)
+                              .map((product) => product).length
+                          }
+                        </div>
+                        <br></br>
+                        <div>
+                          The amount of ads in Garden products caregory:
+                          {
+                            products
+                              .filter((products) => products.category === 4)
+                              .map((product) => product).length
+                          }
+                        </div>
+                        <br></br>
+                        <div>
+                          The amount of ads in Car Products caregory:
+                          {
+                            products
+                              .filter((products) => products.category === 5)
+                              .map((product) => product).length
+                          }
+                        </div>
+                        <br></br>
+                        <div>
+                          The amount of ads in Animel Products caregory:
+                          {
+                            products
+                              .filter((products) => products.category === 6)
+                              .map((product) => product).length
+                          }
+                        </div>
+                        <br></br>
+                        <div>
+                          The amount of ads in Forniture caregory:
+                          {
+                            products
+                              .filter((products) => products.category === 1)
+                              .map((product) => product).length
+                          }
+                        </div>
+                        <br></br>
+                        <div>
+                          The amount of ads in Electrical products caregory:
+                          {
+                            products
+                              .filter((products) => products.category === 2)
+                              .map((product) => product).length
+                          }
+                        </div>
+                        <br></br>
+                        <div>
+                          The amount of ads in Home Products caregory:
+                          {
+                            products
+                              .filter((products) => products.category === 3)
+                              .map((product) => product).length
+                          }
+                        </div>
+                        <br></br>
+                        <div>
+                          The amount of ads in Garden products caregory:
+                          {
+                            products
+                              .filter((products) => products.category === 4)
+                              .map((product) => product).length
+                          }
+                        </div>
+                        <br></br>
+                        <div>
+                          The amount of ads in Car Products caregory:
+                          {
+                            products
+                              .filter((products) => products.category === 5)
+                              .map((product) => product).length
+                          }
+                        </div>
+                      </Card.Body>
+                    </Card>
+                    {/* <br></br> */}
+                    <div style={{ background: 'pink', color: 'pink' }}>- </div>
+                    {/* <br></br> */}
+                    <Card>
+                      <Card.Body>
+                        <div>
+                          The amount of ads in status pause:
+                          {
+                            products
+                              .filter((products) => products.pauseAd === true)
+                              .map((product) => product).length
+                          }
+                        </div>
+                        <br></br>
+                        <div>
+                          The amount of ads in the website:
+                          {
+                            products
+                              .filter((products) => products)
+                              .map((product) => product).length
+                          }
+                        </div>
+                      </Card.Body>
+                    </Card>
+
+                    <div style={{ background: 'pink', color: 'pink' }}>- </div>
+
+                    <Card>
+                      <Card.Body>
+                        <div>
+                          The amount of users in the website:
+                          {
+                            users.filter((users) => users).map((user) => user)
+                              .length
+                          }
+                        </div>
+                      </Card.Body>
+                    </Card>
                   </Col>
                   <Col style={{ textAlign: 'left' }}>
-                    <div>
-                      <Link
-                        to={`/product/${
-                          products.reduce((maxProd, currprod) =>
-                            currprod.like > maxProd.like ? currprod : maxProd
-                          )._id
-                        }`}
-                      >
-                        The ad with the most likes{' '}
-                      </Link>
-                    </div>
-                    <br></br>
-                    <div>
-                      The highest number of likes on an ad:
-                      {products.reduce(
-                        (max, product) =>
-                          product.like > max ? product.like : max,
-                        0
-                      )}
-                    </div>
+                    <Card>
+                      <Card.Body>
+                        <div>
+                          <Link
+                            to={`/product/${
+                              products.reduce((maxProd, currprod) =>
+                                currprod.like > maxProd.like
+                                  ? currprod
+                                  : maxProd
+                              )._id
+                            }`}
+                          >
+                            The ad with the most likes{' '}
+                          </Link>
+                        </div>
+                        <br></br>
+                        <div>
+                          The highest number of likes on an ad:
+                          {products.reduce(
+                            (max, product) =>
+                              product.like > max ? product.like : max,
+                            0
+                          )}
+                        </div>
+                      </Card.Body>
+                    </Card>
                   </Col>
                 </Row>
               </div>
