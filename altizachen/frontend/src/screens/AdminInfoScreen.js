@@ -417,6 +417,31 @@ function AdminInfoScreen() {
                         </div>
                       </Card.Body>
                     </Card>
+                    <br></br>
+
+                    <Card>
+                      <Card.Body>
+                        <div>
+                          <Link
+                            to={`/product/${
+                              products.reduce((max, product) =>
+                                product.reviews.length > max ? product : max
+                              )._id
+                            }`}
+                          >
+                            The ad with the most reviews{' '}
+                          </Link>
+                        </div>
+                        number of reviews:
+                        {products.reduce(
+                          (max, product) =>
+                            product.reviews.length > max
+                              ? product.reviews.length
+                              : max,
+                          0
+                        )}
+                      </Card.Body>
+                    </Card>
                   </Col>
                 </Row>
               </div>
