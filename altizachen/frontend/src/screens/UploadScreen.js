@@ -148,7 +148,7 @@ const UploadScreen = () => {
             <option value="2">Electrical products</option>
             <option value="3">Home producats</option>
             <option value="4">Garden producats</option>
-            <option value="5">Car products</option>
+            <option value="5">Design products</option>
             <option value="6">Animel products</option>
           </Form.Control>
         </Form.Group>
