@@ -89,7 +89,7 @@ function DesignScreen() {
                     class="btn btn-info"
                     style={{ color: 'white', width: '120px' }}
                   >
-                    <strong>Enter the ad</strong>
+                    <strong>Enter Ad</strong>
                   </Link>
                 </Card.Body>
               </Card>

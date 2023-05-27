@@ -5,7 +5,6 @@ import logger from 'use-reducer-logger';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 
-
 const reducer = (state, action) => {
   switch (action.type) {
     case 'FETCH_REQUEST':
@@ -20,7 +19,6 @@ const reducer = (state, action) => {
 };
 
 function HomeScreen() {
-  
   const [{ products }, dispatch] = useReducer(logger(reducer), {
     products: [],
     loading: true,
@@ -42,76 +40,79 @@ function HomeScreen() {
     fetchData();
   }, []);
 
-
-
-
   return (
-
-
     <div class="card text-center">
-          <div class="card-header">
-            <ul class="nav nav-tabs card-header-tabs">
-              <li class="nav-item">
-                  <a class="nav-link active" href="#">Active</a>
-              </li>
+      <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">
+              Active
+            </a>
+          </li>
 
-              <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
-              </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              Link
+            </a>
+          </li>
 
-              <li class="nav-item">
-                  <a class="nav-link disabled" href="#">Disabled</a>
-              </li>
-            </ul>
-        </div>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">
+              Disabled
+            </a>
+          </li>
+        </ul>
+      </div>
 
-        <div class="card-body">
-              
-                <div>
-                   <div className='products'>
-                {products.map((product) => (
-                  <Col
-                    className='align-items-stretch d-flex'
-                    key={product._id}
-                    sm={12}
-                    md={6}
-                    lg={4}
-                    xl={3}
-                    style={{padding:"20px"}}
+      <div class="card-body">
+        <div>
+          <div className="products">
+            {products.map((product) => (
+              <Col
+                className="align-items-stretch d-flex"
+                key={product._id}
+                sm={12}
+                md={6}
+                lg={4}
+                xl={3}
+                style={{ padding: '20px' }}
+              >
+                <Card className="w-100 h-80 my-3 p-3 rounded text-center">
+                  <Link
+                    style={{
+                      height: '100%',
+                    }}
+                    to={`/product/${product._id}`}
                   >
-                
-                    <Card className='w-100 h-80 my-3 p-3 rounded text-center'>
-                      <Link
-                        style={{
-                          height: '100%',
-                        }}
-                        to={`/product/${product._id}`}
-                      >
-                        <Card.Img 
-                          style={{
-                            height: '100%',
-                          }}
-                          src={product.image}
-                          alt={product.name}
-                          variant='top'
-                        />
-                      </Link>
-                      <Card.Body>
-                      <Card.Title style={{fontWeight: 'bold'}}>{product.name}</Card.Title>
-                        <Link to={`/product/${product._id}`} type="button" class="btn btn-info" style={{color:'white', width: '120px'}}>
-                            <strong>Enter the ad</strong>
-                        </Link>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                ))}
-              </div>
-            </div>
-
+                    <Card.Img
+                      style={{
+                        height: '100%',
+                      }}
+                      src={product.image}
+                      alt={product.name}
+                      variant="top"
+                    />
+                  </Link>
+                  <Card.Body>
+                    <Card.Title style={{ fontWeight: 'bold' }}>
+                      {product.name}
+                    </Card.Title>
+                    <Link
+                      to={`/product/${product._id}`}
+                      type="button"
+                      class="btn btn-info"
+                      style={{ color: 'white', width: '120px' }}
+                    >
+                      <strong>Enter Ad</strong>
+                    </Link>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
           </div>
+        </div>
+      </div>
     </div>
-
-    
   );
 }
 

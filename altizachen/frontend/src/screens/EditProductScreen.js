@@ -61,15 +61,17 @@ function EditProductScreen() {
     fetchData();
   }, [id]);
 
-
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-    const product1 = { name, category, description,  pauseAd};
+      const product1 = { name, category, description, pauseAd };
       product1.UploadTime = new Date().toLocaleDateString();
       product1.LastReqNumber = 2;
       product1._id = product._id;
-      const { data } = await axios.put(`/api/products/${product._id}`,product1);
+      const { data } = await axios.put(
+        `/api/products/${product._id}`,
+        product1
+      );
       navigate('/');
     } catch (error) {
       console.log('Error in edit of product');
@@ -106,100 +108,117 @@ function EditProductScreen() {
           </Col>
           <Col>
             <Form.Group controlId="name">
-             <ListGroup variant="flush">
-             <ListGroup.Item>
-              <Row>
-                <Form.Group className="mt-2" controlId="description">
-                  <Form.Label style={{fontWeight: 'bold'}}>Name:</Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Enter new Name"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                    ></Form.Control>
-                </Form.Group>
-              </Row>
-            </ListGroup.Item>
-            
-
-            
-              <ListGroup.Item>
-                <Row>
-                  <Col style={{fontWeight: 'bold'}}>Last date:</Col>
-                  <Col>{product.UploadTime}</Col>
-                </Row>
-              </ListGroup.Item>
-
-              <ListGroup.Item>
-                <Row>
-                  <Col style={{fontWeight: 'bold'}}>Count Comments:</Col>
-                  <Col>{product.CountComments}</Col>
-                </Row>
-              </ListGroup.Item>
-
-              <ListGroup.Item>
-                <Row>
-                  <Col style={{fontWeight: 'bold'}}>Number phone:</Col>
-                  <Col>{product.numberPhoneUser}</Col>
-                </Row>
-              </ListGroup.Item>
-
-              <ListGroup.Item>
-                <Row>
-                  <Form.Group className="mt-2" controlId="category">
-                    <Form.Label style={{fontWeight: 'bold'}}>Select New Category:</Form.Label>
-                    <Form.Control
-                      as="select"
-                      defaultValue="0"
-                      value={category}
-                      onChange={(e) => setcategory(e.target.value)}
-                    >
-                      <option value="0">Plase select option</option>
-                      <option value="1">Forniture</option>
-                      <option value="2">Electrical products</option>
-                      <option value="3">Home producats</option>
-                      <option value="4">Garden producats</option>
-                      <option value="5">Car products</option>
-                      <option value="6">Animel products</option>
-                    </Form.Control>
-                  </Form.Group>
-                </Row>
-                </ListGroup.Item>
-                
+              <ListGroup variant="flush">
                 <ListGroup.Item>
-                <Row>
-                  <Form.Group className="mt-2" controlId="description">
-                    <Form.Label style={{fontWeight: 'bold'}}>Description:</Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Enter New Description"
-                      value={description}
-                      onChange={(e) => setDescription(e.target.value)}
-                    ></Form.Control>
-                  </Form.Group>
-                </Row>
-              </ListGroup.Item>
-
-              <ListGroup.Item>
-                <Row>
-                  <Form.Group className="mt-2" controlId="category">
-                    <Form.Label>{product.pauseAd  ?  <body style={{color: '#FF0033', fontWeight: 'bold' }}>The ad is not displayed on the site </body>
-                                                  :  <body style={{color: '#33CC66', fontWeight: 'bold' }}>The ad is displayed on the site</body> }
-                    <br></br>Pause Ad:</Form.Label>
-                    <Form.Control
-                      as="select"
-                      value={pauseAd}
-                      onChange={(e) => setPauseAd(e.target.value)}>
-                      <option value="0">Plase select option</option>
-                      <option value={false}>Display</option>
-                      <option value={true}>Not Display</option>
-                    </Form.Control>
-                  </Form.Group>
-                </Row>
+                  <Row>
+                    <Form.Group className="mt-2" controlId="description">
+                      <Form.Label style={{ fontWeight: 'bold' }}>
+                        Name:
+                      </Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Enter new Name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                      ></Form.Control>
+                    </Form.Group>
+                  </Row>
                 </ListGroup.Item>
-                </ListGroup>
-              </Form.Group>
-            
+
+                <ListGroup.Item>
+                  <Row>
+                    <Col style={{ fontWeight: 'bold' }}>Last date:</Col>
+                    <Col>{product.UploadTime}</Col>
+                  </Row>
+                </ListGroup.Item>
+
+                <ListGroup.Item>
+                  <Row>
+                    <Col style={{ fontWeight: 'bold' }}>Count Comments:</Col>
+                    <Col>{product.CountComments}</Col>
+                  </Row>
+                </ListGroup.Item>
+
+                <ListGroup.Item>
+                  <Row>
+                    <Col style={{ fontWeight: 'bold' }}>Number phone:</Col>
+                    <Col>{product.numberPhoneUser}</Col>
+                  </Row>
+                </ListGroup.Item>
+
+                <ListGroup.Item>
+                  <Row>
+                    <Form.Group className="mt-2" controlId="category">
+                      <Form.Label style={{ fontWeight: 'bold' }}>
+                        Select New Category:
+                      </Form.Label>
+                      <Form.Control
+                        as="select"
+                        defaultValue="0"
+                        value={category}
+                        onChange={(e) => setcategory(e.target.value)}
+                      >
+                        <option value="0">Plase select option</option>
+                        <option value="1">Forniture</option>
+                        <option value="2">Electrical products</option>
+                        <option value="3">Home producats</option>
+                        <option value="4">Garden producats</option>
+                        <option value="5">Design products</option>
+                        <option value="6">Animel products</option>
+                      </Form.Control>
+                    </Form.Group>
+                  </Row>
+                </ListGroup.Item>
+
+                <ListGroup.Item>
+                  <Row>
+                    <Form.Group className="mt-2" controlId="description">
+                      <Form.Label style={{ fontWeight: 'bold' }}>
+                        Description:
+                      </Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Enter New Description"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                      ></Form.Control>
+                    </Form.Group>
+                  </Row>
+                </ListGroup.Item>
+
+                <ListGroup.Item>
+                  <Row>
+                    <Form.Group className="mt-2" controlId="category">
+                      <Form.Label>
+                        {product.pauseAd ? (
+                          <body
+                            style={{ color: '#FF0033', fontWeight: 'bold' }}
+                          >
+                            The ad is not displayed on the site{' '}
+                          </body>
+                        ) : (
+                          <body
+                            style={{ color: '#33CC66', fontWeight: 'bold' }}
+                          >
+                            The ad is displayed on the site
+                          </body>
+                        )}
+                        <br></br>Pause Ad:
+                      </Form.Label>
+                      <Form.Control
+                        as="select"
+                        value={pauseAd}
+                        onChange={(e) => setPauseAd(e.target.value)}
+                      >
+                        <option value="0">Plase select option</option>
+                        <option value={false}>Display</option>
+                        <option value={true}>Not Display</option>
+                      </Form.Control>
+                    </Form.Group>
+                  </Row>
+                </ListGroup.Item>
+              </ListGroup>
+            </Form.Group>
 
             <Button className="mt-3" type="submit" variant="success">
               Update Product
