@@ -366,6 +366,7 @@ function ProductScreen() {
           </React.Fragment>
         </Col>
       </Row>
+      <br></br>
 
       {/* Google Maps  */}
       {openMap && origin && (
