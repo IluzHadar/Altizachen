@@ -18,7 +18,7 @@ const reducer = (state, action) => {
   }
 };
 
-function CarsScreen() {
+function DesignScreen() {
   const [{ products }, dispatch] = useReducer(logger(reducer), {
     products: [],
     loading: true,
@@ -42,7 +42,9 @@ function CarsScreen() {
 
   return (
     <div class="card-body">
-      <h1 style={{ fontWeight: 'bold', textAlign: 'center' }}>Car Products </h1>
+      <h1 style={{ fontWeight: 'bold', textAlign: 'center' }}>
+        Design Products{' '}
+      </h1>
 
       <div className="products">
         {products
@@ -98,4 +100,4 @@ function CarsScreen() {
   );
 }
 
-export default CarsScreen;
+export default DesignScreen;

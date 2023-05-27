@@ -32,7 +32,6 @@ function App() {
   };
 
   return (
-    
     <BrowserRouter>
       <div className="a-flex flex-column site-container">
         <header>
@@ -60,13 +59,17 @@ function App() {
                           fontfamily: 'Ariel',
                           color: 'blue',
                         }}
+                      ></Link>
+                      <div
+                        style={{
+                          position: 'absolute',
+                          top: '120px',
+                          left: '300px',
+                        }}
                       >
-                      </Link>
-                      <div style={{position: 'absolute', top: '120px', left: '300px'}}>
-                        <span> Hello, </span> 
-                        <span style={{ fontWeight: 'bold'}}>
-                            {user.name}</span>
-                        </div>
+                        <span> Hello, </span>
+                        <span style={{ fontWeight: 'bold' }}>{user.name}</span>
+                      </div>
                       <Link
                         to="/upload"
                         className="nav-link"
@@ -95,32 +98,30 @@ function App() {
                       >
                         | Personal Info
                       </Link>
+                    </Nav>
+                  </Container>
+                )}
 
-                      </Nav>
-                      </Container>
-                      ) 
-                }
-
-                {
-                  user && (user.isAdmin &&  (
-                    <Container>
-                      <Nav>
-                        <Link
-                          to="/AdminInfoScreen"
-                          className="nav-link"
-                          style={{
-                            position: 'absolute',
-                            top: '150px',
-                            left: '700px',
-                            fontWeight: 'bold',
-                            fontSize: '1.2rem',
-                            fontfamily: 'Ariel',
-                          }}>| Admin management
-                        </Link>
-                      </Nav>
-                   </Container>
-                  ))
-                }
+                {user && user.isAdmin && (
+                  <Container>
+                    <Nav>
+                      <Link
+                        to="/AdminInfoScreen"
+                        className="nav-link"
+                        style={{
+                          position: 'absolute',
+                          top: '150px',
+                          left: '700px',
+                          fontWeight: 'bold',
+                          fontSize: '1.2rem',
+                          fontfamily: 'Ariel',
+                        }}
+                      >
+                        | Admin management
+                      </Link>
+                    </Nav>
+                  </Container>
+                )}
 
                 <Nav
                   className="ml-auto"
@@ -130,25 +131,7 @@ function App() {
                     fontSize: '1.2rem',
                   }}
                 >
-                  {user && !user.isAdmin &&(
-                    <NavDropdown
-                      style={{
-                        position: 'absolute',
-                        top: '145px',
-                        right: '150px',
-                        fontWeight: 'bold',
-                        fontSize: '2.0rem',
-                      }}
-                      title={'≣'}
-                      id="username"
-                    >
-                      <NavDropdown.Item onClick={logoutHandler} >
-                        Log out
-                      </NavDropdown.Item>
-                    </NavDropdown>)                                        
-                    }
-
-                  {user && user.isAdmin &&(
+                  {user && !user.isAdmin && (
                     <NavDropdown
                       style={{
                         position: 'absolute',
@@ -163,17 +146,34 @@ function App() {
                       <NavDropdown.Item onClick={logoutHandler}>
                         Log out
                       </NavDropdown.Item>
-                      <NavDropdown.Item >
-                        <Link to="/login/CreateUserScreen"
-                              style={{color:'black',  textDecoration: 'none' }}
+                    </NavDropdown>
+                  )}
+
+                  {user && user.isAdmin && (
+                    <NavDropdown
+                      style={{
+                        position: 'absolute',
+                        top: '145px',
+                        right: '150px',
+                        fontWeight: 'bold',
+                        fontSize: '2.0rem',
+                      }}
+                      title={'≣'}
+                      id="username"
+                    >
+                      <NavDropdown.Item onClick={logoutHandler}>
+                        Log out
+                      </NavDropdown.Item>
+                      <NavDropdown.Item>
+                        <Link
+                          to="/login/CreateUserScreen"
+                          style={{ color: 'black', textDecoration: 'none' }}
                         >
-                        Create a new manager
+                          Create a new manager
                         </Link>
                       </NavDropdown.Item>
-                    </NavDropdown>)                                        
-                    }
-
-
+                    </NavDropdown>
+                  )}
 
                   {!user && (
                     <LinkContainer
@@ -212,7 +212,7 @@ function App() {
                       aria-current="true"
                     >
                       <i class="fas fa-tachometer-alt fa-fw me-3"></i>
-                      <span>Main page</span>{' '} {console.log(user)}
+                      <span>Main page</span> {console.log(user)}
                     </a>
 
                     <a
@@ -254,7 +254,7 @@ function App() {
                       class="list-group-item list-group-item-action py-2 ripple"
                     >
                       <i class="fas fa-chart-bar fa-fw me-3"></i>
-                      <span>Car products</span>
+                      <span>Design products</span>
                     </a>
 
                     <a
@@ -299,7 +299,10 @@ function App() {
                   <Route path="/CarsScreen" element={<CarsScreen />} />
                   <Route path="/AnimelsScreen" element={<AnimelsScreen />} />
                   <Route path="/" element={<MainScreen />} />
-                  <Route path="/AdminInfoScreen" element={<AdminInfoScreen />} />
+                  <Route
+                    path="/AdminInfoScreen"
+                    element={<AdminInfoScreen />}
+                  />
                 </Routes>
               </Container>
             </div>

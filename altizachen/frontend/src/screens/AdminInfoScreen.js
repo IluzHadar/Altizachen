@@ -288,7 +288,7 @@ function AdminInfoScreen() {
                         </div>
                         <br></br>
                         <div>
-                          The amount of ads in Car Products caregory:
+                          The amount of ads in Design Products caregory:
                           {
                             products
                               .filter((products) => products.category === 5)
@@ -342,7 +342,7 @@ function AdminInfoScreen() {
                         </div>
                         <br></br>
                         <div>
-                          The amount of ads in Car Products caregory:
+                          The amount of ads in Design Products caregory:
                           {
                             products
                               .filter((products) => products.category === 5)
