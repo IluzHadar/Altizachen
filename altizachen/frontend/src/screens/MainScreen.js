@@ -61,6 +61,9 @@ function MainScreen() {
     // Use the latitude and longitude values as needed
   }
 
+  //hadar:
+  function successChangeAdToPauseStatusAfterXdaysCallback(position) {}
+
   function errorCallback(error) {
     console.error('Error getting location:', error.message);
   }
@@ -122,11 +125,11 @@ function MainScreen() {
         <ul class="nav nav-tabs card-header-tabs">
           <li class="nav-item">
             <a class="nav-link active" href="#">
-              Active
+              All Active Ads
             </a>
           </li>
 
-          <li class="nav-item">
+          {/* <li class="nav-item">
             <a class="nav-link" href="#">
               Link
             </a>
@@ -136,10 +139,13 @@ function MainScreen() {
             <a class="nav-link" href="#">
               Disabled
             </a>
-          </li>
+          </li> */}
         </ul>
       </div>
-
+      <h7>
+        --- All ads are sorted by distance from your current location, displayed
+        from closest to farthest location. ---
+      </h7>
       <div class="card-body">
         <div id="carouselExample" class="carousel slide">
           <div class="carousel-inner">
