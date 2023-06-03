@@ -35,6 +35,12 @@ const reducer = (state, action) => {
 
     case 'DELETE_RESET':
       return { ...state, loadingDelete: false, successDelete: false };
+    case 'FETCH_REQUEST2':
+      return { ...state, loading: true };
+    case 'FETCH_SUCCESS2':
+      return { ...state, users: action.payload, loading: false };
+    case 'FETCH_FAIL2':
+      return { ...state, loading: false, erroe: action.payload };
     default:
       return state;
   }
@@ -44,6 +50,12 @@ function PersonalInfoScreen() {
   const navigate = useNavigate();
   const [{ products }, dispatch] = useReducer(logger(reducer), {
     products: [],
+    loading: true,
+    error: '',
+  });
+
+  const [{ users }, dispatch2] = useReducer(logger(reducer), {
+    users: [],
     loading: true,
     error: '',
   });
@@ -59,6 +71,19 @@ function PersonalInfoScreen() {
         dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
       } catch (err) {
         dispatch({ type: 'FETCH_FAIL', payload: err.message });
+      }
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      dispatch2({ type: 'FETCH_REQUEST2' });
+      try {
+        const result = await axios.get('/api/users');
+        dispatch2({ type: 'FETCH_SUCCESS2', payload: result.data });
+      } catch (err) {
+        dispatch2({ type: 'FETCH_FAIL2', payload: err.message });
       }
     };
     fetchData();
@@ -109,7 +134,9 @@ function PersonalInfoScreen() {
               </div>
               <div>
                 <span style={{ fontWeight: 'bold' }}>Rating : </span>
-                {user.userRating}
+                {users
+                  .filter((users) => users.numberPhone === user.numberPhone)
+                  .map((user) => user.userRating)}
               </div>
             </h7>
           </Card.Body>
