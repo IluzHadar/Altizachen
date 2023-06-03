@@ -304,13 +304,13 @@ function ProductScreen() {
             </ListGroup.Item>
             <ListGroup.Item>
               <Row>
-                <Col style={{ fontWeight: 'bold' }}>Number phone:</Col>
+                <Col style={{ fontWeight: 'bold' }}>Owner`s phone:</Col>
                 <Col>{product.numberPhoneUser}</Col>
               </Row>
             </ListGroup.Item>
             <ListGroup.Item>
               <Row>
-                <Col style={{ fontWeight: 'bold' }}>Owner name:</Col>
+                <Col style={{ fontWeight: 'bold' }}>Owner`s name:</Col>
                 <Col>{product.OwnerName}</Col>
               </Row>
             </ListGroup.Item>
@@ -329,7 +329,7 @@ function ProductScreen() {
 
             <ListGroup.Item>
               <Row>
-                <Col style={{ fontWeight: 'bold' }}>Amount likes:</Col>
+                <Col style={{ fontWeight: 'bold' }}>Amount of likes:</Col>
                 <Col>{product.like}</Col>
               </Row>
             </ListGroup.Item>
@@ -435,19 +435,19 @@ function ProductScreen() {
                                 >
                                   <div>
                                     <span style={{ fontWeight: 'bold' }}>
-                                      Name:{' '}
+                                      Review By:{' '}
                                     </span>
                                     {reviews.CommentOwner}
                                   </div>
                                   <div>
                                     <span style={{ fontWeight: 'bold' }}>
-                                      UploadDate:{' '}
+                                      Date:{' '}
                                     </span>
                                     {reviews.UploadDate}
                                   </div>
                                   <div>
                                     <span style={{ fontWeight: 'bold' }}>
-                                      Body:{' '}
+                                      Review:{' '}
                                     </span>
                                     {reviews.body}
                                   </div>
@@ -471,7 +471,7 @@ function ProductScreen() {
                                 display: 'inline',
                               }}
                             >
-                              New comment from:{' '}
+                              Post new review from:{' '}
                             </div>
                             <div
                               style={{ fontWeight: 'bold', display: 'inline' }}
@@ -486,7 +486,7 @@ function ProductScreen() {
                           controlId="exampleForm.ControlTextarea1"
                         >
                           <Form.Label style={{ fontWeight: 'bold' }}>
-                            Body:{' '}
+                            comment:{' '}
                           </Form.Label>
                           <Form.Control
                             placeholder="Write a new comment..."
