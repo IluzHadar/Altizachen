@@ -113,7 +113,7 @@ function EditProductScreen() {
                   <Row>
                     <Form.Group className="mt-2" controlId="description">
                       <Form.Label style={{ fontWeight: 'bold' }}>
-                        Name:
+                        Proundect`s name:
                       </Form.Label>
                       <Form.Control
                         type="text"
@@ -134,14 +134,14 @@ function EditProductScreen() {
 
                 <ListGroup.Item>
                   <Row>
-                    <Col style={{ fontWeight: 'bold' }}>Count Comments:</Col>
+                    <Col style={{ fontWeight: 'bold' }}>Count comments:</Col>
                     <Col>{product.CountComments}</Col>
                   </Row>
                 </ListGroup.Item>
 
                 <ListGroup.Item>
                   <Row>
-                    <Col style={{ fontWeight: 'bold' }}>Number phone:</Col>
+                    <Col style={{ fontWeight: 'bold' }}>Owner`s phone:</Col>
                     <Col>{product.numberPhoneUser}</Col>
                   </Row>
                 </ListGroup.Item>

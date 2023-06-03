@@ -20,12 +20,13 @@ const CommentsSchema = new mongoose.Schema(
   {
     timestamps: true,
   }
-)
+);
 
 const productSchema = new mongoose.Schema(
   {
     OwnerAdID: { type: String },
     OwnerName: { type: String },
+    OwnerRating: { type: Number },
     name: { type: String, unique: true },
     image: { type: String },
     description: { type: String },
@@ -35,14 +36,14 @@ const productSchema = new mongoose.Schema(
     numberPhoneUser: { type: String },
     CountComments: { type: Number },
     reviews: [CommentsSchema],
-    pauseAd: { type: Boolean},
+    pauseAd: { type: Boolean },
     like: { type: Number },
-    LastReqNumber: { type: Number},
+    LastReqNumber: { type: Number },
   },
   {
     timestamps: true,
   }
-)
+);
 
-const Product = mongoose.model('Product', productSchema)
-export default Product
+const Product = mongoose.model('Product', productSchema);
+export default Product;

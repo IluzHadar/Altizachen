@@ -87,6 +87,7 @@ const UploadScreen = () => {
       product.reviews = [];
       product.like = 0;
       product.LastReqNumber = 0;
+      product.OwnerRating = 0;
 
       product.OwnerAdID = user._id;
       const { data } = await axios.post(`/api/products`, { product });

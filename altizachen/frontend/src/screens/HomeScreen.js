@@ -91,7 +91,7 @@ function HomeScreen() {
                       class="btn btn-info"
                       style={{ color: 'white', width: '120px' }}
                     >
-                      <strong>Enterקקקק Ad</strong>
+                      <strong>Enter Ad</strong>
                     </Link>
                   </Card.Body>
                 </Card>

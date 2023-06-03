@@ -64,7 +64,12 @@ const reducer = (state, action) => {
       return { ...state, loadingDelete: false, successDelete: false };
 
     //////////////////////////////////////////////////////////////
-
+    case 'FETCH_REQUEST2':
+      return { ...state, loading: true };
+    case 'FETCH_SUCCESS2':
+      return { ...state, users: action.payload, loading: false };
+    case 'FETCH_FAIL2':
+      return { ...state, loading: false, erroe: action.payload };
     default:
       return state;
   }
@@ -100,6 +105,12 @@ function ProductScreen() {
 
   const [{ products }, dispatch1] = useReducer(logger(reducer), {
     products: [],
+    loading: true,
+    error: '',
+  });
+
+  const [{ users }, dispatch2] = useReducer(logger(reducer), {
+    users: [],
     loading: true,
     error: '',
   });
@@ -160,6 +171,19 @@ function ProductScreen() {
     };
     fetchData();
   }, [id]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      dispatch2({ type: 'FETCH_REQUEST2' });
+      try {
+        const result = await axios.get('/api/users');
+        dispatch2({ type: 'FETCH_SUCCESS2', payload: result.data });
+      } catch (err) {
+        dispatch2({ type: 'FETCH_FAIL2', payload: err.message });
+      }
+    };
+    fetchData();
+  }, []);
   //-------------------------------------------------------------------End
 
   const submitHandlerLike = async (e) => {
@@ -314,6 +338,20 @@ function ProductScreen() {
                 <Col>{product.OwnerName}</Col>
               </Row>
             </ListGroup.Item>
+
+            <ListGroup.Item>
+              <Row>
+                <Col style={{ fontWeight: 'bold' }}>Owner`s rating: </Col>
+                <Col>
+                  {users
+                    .filter(
+                      (users) => users.numberPhone === product.numberPhoneUser
+                    )
+                    .map((user) => user.userRating)}
+                </Col>
+              </Row>
+            </ListGroup.Item>
+
             <ListGroup.Item>
               <Row>
                 <Col style={{ fontWeight: 'bold' }}>Location:</Col>

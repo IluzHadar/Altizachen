@@ -107,6 +107,10 @@ function PersonalInfoScreen() {
                 <span style={{ fontWeight: 'bold' }}>Email : </span>
                 {user.email}
               </div>
+              <div>
+                <span style={{ fontWeight: 'bold' }}>Rating : </span>
+                {user.userRating}
+              </div>
             </h7>
           </Card.Body>
         </Card>
