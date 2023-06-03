@@ -162,7 +162,7 @@ function AdminInfoScreen() {
                     textDecoration: 'underline',
                   }}
                 >
-                  List of Ads in the website{' '}
+                  List of ads in website{' '}
                 </h2>
                 <div className="products">
                   {user &&

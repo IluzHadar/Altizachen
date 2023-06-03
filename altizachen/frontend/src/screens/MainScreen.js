@@ -61,9 +61,6 @@ function MainScreen() {
     // Use the latitude and longitude values as needed
   }
 
-  //hadar:
-  function successChangeAdToPauseStatusAfterXdaysCallback(position) {}
-
   function errorCallback(error) {
     console.error('Error getting location:', error.message);
   }
@@ -77,7 +74,6 @@ function MainScreen() {
       } catch (err) {
         dispatch({ type: 'FETCH_FAIL', payload: err.message });
       }
-
       //setProducts(result.data);
     };
     fetchData();
@@ -128,18 +124,6 @@ function MainScreen() {
               All Active Ads
             </a>
           </li>
-
-          {/* <li class="nav-item">
-            <a class="nav-link" href="#">
-              Link
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              Disabled
-            </a>
-          </li> */}
         </ul>
       </div>
       <h7>

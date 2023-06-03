@@ -127,7 +127,7 @@ function App() {
                             fontfamily: 'Ariel',
                           }}
                         >
-                          | Admin management
+                          | Admin Management
                         </Link>
                       </Nav>
                     </Container>
@@ -225,7 +225,10 @@ function App() {
                         aria-current="true"
                       >
                         <i class="fas fa-tachometer-alt fa-fw me-3"></i>
-                        <span>Main page</span> {console.log(user)}
+                        <span>
+                          <strong>Home page</strong>
+                        </span>{' '}
+                        {console.log(user)}
                       </a>
 
                       <a

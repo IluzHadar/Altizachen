@@ -49,18 +49,6 @@ function HomeScreen() {
               Active
             </a>
           </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              Link
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">
-              Disabled
-            </a>
-          </li>
         </ul>
       </div>
 
@@ -103,7 +91,7 @@ function HomeScreen() {
                       class="btn btn-info"
                       style={{ color: 'white', width: '120px' }}
                     >
-                      <strong>Enter Ad</strong>
+                      <strong>Enterקקקק Ad</strong>
                     </Link>
                   </Card.Body>
                 </Card>
