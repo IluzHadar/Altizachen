@@ -1,9 +1,10 @@
-import { useEffect, useReducer, useState } from 'react';
+import { useEffect, useContext, useReducer, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import logger from 'use-reducer-logger';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
+import { Store } from '../Store';
 
 import {
   useJsApiLoader,
@@ -21,14 +22,28 @@ const reducer = (state, action) => {
       return { ...state, products: action.payload, loading: false };
     case 'FETCH_FAIL':
       return { ...state, loading: false, erroe: action.payload };
+    case 'FETCH_REQUEST2':
+      return { ...state, loading: true };
+    case 'FETCH_SUCCESS2':
+      return { ...state, users: action.payload, loading: false };
+    case 'FETCH_FAIL2':
+      return { ...state, loading: false, erroe: action.payload };
     default:
       return state;
   }
 };
 
 function MainScreen() {
+  const { state } = useContext(Store);
+  const { user } = state;
   const [{ products }, dispatch] = useReducer(logger(reducer), {
     products: [],
+    loading: true,
+    error: '',
+  });
+
+  const [{ users }, dispatch2] = useReducer(logger(reducer), {
+    users: [],
     loading: true,
     error: '',
   });
@@ -80,6 +95,19 @@ function MainScreen() {
   }, []);
 
   useEffect(() => {
+    const fetchData = async () => {
+      dispatch2({ type: 'FETCH_REQUEST2' });
+      try {
+        const result = await axios.get('/api/users');
+        dispatch2({ type: 'FETCH_SUCCESS2', payload: result.data });
+      } catch (err) {
+        dispatch2({ type: 'FETCH_FAIL2', payload: err.message });
+      }
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
     const calculateRoutes = async () => {
       const google = window.google;
       const directionsService = new google.maps.DirectionsService();
@@ -123,6 +151,16 @@ function MainScreen() {
             <a class="nav-link active" href="#">
               All Active Ads
             </a>
+          </li>
+          <div>
+            <br></br>
+          </div>
+          <li class="nav-item" style={{ padding: ' 0 0 0 10px' }}>
+            {user && user.userRating > 10 /*60%*/ && (
+              <a class="nav-link active" href="#">
+                VIP ads
+              </a>
+            )}
           </li>
         </ul>
       </div>
