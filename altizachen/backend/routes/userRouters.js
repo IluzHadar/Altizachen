@@ -67,6 +67,7 @@ userRouter.put('/:id', async (req, res) => {
   const user2 = await User.findOne({ numberPhone: req.body.numberPhone });
   user2.likeInAds = req.body.likeInAds;
   const updateuser2 = await user2.save();
+  console.log(likeInAds)
   res.send({
     message: 'User updated successfully',
     user1: updateuser1,
@@ -74,4 +75,14 @@ userRouter.put('/:id', async (req, res) => {
   });
 });
 
-export default userRouter;
+// add a like to user
+userRouter.patch('/like/:id', async (req, res) => {
+  const user = await User.findById(req.params.id)
+  console.log('hello')
+
+  user.likeInAds.push(req.body.likeInAds)
+  const updateUser = await user.save()
+  res.send({ message: 'User Updated', user: updateUser })
+})
+
+export default userRouter

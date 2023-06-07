@@ -45,6 +45,14 @@ function reducer(state, action) {
       return { ...state, user: loggedUser };
     }
 
+    case 'UPDATE_USER': {
+      console.log('here')
+      const updatedUser = action.payload
+      console.log(updatedUser)
+      localStorage.setItem('user', JSON.stringify(updatedUser))
+      return { ...state, user: updatedUser }
+    }
+
     case 'LOGOUT': {
       localStorage.removeItem('user');
       return { ...state, user: null };

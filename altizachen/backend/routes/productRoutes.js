@@ -5,12 +5,36 @@ const productRouter = express.Router()
 
 productRouter.get('/', async (req, res) => {
   const products = await Product.find()
+
+  // Add a check that if 3 days pass since the moment the ad was
+  //uploaded/edited then the ad changes to PAUSE status.
+
+  // make all ads pauseAd true
+  products.forEach((product) => {
+    if (!product.pauseAd) {
+      // Only check if the ad is not already paused
+      const currentDate = new Date()
+      const productUpdatedAt = new Date(product.updatedAt)
+      const diffInDays = Math.floor(
+        (currentDate - productUpdatedAt) / (1000 * 60 * 60 * 24)
+      )
+
+      if (diffInDays >= 3) {
+        product.pauseAd = true
+
+        // save the product into the DB
+        product.save()
+      }
+    }
+  })
+
   res.send(products)
 })
 
 productRouter.get('/:id', async (req, res) => {
   const product = await Product.findById(req.params.id)
   console.log(product)
+
   if (product) {
     res.send(product)
   } else {

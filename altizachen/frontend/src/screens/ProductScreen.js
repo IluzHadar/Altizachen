@@ -77,7 +77,7 @@ const reducer = (state, action) => {
 
 function ProductScreen() {
   const navigate = useNavigate();
-  const { state } = useContext(Store);
+  const { state, dispatch: ctxDispatch } = useContext(Store);
   const { user } = state;
   const [body, setBody] = useState('');
   const params = useParams();
@@ -94,6 +94,7 @@ function ProductScreen() {
   const [duration, setDuration] = useState('');
   const [distance, setDistance] = useState('');
   const [directionResponse, setDirectionResponse] = useState(null);
+  const [disabled, setDisabled] = useState(false);
 
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
@@ -189,38 +190,19 @@ function ProductScreen() {
   const submitHandlerLike = async (e) => {
     e.preventDefault();
     try {
-      product.LastReqNumber = 1;
-      product.like = product.like + 1;
-      console.log(product);
-      const { data2 } = await axios.put(
-        `/api/products/${product._id}`,
-        product
-      );
+      product.LastReqNumber = 1
+      product.like = product.like + 1
+      console.log(product)
+
+      const { data2 } = await axios.put(`/api/products/${product._id}`, product)
+
       if (user) {
-        user._id = product.OwnerAdID;
-        //user.sumOfLike = user.sumOfLike + 1;  add in put
-        user.userAdCounter = products
-          .filter(
-            (products) => products.numberPhoneUser === product.numberPhoneUser
-          )
-          .map((product) => product).length;
-        const likesProductsByUserSchema = {};
-        likesProductsByUserSchema.product_id = product._id;
-        console.log('product._id');
-        console.log(product._id);
-        console.log('user');
-        console.log(user);
-        console.log(user.likeInAds);
-
-        user.likeInAds.push(product._id);
-
-        const { data3 } = await axios.put(
-          `/api/users/${product.OwnerAdID}`,
-          user
-        );
+        const data3 = await axios.patch(`/api/users/like/${user._id}`, {
+          likeInAds: product._id,
+        })
+        console.log(data3)
+        ctxDispatch({ type: 'UPDATE_USER', payload: data3.data.user })
       }
-
-      navigate(0);
     } catch (error) {
       console.log('Error in insert like into product');
       console.log(error);
@@ -254,13 +236,8 @@ function ProductScreen() {
         comment.PhoneOwner = user.numberPhone;
         comment.CommentOwner = user.name;
       }
-      product.reviews.push(comment);
-      const { data1 } = await axios.put(
-        `/api/products/${product._id}`,
-        product
-      );
-
-      navigate(0);
+      product.reviews.push(comment)
+      const { data1 } = await axios.put(`/api/products/${product._id}`, product)
     } catch (error) {
       console.log('The error: ......................................');
       console.log(error);
@@ -268,27 +245,34 @@ function ProductScreen() {
     }
   };
 
-  if (!isLoaded) return <div>Loading...</div>;
+  // check if the product is in the user like list
+
+  if (!isLoaded) return <div>Loading...</div>
+  if (user && product) {
+    //  output id
+    console.log(user.likeInAds, product._id)
+
+    if (user.likeInAds.includes(product._id)) {
+      console.log('yes')
+    }
+  }
 
   async function calculateRouter() {
     const google = window.google;
     const directionsService = new google.maps.DirectionsService();
 
-    console.log('here', origin, product.location);
     if (!origin) return;
     const result = await directionsService.route({
       origin: origin,
       destination: product.location,
       travelMode: 'DRIVING',
     });
-    console.log(result);
 
     setDirectionResponse(result);
     setDistance(result.routes[0].legs[0].distance.text);
     setDuration(result.routes[0].legs[0].duration.text);
   }
 
-  console.log(directionResponse);
   return loading ? (
     <div>Loding...</div>
   ) : error ? (
@@ -381,6 +365,8 @@ function ProductScreen() {
                   type="submit"
                   variant="success"
                   style={{ width: '100px' }}
+                  // disable if user already like this product
+                  disabled={user.likeInAds.includes(product._id) ? true : false}
                 >
                   Like
                 </Button>
