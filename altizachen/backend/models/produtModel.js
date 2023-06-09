@@ -1,20 +1,12 @@
 import mongoose from 'mongoose';
 
-//Author: Matan
-//Description:    numberPhoneUser: help us link ads to user that create same ads
-//Comments:
-//
-//
-//
-
 const CommentsSchema = new mongoose.Schema(
   {
-    //IdOfProduct: { type: String, required: true},
     commentID: { type: Number, required: true },
     body: { type: String, required: true },
     UploadDate: { type: String, required: true },
-    EmailOwner: { type: String, required: true }, // ?
-    PhoneOwner: { type: String, required: true }, // ?
+    EmailOwner: { type: String, required: true },
+    PhoneOwner: { type: String, required: true },
     CommentOwner: { type: String, required: true },
   },
   {
