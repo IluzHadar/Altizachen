@@ -190,18 +190,21 @@ function ProductScreen() {
   const submitHandlerLike = async (e) => {
     e.preventDefault();
     try {
-      product.LastReqNumber = 1
-      product.like = product.like + 1
-      console.log(product)
+      product.LastReqNumber = 1;
+      product.like = product.like + 1;
+      console.log(product);
 
-      const { data2 } = await axios.put(`/api/products/${product._id}`, product)
+      const { data2 } = await axios.put(
+        `/api/products/${product._id}`,
+        product
+      );
 
       if (user) {
         const data3 = await axios.patch(`/api/users/like/${user._id}`, {
           likeInAds: product._id,
-        })
-        console.log(data3)
-        ctxDispatch({ type: 'UPDATE_USER', payload: data3.data.user })
+        });
+        console.log(data3);
+        ctxDispatch({ type: 'UPDATE_USER', payload: data3.data.user });
       }
     } catch (error) {
       console.log('Error in insert like into product');
@@ -236,8 +239,11 @@ function ProductScreen() {
         comment.PhoneOwner = user.numberPhone;
         comment.CommentOwner = user.name;
       }
-      product.reviews.push(comment)
-      const { data1 } = await axios.put(`/api/products/${product._id}`, product)
+      product.reviews.push(comment);
+      const { data1 } = await axios.put(
+        `/api/products/${product._id}`,
+        product
+      );
     } catch (error) {
       console.log('The error: ......................................');
       console.log(error);
@@ -247,13 +253,13 @@ function ProductScreen() {
 
   // check if the product is in the user like list
 
-  if (!isLoaded) return <div>Loading...</div>
+  if (!isLoaded) return <div>Loading...</div>;
   if (user && product) {
     //  output id
-    console.log(user.likeInAds, product._id)
+    console.log(user.likeInAds, product._id);
 
     if (user.likeInAds.includes(product._id)) {
-      console.log('yes')
+      console.log('yes');
     }
   }
 
@@ -376,7 +382,7 @@ function ProductScreen() {
 
           {/* Opening Google Maps  */}
           <React.Fragment>
-            {user && (
+            {
               <Button
                 onClick={openGoogleMapHandler}
                 className="mt-2"
@@ -386,7 +392,7 @@ function ProductScreen() {
               >
                 View on map
               </Button>
-            )}
+            }
           </React.Fragment>
         </Col>
       </Row>
@@ -437,7 +443,7 @@ function ProductScreen() {
       <Row>
         <React.Fragment>
           {errorMsg && <MessageBox variant="danger">{errorMsg}</MessageBox>}
-          {user && (
+          {
             <Form onSubmit={submitHandler}>
               <div class="container">
                 <div class="row">
@@ -483,59 +489,64 @@ function ProductScreen() {
                       </Modal.Body>
                     </Card>
                   </div>
-                  <div class="col">
-                    <Card style={{ width: '30rem', padding: '15px' }}>
-                      <Form>
-                        <Form.Group className="mt-2">
-                          <Col>
-                            <div
-                              style={{
-                                fontWeight: 'bold',
-                                textDecoration: 'underline',
-                                display: 'inline',
-                              }}
-                            >
-                              Post new review from:{' '}
-                            </div>
-                            <div
-                              style={{ fontWeight: 'bold', display: 'inline' }}
-                            >
-                              {' '}
-                              {user.name}
-                            </div>
-                          </Col>
-                        </Form.Group>
-                        <Form.Group
-                          className="mt-2"
-                          controlId="exampleForm.ControlTextarea1"
-                        >
-                          <Form.Label style={{ fontWeight: 'bold' }}>
-                            comment:{' '}
-                          </Form.Label>
-                          <Form.Control
-                            placeholder="Write a new comment..."
-                            type="text"
-                            value={body}
-                            onChange={(e) => setBody(e.target.value)}
-                            rows={3}
-                          />
-                        </Form.Group>
-                      </Form>
+                  {user && (
+                    <div class="col">
+                      <Card style={{ width: '30rem', padding: '15px' }}>
+                        <Form>
+                          <Form.Group className="mt-2">
+                            <Col>
+                              <div
+                                style={{
+                                  fontWeight: 'bold',
+                                  textDecoration: 'underline',
+                                  display: 'inline',
+                                }}
+                              >
+                                Post new review from:{' '}
+                              </div>
+                              <div
+                                style={{
+                                  fontWeight: 'bold',
+                                  display: 'inline',
+                                }}
+                              >
+                                {' '}
+                                {user.name}
+                              </div>
+                            </Col>
+                          </Form.Group>
+                          <Form.Group
+                            className="mt-2"
+                            controlId="exampleForm.ControlTextarea1"
+                          >
+                            <Form.Label style={{ fontWeight: 'bold' }}>
+                              comment:{' '}
+                            </Form.Label>
+                            <Form.Control
+                              placeholder="Write a new comment..."
+                              type="text"
+                              value={body}
+                              onChange={(e) => setBody(e.target.value)}
+                              rows={3}
+                            />
+                          </Form.Group>
+                        </Form>
 
-                      <Button
-                        className="mt-2"
-                        type="submit"
-                        variant="success"
-                        style={{ width: '100px' }}
-                      >
-                        Post
-                      </Button>
-                    </Card>
-                  </div>
+                        <Button
+                          className="mt-2"
+                          type="submit"
+                          variant="success"
+                          style={{ width: '100px' }}
+                        >
+                          Post
+                        </Button>
+                      </Card>
+                    </div>
+                  )}
                 </div>
               </div>
             </Form>
-          )}
+          }
         </React.Fragment>
       </Row>
     </div>
