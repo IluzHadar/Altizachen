@@ -177,6 +177,9 @@ function PersonalInfoScreen() {
                     <Link to={`/product/${product._id}`}>
                       <Card.Title as="div">
                         <strong>{product.name}</strong>
+                        <div style={{ color: 'black' }}>
+                          {product.pauseAd ? 'Pause' : 'Active'}
+                        </div>
                       </Card.Title>
                     </Link>
 
