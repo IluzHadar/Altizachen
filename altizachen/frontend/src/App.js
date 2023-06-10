@@ -31,6 +31,12 @@ function App() {
     ctxDispatch({ type: 'LOGOUT' });
   };
 
+  const alretHendler = async (id) => {
+    //alretHendler
+    if (window.alert('You have some ads in status pause!')) {
+    }
+  };
+
   return (
     <Col
       className="align-items-stretch d-flex"
@@ -105,6 +111,7 @@ function App() {
                             fontSize: '1.2rem',
                             fontfamily: 'Ariel',
                           }}
+                          onClick={() => alretHendler()}
                         >
                           | Personal Info
                         </Link>
