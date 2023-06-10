@@ -63,6 +63,15 @@ function EditProductScreen() {
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    if (product.pauseAd === true) {
+      setErrorMsg(
+        'This ad is not- active, You need to fill status in "Pause" field !'
+      );
+    }
+    if (product.pauseAd === true && !pauseAd) {
+      return;
+    }
+
     try {
       const product1 = { name, category, description, pauseAd };
       product1.UploadTime = new Date().toLocaleDateString();
@@ -203,7 +212,15 @@ function EditProductScreen() {
                             The ad is displayed on the site
                           </body>
                         )}
-                        <br></br>Pause Ad:
+                        {/*---------------------------*/}
+                        {product.pauseAd ? (
+                          <spar style={{ color: 'red', fontWeight: 'bold' }}>
+                            *
+                          </spar>
+                        ) : (
+                          <spar></spar>
+                        )}
+                        Pause Ad:
                       </Form.Label>
                       <Form.Control
                         as="select"
