@@ -15,7 +15,7 @@ import HomeProdScreen from './screens/HomeProdScreen';
 import ElectricalScreen from './screens/ElectricalScreen';
 import FornitureScreen from './screens/FornitureScreen';
 import GardenScreen from './screens/GardenScreen';
-import CarsScreen from './screens/CarsScreen';
+import DesignScreen from './screens/DesignScreen';
 import AnimelsScreen from './screens/AnimelsScreen';
 import LoginScreen from './screens/LoginScreen';
 import UploadScreen from './screens/UploadScreen';
@@ -273,7 +273,7 @@ function App() {
                       </a>
 
                       <a
-                        href="/CarsScreen"
+                        href="/DesignScreen"
                         class="list-group-item list-group-item-action py-2 ripple"
                       >
                         <i class="fas fa-chart-bar fa-fw me-3"></i>
@@ -296,16 +296,15 @@ function App() {
                   className="mt-3"
                   style={{ padding: '0px 0px 0px 20px' }}
                 >
-                  <Routes>
+                  <Routes>                  
+                    <Route path="" element={<MainScreen />} />
                     <Route path="/product/:id" element={<ProductScreen />} />
+  
                     <Route
                       path="/EditProduct/:id"
                       element={<EditProductScreen />}
                     />
-                    <Route
-                      path="/HomeProdScreen"
-                      element={<HomeProdScreen />}
-                    />
+
                     <Route path="/upload" element={<UploadScreen />} />
                     <Route path="/info" element={<PersonalInfoScreen />} />
                     <Route path="/login" element={<LoginScreen />} />
@@ -313,6 +312,7 @@ function App() {
                       path="/login/CreateUserScreen"
                       element={<CreateUserScreen />}
                     />
+
                     <Route
                       path="/FornitureScreen"
                       element={<FornitureScreen />}
@@ -321,10 +321,12 @@ function App() {
                       path="/ElectricalScreen"
                       element={<ElectricalScreen />}
                     />
+                    <Route path="/HomeProdScreen" element={<HomeProdScreen />} />
                     <Route path="/GardenScreen" element={<GardenScreen />} />
-                    <Route path="/CarsScreen" element={<CarsScreen />} />
+                    <Route path="/DesignScreen" element={<DesignScreen />} />
                     <Route path="/AnimelsScreen" element={<AnimelsScreen />} />
-                    <Route path="/" element={<MainScreen />} />
+                    
+
                     <Route
                       path="/AdminInfoScreen"
                       element={<AdminInfoScreen />}
