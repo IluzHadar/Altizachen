@@ -244,6 +244,7 @@ function ProductScreen() {
         `/api/products/${product._id}`,
         product
       );
+      navigate(0);
     } catch (error) {
       console.log('The error: ......................................');
       console.log(error);
