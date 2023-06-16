@@ -67,7 +67,7 @@ userRouter.put('/:id', async (req, res) => {
   const user2 = await User.findOne({ numberPhone: req.body.numberPhone });
   user2.likeInAds = req.body.likeInAds;
   const updateuser2 = await user2.save();
-  console.log(likeInAds)
+  //console.log(likeInAds)
   res.send({
     message: 'User updated successfully',
     user1: updateuser1,

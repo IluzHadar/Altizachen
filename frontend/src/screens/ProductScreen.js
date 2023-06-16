@@ -205,7 +205,24 @@ function ProductScreen() {
         });
         console.log(data3);
         ctxDispatch({ type: 'UPDATE_USER', payload: data3.data.user });
+      
+        user._id = product.OwnerAdID
+        user.userAdCounter = products
+          .filter(
+            (products) => products.numberPhoneUser === product.numberPhoneUser
+          )
+          .map((product) => product).length;
+          const { data4 } = await axios.put(
+            `/api/users/${product.OwnerAdID}`,
+            user
+          );
+      
       }
+      
+
+
+
+
     } catch (error) {
       console.log('Error in insert like into product');
       console.log(error);
