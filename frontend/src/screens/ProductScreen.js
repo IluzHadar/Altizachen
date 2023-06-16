@@ -328,12 +328,12 @@ function ProductScreen() {
               <Row>
                 <Col style={{ fontWeight: 'bold' }}>Category:</Col>
                 <Col>
-                {product.category=2 ? 'Forniture': ''}
-                {product.category=3 ? 'Electrical products': ''}
-                {product.category=4 ? 'Home Products': ''}
-                {product.category=5 ? 'Garden products': ''}
-                {product.category=5 ? 'Design Products': ''}
-                {product.category=5 ? 'Animel Products': ''}
+                {product.category===2 ? 'Forniture': ''}
+                {product.category===3 ? 'Electrical products': ''}
+                {product.category===4 ? 'Home Products': ''}
+                {product.category===5 ? 'Garden products': ''}
+                {product.category===6 ? 'Design Products': ''}
+                {product.category===7 ? 'Animel Products': ''}
                 </Col>
               </Row>
             </ListGroup.Item>
