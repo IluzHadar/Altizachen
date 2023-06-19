@@ -205,7 +205,7 @@ function App() {
                         }}
                       >
                         <Nav.Link>
-                          <i className="fas fa-user"></i> Sign In
+                          <i className="fas fa-user"></i> SignUp/LogIn
                         </Nav.Link>
                       </LinkContainer>
                     )}
