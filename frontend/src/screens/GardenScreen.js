@@ -49,7 +49,7 @@ function GardenScreen() {
       <div className="products">
         {products
           .filter(
-            (products) => products.category === 5 && products.pauseAd === false
+            (products) => products.category === 4 && products.pauseAd === false
           )
           .map((product) => (
             <Col

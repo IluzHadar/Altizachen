@@ -205,24 +205,18 @@ function ProductScreen() {
         });
         console.log(data3);
         ctxDispatch({ type: 'UPDATE_USER', payload: data3.data.user });
-      
-        user._id = product.OwnerAdID
+
+        user._id = product.OwnerAdID;
         user.userAdCounter = products
           .filter(
             (products) => products.numberPhoneUser === product.numberPhoneUser
           )
           .map((product) => product).length;
-          const { data4 } = await axios.put(
-            `/api/users/${product.OwnerAdID}`,
-            user
-          );
-      
+        const { data4 } = await axios.put(
+          `/api/users/${product.OwnerAdID}`,
+          user
+        );
       }
-      
-
-
-
-
     } catch (error) {
       console.log('Error in insert like into product');
       console.log(error);
@@ -341,16 +335,15 @@ function ProductScreen() {
               </Row>
             </ListGroup.Item>
             <ListGroup.Item>
-              
               <Row>
                 <Col style={{ fontWeight: 'bold' }}>Category:</Col>
                 <Col>
-                {product.category===2 ? 'Forniture': ''}
-                {product.category===3 ? 'Electrical products': ''}
-                {product.category===4 ? 'Home Products': ''}
-                {product.category===5 ? 'Garden products': ''}
-                {product.category===6 ? 'Design Products': ''}
-                {product.category===7 ? 'Animel Products': ''}
+                  {product.category === 1 ? 'Forniture' : ''}
+                  {product.category === 2 ? 'Electrical products' : ''}
+                  {product.category === 3 ? 'Home Products' : ''}
+                  {product.category === 4 ? 'Garden products' : ''}
+                  {product.category === 5 ? 'Design Products' : ''}
+                  {product.category === 6 ? 'Animel Products' : ''}
                 </Col>
               </Row>
             </ListGroup.Item>
