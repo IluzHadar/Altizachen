@@ -92,6 +92,8 @@ const UploadScreen = () => {
       product.OwnerAdID = user._id;
       const { data } = await axios.post(`/api/products`, { product });
       navigate('/');
+
+      window.alert('Ad uplod successfully');
     } catch (error) {
       console.log(error);
       setErrorMsg(error.response.data.message);
