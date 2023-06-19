@@ -1,0 +1,20 @@
+# Altizachen:A website for second hand products
+
+## Usage
+
+### Install Dependencies (frontend & backend)
+
+```
+npm install
+```
+
+npm start
+
+```
+
+- visit url http://localhost:5000/
+
+```
+
+googleMapsApiKey: 'AIzaSyBB5c0WLGH8nTZEZO06ThVwmNdK5KWSfyQ'
+in case this key not in used you need to create new key for Google Maps API.
