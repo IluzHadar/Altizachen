@@ -81,6 +81,7 @@ function EditProductScreen() {
         `/api/products/${product._id}`,
         product1
       );
+      window.alert('Ad edit successfully');
       navigate('/');
     } catch (error) {
       console.log('Error in edit of product');
