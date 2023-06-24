@@ -63,7 +63,7 @@ function EditProductScreen() {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    if (product.pauseAd === true) {
+    if (product.pauseAd === true && !pauseAd) {
       setErrorMsg(
         'This ad is not- active, You need to fill status in "Pause" field !'
       );
